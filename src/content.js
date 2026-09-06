@@ -396,4 +396,25 @@ const legales = [
   }
 ];
 
-module.exports = { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales };
+
+const embudoVoluntariado = [
+  { paso: '01', titulo: 'Aplicas en linea', texto: 'Formulario de 2 minutos: quien eres, que sabes hacer y cuanto tiempo tienes. Sin CV obligatorio.' },
+  { paso: '02', titulo: 'Entrevista', texto: 'Presencial o por videollamada segun donde estes en el mundo. Conversamos area, horario y expectativas.' },
+  { paso: '03', titulo: 'Documentos y salvaguarda', texto: 'Documentos basicos de identidad, firma del compromiso y verificacion de antecedentes si hay contacto con ninez.' },
+  { paso: '04', titulo: 'Induccion y arranque', texto: 'Formacion inicial en salvaguarda y metodo del proyecto. Entras a tu equipo con un mentor asignado.' }
+];
+
+const confianza = [
+  { titulo: 'Metas publicas', texto: 'Publicamos la meta anual de cada proyecto y su avance real cada trimestre, tambien cuando vamos abajo.', href: '/transparencia/' },
+  { titulo: 'Salvaguarda infantil', texto: 'Verificacion de antecedentes, politica de dos adultos y canal de denuncias con respuesta en 72 horas.', href: '/transparencia/#salvaguarda' },
+  { titulo: '78% a atencion directa', texto: 'De cada dolar, 78 centavos van a brigadas, terapia, alimentos y materiales.', href: '/transparencia/' }
+];
+
+const impacto = [
+  { n: '5', l: 'proyectos activos' },
+  { n: '3', l: 'paises: EE.UU., Ecuador, Venezuela' },
+  { n: '3.000', l: 'adultos protectores, meta 2026' },
+  { n: '1.200', l: 'ninas y ninos atendidos, meta 2026' }
+];
+
+module.exports = { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales, embudoVoluntariado, confianza, impacto };

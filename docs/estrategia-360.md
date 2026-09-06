@@ -53,18 +53,26 @@ Los motores generativos citan entidades consistentes. Cualquier variación de no
 - Scoring de donantes recurrentes en riesgo de baja → secuencia de retención.
 - Monitoreo de menciones y de respuestas de ChatGPT/Perplexity/Gemini a 10 consultas fijas ("mejores ONG de niñez en Ecuador", "dónde donar para niños en Venezuela"), medición mensual de aparición y exactitud.
 
-## 6. Conversión
+## 6. Embudos de captación
+
+**Voluntariado** (`/voluntariado/`): landing propia con 4 pasos visibles (aplicas → entrevista → documentos y salvaguarda → inducción), tabla de áreas y horas, requisitos, aporte único de USD 50 explicado sin letra chica, formulario corto y FAQ del voluntariado con `JobPosting` employmentType VOLUNTEER (aparece en Google Jobs y en respuestas de asistentes a "cómo ser voluntario en Ecuador").
+
+**Donantes** (`/dona/`): montos sugeridos, destino por sede y proyecto, bloque de confianza (metas públicas, salvaguarda, 78 % a atención directa), FAQ de deducibilidad.
+
+**Captura blanda**: boletín #SOSInfante en home, `/dona/` y `/voluntariado/`; WhatsApp flotante; barra fija móvil con Donar / Ser voluntario; topbar de reapertura en todas las páginas.
+
+## 7. Conversión
 
 Benchmark 2026: una página de donación promedio convierte ~11 % en desktop y ~8 % en móvil; en organizaciones pequeñas el móvil cae al 4 %. Palancas aplicadas: formulario corto, montos sugeridos, destino por sede y proyecto, señales de confianza (metas públicas, uso de fondos, salvaguarda) y CTA persistente en el header.
 Pendiente al conectar pasarela: wallets (Apple/Google Pay), donación recurrente por defecto, página de gracias con siguiente paso.
 
-## 7. Calendario 90 días
+## 8. Calendario 90 días
 
 - **Semanas 1–2:** publicar sitio, verificar Search Console y Bing, GBP por ciudad, NAP consistente, pasarela conectada.
 - **Semanas 3–6:** 6 artículos del cluster informativo, kit Todo Posi descargable, alta en directorios, primer envío a base de datos.
 - **Semanas 7–12:** notas en prensa local (Quito, Valera, Miami hispano), primer reporte trimestral público, medición GEO y ajuste de FAQ según consultas reales.
 
-## 8. Métricas
+## 9. Métricas
 
 Tráfico orgánico por ciudad · aparición en AI Overviews y citas en ChatGPT/Perplexity (10 consultas fijas) · tasa de conversión de `/dona/` · donantes recurrentes activos · postulaciones de voluntariado · adultos formados vs. meta.
 

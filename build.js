@@ -2,7 +2,7 @@
 /* Generador estatico sin dependencias. `node build.js` -> ./site */
 const fs = require('fs');
 const path = require('path');
-const { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales } = require('./src/content.js');
+const { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales, embudoVoluntariado, confianza, impacto } = require('./src/content.js');
 
 const OUT = path.join(__dirname, 'site');
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -18,6 +18,7 @@ const NAV = [
   ['/nosotros/', 'nosotros'],
   ['/proyectos/', 'proyectos'],
   ['/sedes/', 'sedes'],
+  ['/voluntariado/', 'voluntariado'],
   ['/involucrate/', 'involúcrate'],
   ['/tienda/', 'tienda'],
   ['/blog/', 'blog'],
@@ -60,6 +61,7 @@ ${ld}
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
+<div class="topbar">Reapertura 2026 · Miami 🇺🇸 · Quito 🇪🇨 · Valera 🇻🇪 — <a href="/voluntariado/">postula al voluntariado</a></div>
 <header class="site-head">
   <a class="logo" href="/" aria-label="${site.name}, inicio">
     <img src="/assets/logo.svg" alt="${site.name}" width="120" height="64">
@@ -111,6 +113,11 @@ ${body}
   <p class="legal"><a href="/legal/privacidad/">Privacidad</a> · <a href="/legal/terminos/">Términos</a> · <a href="/legal/devoluciones/">Retornos y devoluciones</a></p>
   <p class="legal">© ${new Date().getFullYear()} ${esc(site.legalName)}. Si una niña, niño o adolescente está en riesgo inmediato, llama a emergencias: 911 (EE.UU. y Venezuela) · ECU 911 (Ecuador).</p>
 </footer>
+<a class="wa" href="https://wa.me/${site.whatsapp.replace(/[^0-9]/g, '')}" aria-label="Escríbenos por WhatsApp">✆</a>
+<div class="sticky-cta">
+  <a class="btn btn-primary" href="/dona/">Donar</a>
+  <a class="btn btn-ghost" href="/voluntariado/">Ser voluntario</a>
+</div>
 <script src="/assets/main.js" defer></script>
 </body>
 </html>`;
@@ -175,6 +182,15 @@ const donaBlock = `<section class="band cta-band">
   <p class="cta-row"><a class="btn btn-primary btn-lg" href="/dona/">Donar ahora</a> <a class="btn btn-ghost btn-lg" href="/involucrate/">Ser voluntario</a></p>
 </section>`;
 
+const newsBlock = `<section class="band news"><div class="inner">
+  <div><h2>#SOSInfante en tu correo</h2><p>Una vez al mes: avances reales por sede, historias y cómo ayudar. Nada más.</p></div>
+  <div><form action="#" method="post" aria-label="Suscripción al boletín">
+    <label class="skip" for="news-email">Correo</label>
+    <input id="news-email" type="email" name="email" placeholder="tu@correo.com" autocomplete="email" required>
+    <button class="btn btn-primary" type="submit">Suscribirme</button>
+  </form><p class="mini">Conecta este formulario a tu plataforma de email antes de publicar.</p></div>
+</div></section>`;
+
 /* ---------- home ---------- */
 write('index.html', layout({
   url: '/',
@@ -186,16 +202,20 @@ write('index.html', layout({
     name: 'Proyectos de SOS Infante',
     itemListElement: proyectos.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${site.domain}/proyectos/${p.slug}/`, name: p.nombre }))
   }],
-  hero: `<section class="hero">
-    <p class="eyebrow">Reapertura 2026 · Miami 🇺🇸 · Quito 🇪🇨 · Valera 🇻🇪</p>
+  hero: `<section class="hero hero-big">
+    <p class="eyebrow">Volvimos · Miami 🇺🇸 · Quito 🇪🇨 · Valera 🇻🇪</p>
     <h1>¿Imaginas un mundo con adultos protectores?</h1>
     <p class="lead">${esc(site.description)}</p>
-    <p class="cta-row"><a class="btn btn-primary btn-lg" href="/dona/">Donar</a> <a class="btn btn-ghost btn-lg" href="/proyectos/">Ver proyectos</a></p>
+    <p class="cta-row"><a class="btn btn-primary btn-lg" href="/dona/">Donar ahora</a> <a class="btn btn-ghost btn-lg" href="/voluntariado/">Quiero ser voluntario</a></p>
+    <div class="hero-stats">${impacto.map((i) => `<div><strong>${esc(i.n)}</strong><span>${esc(i.l)}</span></div>`).join('')}</div>
   </section>`,
   body: `
 <section class="band answer">
   <h2>¿Qué es SOS Infante?</h2>
   <p class="answer-text">${esc(faqs[0].a)}</p>
+</section>
+<section class="band"><h2>Por qué puedes confiar tu donación</h2>
+  <div class="trust">${confianza.map((c) => `<a href="${c.href}"><h3>${esc(c.titulo)}</h3><p>${esc(c.texto)}</p></a>`).join('')}</div>
 </section>
 <section class="band">
   <h2>Tres sedes, una sola ruta de protección</h2>
@@ -221,7 +241,13 @@ ${cifrasBlock}
     </article>`).join('')}
   </div>
 </section>
-${donaBlock}`
+<section class="band"><h2>Súmate como voluntario</h2>
+  <p>Cuatro pasos, sin CV obligatorio. Áreas: psicología, medicina, trabajo social, editorial, social media, diseño, datos, traducción y logística.</p>
+  <div class="steps-grid">${embudoVoluntariado.map((e) => `<div class="step"><p class="num">${e.paso}</p><h3>${esc(e.titulo)}</h3><p>${esc(e.texto)}</p></div>`).join('')}</div>
+  <p class="cta-row" style="margin-top:1.4rem"><a class="btn btn-primary btn-lg" href="/voluntariado/">Postular ahora</a></p>
+</section>
+${donaBlock}
+${newsBlock}`
 }));
 
 /* ---------- nosotros ---------- */
@@ -373,7 +399,9 @@ ${formasDeApoyo.map((f) => `<article class="card"><p class="tag">${esc(f.monto)}
 <li><strong>Transferencia Ecuador (Quito):</strong> <a href="mailto:quito@sosinfante.org">quito@sosinfante.org</a>.</li>
 <li><strong>En especie:</strong> alimentos, medicinas y material escolar en las tres sedes.</li>
 </ul></section>
-<section class="band answer"><h2>¿Es deducible de impuestos?</h2><p class="answer-text">${esc(faqs[3].a)}</p></section>`
+<section class="band answer"><h2>¿Es deducible de impuestos?</h2><p class="answer-text">${esc(faqs[3].a)}</p></section>
+<section class="band"><h2>Por qué puedes confiar</h2><div class="trust">${confianza.map((c) => `<a href="${c.href}"><h3>${esc(c.titulo)}</h3><p>${esc(c.texto)}</p></a>`).join('')}</div></section>
+${newsBlock}`
 }));
 
 /* ---------- involucrate ---------- */
@@ -413,6 +441,71 @@ write('involucrate/index.html', layout({
 ${donaBlock}`
 }));
 
+
+/* ---------- voluntariado ---------- */
+write('voluntariado/index.html', layout({
+  url: '/voluntariado/',
+  title: 'Voluntariado 2026 · SOS Infante Miami, Quito y Valera',
+  description: 'Postula al voluntariado de SOS Infante: cuatro pasos, áreas y horas definidas, formación en salvaguarda. Presencial en Quito, Valera y Miami, o remoto.',
+  jsonld: [
+    crumbs([['Inicio', '/'], ['Voluntariado', '/voluntariado/']]),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'VolunteerOpportunity' === '' ? '' : 'JobPosting',
+      title: 'Voluntariado SOS Infante 2026',
+      description: 'Voluntariado en psicología, medicina, trabajo social, editorial, social media, diseño, datos, traducción y logística para programas de protección de la niñez.',
+      employmentType: 'VOLUNTEER',
+      hiringOrganization: { '@id': site.domain + '/#organization' },
+      jobLocation: sedes.map((s) => ({ '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: s.ciudad, addressCountry: s.pais } })),
+      jobLocationType: 'TELECOMMUTE',
+      datePosted: new Date().toISOString().slice(0, 10),
+      directApply: true
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.slice(-4).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } }))
+    }
+  ],
+  hero: `<section class="hero hero-big">
+    <p class="eyebrow">Voluntariado 2026</p>
+    <h1>Gracias por tomar acción. Desde ya haces la diferencia.</h1>
+    <p class="lead">Somos una organización sin fines de lucro creada para trabajar por oportunidades de vida para la niñez. Elige tu área, define tus horas y entra al equipo.</p>
+    <p class="cta-row"><a class="btn btn-primary btn-lg" href="#postular">Postular ahora</a> <a class="btn btn-ghost btn-lg" href="#areas">Ver áreas y horas</a></p>
+  </section>`,
+  body: `
+<section class="band"><h2>Cómo es el proceso</h2>
+  <div class="steps-grid">${embudoVoluntariado.map((e) => `<div class="step"><p class="num">${e.paso}</p><h3>${esc(e.titulo)}</h3><p>${esc(e.texto)}</p></div>`).join('')}</div>
+  <p class="mini">La entrevista es presencial o por Zoom según en qué parte del mundo estés.</p>
+</section>
+<section class="band" id="areas"><h2>Áreas y horas</h2>
+  <p>${esc(voluntariado.intro)}</p>
+  <table class="tbl"><caption>Esquema base de dedicación por área</caption>
+  <thead><tr><th scope="col">Área</th><th scope="col">Dedicación</th><th scope="col">Perfil</th></tr></thead>
+  <tbody>${voluntariado.esquema.map((e) => `<tr><td>${esc(e.area)}</td><td>${esc(e.dedicacion)}</td><td>${esc(e.nota)}</td></tr>`).join('')}</tbody></table>
+</section>
+<section class="band answer"><h2>Requisitos y aporte</h2>
+  <ul class="mini-list big">${voluntariado.requisitos.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
+  <p>${esc(voluntariado.aporte)}</p>
+</section>
+<section class="band" id="postular"><h2>Postula</h2>
+<form class="donate" action="#" method="post" aria-label="Postulación de voluntariado">
+  <label for="vnombre">Nombre y apellido</label><input id="vnombre" name="nombre" required autocomplete="name">
+  <label for="vmail">Correo</label><input id="vmail" type="email" name="email" required autocomplete="email">
+  <label for="vtel">Teléfono / WhatsApp</label><input id="vtel" name="telefono" autocomplete="tel">
+  <label for="vciudad">Dónde estás</label><select id="vciudad" name="ciudad">${sedes.map((s) => `<option>${s.ciudad}, ${s.pais}</option>`).join('')}<option>Otra ciudad (remoto)</option></select>
+  <label for="varea">Área a la que postulas</label><select id="varea" name="area">${voluntariado.esquema.map((e) => `<option>${e.area}</option>`).join('')}</select>
+  <label for="vhoras">Horas disponibles al mes</label><input id="vhoras" name="horas" type="number" min="1" inputmode="numeric">
+  <label for="vexp">Cuéntanos qué sabes hacer</label><textarea id="vexp" name="experiencia" rows="4"></textarea>
+  <button class="btn btn-primary btn-lg" type="submit">Enviar postulación</button>
+  <p class="mini">Conecta este formulario a tu CRM o endpoint antes de publicar. Respuesta comprometida: 72 horas hábiles.</p>
+</form></section>
+<section class="band"><h2>Preguntas del voluntariado</h2><div class="faq">
+${faqs.slice(-4).map((f) => `<details><summary><h2>${esc(f.q)}</h2></summary><p>${esc(f.a)}</p></details>`).join('')}
+</div></section>
+${newsBlock}`
+}));
+
 /* ---------- transparencia ---------- */
 write('transparencia/index.html', layout({
   url: '/transparencia/',
@@ -436,7 +529,7 @@ write('transparencia/index.html', layout({
 <li><strong>14%</strong> operación y equipo en territorio.</li>
 <li><strong>8%</strong> administración, auditoría y captación.</li>
 </ul></section>
-<section class="band"><h2>Salvaguarda infantil</h2>
+<section class="band" id="salvaguarda"><h2>Salvaguarda infantil</h2>
 <ul class="mini-list big">
 <li>Verificación de antecedentes para todo el personal y voluntariado con contacto con niñez.</li>
 <li>Política de dos adultos: ninguna persona adulta permanece a solas con una niña o niño.</li>
