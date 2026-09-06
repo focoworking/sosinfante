@@ -16,6 +16,7 @@ npx serve site         # o cualquier servidor estático
 - `docs/estrategia-360.md` — arquitectura del sitio y plan SEO / AEO / GEO / LLM / AI.
 - `docs/modelo-negocio.md` — marketplace, centro de acopio Miami, unit economics y ruta aduanera.
 - `docs/motor-de-captacion.md` — motor voluntario → donante → embajador con benchmarks 2026.
+- `docs/reconstruccion-y-proyeccion.md` — auditoría del sitio 2022, plan de migración sin perder SEO y proyección de resultados.
 
 ## Antes de publicar
 
