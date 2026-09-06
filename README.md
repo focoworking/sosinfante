@@ -13,7 +13,9 @@ npx serve site         # o cualquier servidor estático
 - `src/content.js` — única fuente de verdad: sedes, proyectos, cifras, FAQ, blog, tienda, legales, voluntariado.
 - `build.js` — genera HTML + `sitemap.xml`, `robots.txt`, `feed.xml`, `llms.txt`, `llms-full.txt`, `site.webmanifest`.
 - `src/assets/` — CSS, JS, logo, favicon, imagen OG.
-- `docs/estrategia-360.md` — plan SEO / AEO / GEO / LLM / AI.
+- `docs/estrategia-360.md` — arquitectura del sitio y plan SEO / AEO / GEO / LLM / AI.
+- `docs/modelo-negocio.md` — marketplace, centro de acopio Miami, unit economics y ruta aduanera.
+- `docs/motor-de-captacion.md` — motor voluntario → donante → embajador con benchmarks 2026.
 
 ## Antes de publicar
 

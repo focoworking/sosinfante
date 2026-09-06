@@ -2,7 +2,7 @@
 /* Generador estatico sin dependencias. `node build.js` -> ./site */
 const fs = require('fs');
 const path = require('path');
-const { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales, embudoVoluntariado, confianza, impacto } = require('./src/content.js');
+const { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales, embudoVoluntariado, confianza, impacto, departamentos, gobernanza, acopio, lineasIngreso, catalogoImpacto, campanas } = require('./src/content.js');
 
 const OUT = path.join(__dirname, 'site');
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -15,16 +15,13 @@ const write = (rel, body) => {
 const pages = [];
 
 const NAV = [
-  ['/nosotros/', 'nosotros'],
+  ['/fundacion/', 'fundación'],
   ['/proyectos/', 'proyectos'],
   ['/sedes/', 'sedes'],
-  ['/voluntariado/', 'voluntariado'],
-  ['/involucrate/', 'involúcrate'],
+  ['/acopio/', 'centro de acopio'],
   ['/tienda/', 'tienda'],
-  ['/blog/', 'blog'],
-  ['/transparencia/', 'transparencia'],
-  ['/faq/', 'faq'],
-  ['/contacto/', 'contacto']
+  ['/voluntariado/', 'voluntariado'],
+  ['/campanas/', 'campañas']
 ];
 
 function layout({ url, title, description, body, jsonld = [], lang = 'es', hero = '' }) {
@@ -91,10 +88,25 @@ ${body}
       <ul>${sedes.map((s) => `<li><a href="/sedes/${s.slug}/">${s.bandera} ${s.ciudad}, ${s.pais}</a></li>`).join('')}</ul>
     </div>
     <div>
+      <h3>La fundación</h3>
+      <ul>
+        <li><a href="/fundacion/">Misión, visión y valores</a></li>
+        <li><a href="/fundacion/departamentos/">Departamentos</a></li>
+        <li><a href="/transparencia/">Transparencia y salvaguarda</a></li>
+        <li><a href="/aliados/">Aliados y empresas</a></li>
+        <li><a href="/prensa/">Prensa</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/faq/">Preguntas frecuentes</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
       <h3>Actúa</h3>
       <ul>
         <li><a href="/dona/">Donar</a></li>
-        <li><a href="/involucrate/#voluntariado">Voluntariado</a></li>
+        <li><a href="/voluntariado/">Voluntariado</a></li>
+        <li><a href="/acopio/">Donar en especie (Miami)</a></li>
+        <li><a href="/involucrate/">Otras formas de ayudar</a></li>
         <li><a href="/contacto/#alianzas">Empresas y fundaciones</a></li>
         <li><a href="/transparencia/">Transparencia</a></li>
       </ul>
@@ -241,6 +253,15 @@ ${cifrasBlock}
     </article>`).join('')}
   </div>
 </section>
+<section class="band"><h2>Miami acopia · Ecuador y Venezuela reciben</h2>
+  <p>El centro de acopio de Miami es el corazón logístico de la reapertura: recibe donaciones en especie, las clasifica con voluntariado y las despacha a Quito y Valera. Lo que no se puede enviar se vende y financia el flete del resto.</p>
+  <div class="steps-grid">${acopio.flujo.slice(0, 4).map((f) => `<div class="step"><p class="num">${f[0]}</p><h3>${esc(f[1])}</h3><p>${esc(f[2])}</p></div>`).join('')}</div>
+  <p class="cta-row" style="margin-top:1.4rem"><a class="btn btn-primary" href="/acopio/">Cómo donar en especie</a> <a class="btn btn-ghost" href="/tienda/#impacto">Catálogo de impacto</a></p>
+</section>
+<section class="band"><h2>Campañas del año</h2>
+  <div class="grid-3">${campanas.slice(0, 6).map((c) => `<article class="card"><p class="tag">${esc(c.mes)}</p><h3>${esc(c.nombre)}</h3><p>${esc(c.gancho)}</p><p class="mini">Meta: ${esc(c.meta)}</p></article>`).join('')}</div>
+  <p class="cta-row" style="margin-top:1.4rem"><a class="btn btn-ghost" href="/campanas/">Ver calendario completo</a></p>
+</section>
 <section class="band"><h2>Súmate como voluntario</h2>
   <p>Cuatro pasos, sin CV obligatorio. Áreas: psicología, medicina, trabajo social, editorial, social media, diseño, datos, traducción y logística.</p>
   <div class="steps-grid">${embudoVoluntariado.map((e) => `<div class="step"><p class="num">${e.paso}</p><h3>${esc(e.titulo)}</h3><p>${esc(e.texto)}</p></div>`).join('')}</div>
@@ -258,6 +279,7 @@ write('nosotros/index.html', layout({
   jsonld: [orgLd, crumbs([['Inicio', '/'], ['Nosotros', '/nosotros/']])],
   hero: `<section class="hero hero-sm"><p class="eyebrow">Nosotros</p><h1>Una vida, una esperanza. Uno a la vez.</h1><p class="lead">${esc(identidad.promesa)}</p></section>`,
   body: `
+<section class="band"><p><a class="btn btn-ghost" href="/fundacion/">Ver la ficha institucional completa: misión, gobierno y modelo de ingresos</a></p></section>
 <section class="band answer"><h2>Visión</h2><p class="answer-text">${esc(identidad.vision)}</p><p>${esc(identidad.creencia)}</p></section>
 <section class="band"><h2>Valores</h2><div class="grid-3">
 ${identidad.valores.map((v) => `<article class="card"><p class="tag">${esc(v.nombre)}</p><h3>${esc(v.frase)}</h3><p>${esc(v.texto)}</p></article>`).join('')}
@@ -441,6 +463,166 @@ write('involucrate/index.html', layout({
 ${donaBlock}`
 }));
 
+
+/* ---------- fundacion ---------- */
+write('fundacion/index.html', layout({
+  url: '/fundacion/',
+  title: 'La fundación: misión, visión y gobierno · SOS Infante',
+  description: 'Misión, visión, valores, estructura de gobierno y modelo de sostenibilidad de SOS Infante, con operación en Miami, Quito y Valera.',
+  jsonld: [orgLd, crumbs([['Inicio', '/'], ['La fundación', '/fundacion/']])],
+  hero: `<section class="hero hero-big"><p class="eyebrow">La fundación</p><h1>Una vida, una esperanza. Uno a la vez.</h1><p class="lead">${esc(identidad.promesa)}</p><p class="cta-row"><a class="btn btn-primary btn-lg" href="/fundacion/departamentos/">Ver departamentos</a> <a class="btn btn-ghost btn-lg" href="/transparencia/">Transparencia</a></p></section>`,
+  body: `
+<section class="band answer"><h2>Misión</h2><p class="answer-text">Prevenir y atender la violencia física, psicológica y sexual contra niñas, niños y adolescentes, formando adultos protectores y sosteniendo emocional, profesional y económicamente a la niñez en Ecuador, Venezuela y la comunidad latina de Estados Unidos.</p></section>
+<section class="band"><p><a class="btn btn-ghost" href="/fundacion/">Ver la ficha institucional completa: misión, gobierno y modelo de ingresos</a></p></section>
+<section class="band answer"><h2>Visión</h2><p class="answer-text">${esc(identidad.vision)}</p><p>${esc(identidad.creencia)}</p></section>
+<section class="band"><h2>Valores</h2><div class="grid-3">${identidad.valores.map((v) => `<article class="card"><p class="tag">${esc(v.nombre)}</p><h3>${esc(v.frase)}</h3><p>${esc(v.texto)}</p></article>`).join('')}</div></section>
+<section class="band"><h2>Gobierno</h2>
+<table class="tbl"><caption>Órganos y responsabilidades</caption><thead><tr><th scope="col">Órgano</th><th scope="col">Responsabilidad</th></tr></thead>
+<tbody>${gobernanza.map((g) => `<tr><td><strong>${esc(g[0])}</strong></td><td>${esc(g[1])}</td></tr>`).join('')}</tbody></table></section>
+<section class="band"><h2>Cómo nos sostenemos</h2>
+<p>Seis líneas de ingreso, ninguna por encima del 35 % del total. Una fundación que depende de una sola fuente no es una fundación: es un proyecto con fecha de caducidad.</p>
+<table class="tbl"><caption>Modelo de ingresos 2026</caption>
+<thead><tr><th scope="col">Línea</th><th scope="col">Margen</th><th scope="col">Rol</th><th scope="col">Meta anual</th></tr></thead>
+<tbody>${lineasIngreso.map((l) => `<tr><td><strong>${esc(l.linea)}</strong></td><td>${esc(l.margen)}</td><td>${esc(l.rol)}</td><td>${esc(l.meta)}</td></tr>`).join('')}</tbody></table>
+<p class="mini">Metas de referencia del primer año de reapertura; se actualizan con el avance real en la página de transparencia.</p></section>
+<section class="band"><h2>Cómo trabajamos</h2><ol class="steps">
+<li><strong>Detectar.</strong> Formamos adultos protectores en escuelas y comunidades.</li>
+<li><strong>Atender.</strong> Brigadas médicas, nutricionales y psicológicas.</li>
+<li><strong>Acompañar.</strong> Rutas de denuncia, apoyo legal y seguimiento a 90 días.</li>
+<li><strong>Reportar.</strong> Metas públicas por proyecto y por sede cada trimestre.</li>
+</ol></section>
+${donaBlock}${newsBlock}`
+}));
+
+/* ---------- departamentos ---------- */
+write('fundacion/departamentos/index.html', layout({
+  url: '/fundacion/departamentos/',
+  title: 'Departamentos y equipos · SOS Infante',
+  description: 'Siete departamentos: Dirección, Programas, Salvaguarda, Desarrollo, Comunicación, Marketplace y Operaciones, y Datos, Tecnología e IA. Qué hace cada uno y qué perfiles busca.',
+  jsonld: [
+    crumbs([['Inicio', '/'], ['La fundación', '/fundacion/'], ['Departamentos', '/fundacion/departamentos/']]),
+    { '@context': 'https://schema.org', '@type': 'ItemList', name: 'Departamentos de SOS Infante', itemListElement: departamentos.map((d, i) => ({ '@type': 'ListItem', position: i + 1, name: d.nombre, description: d.mision })) }
+  ],
+  hero: `<section class="hero hero-sm"><p class="eyebrow">Estructura</p><h1>Siete departamentos</h1><p class="lead">Cada área declara qué entrega y qué perfiles necesita. Si tu oficio aparece aquí, tenemos dónde ponerte.</p><p class="cta-row"><a class="btn btn-primary" href="/voluntariado/">Postular al voluntariado</a></p></section>`,
+  body: `<section class="band"><div class="grid-2">
+${departamentos.map((d) => `<article class="card" id="${d.slug}">
+  <p class="tag">${esc(d.nombre)}</p>
+  <h3>${esc(d.mision)}</h3>
+  <p class="mini"><strong>Entrega:</strong></p><ul class="mini-list">${d.entregables.map((e) => `<li>${esc(e)}</li>`).join('')}</ul>
+  <p class="mini"><strong>Perfiles:</strong> ${d.roles.map((r) => esc(r)).join(' · ')}</p>
+</article>`).join('')}
+</div></section>${newsBlock}`
+}));
+
+/* ---------- acopio ---------- */
+write('acopio/index.html', layout({
+  url: '/acopio/',
+  title: 'Centro de acopio Miami · SOS Infante',
+  description: 'Centro de acopio de SOS Infante en Miami / Fort Lauderdale: qué donamos, qué no recibimos, cómo se clasifica y cómo llega la ayuda a Ecuador y Venezuela con trazabilidad.',
+  jsonld: [
+    crumbs([['Inicio', '/'], ['Centro de acopio', '/acopio/']]),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'LocalBusiness',
+      additionalType: 'https://schema.org/NGO',
+      name: 'Centro de acopio SOS Infante Miami',
+      url: site.domain + '/acopio/',
+      parentOrganization: { '@id': site.domain + '/#organization' },
+      email: site.email,
+      telephone: site.telefono,
+      address: { '@type': 'PostalAddress', streetAddress: '3800 Inverrary Blvd', addressLocality: 'Fort Lauderdale', addressRegion: 'FL', postalCode: '33319', addressCountry: 'US' },
+      openingHours: 'Mo-Fr 08:00-17:00'
+    }
+  ],
+  hero: `<section class="hero hero-big"><p class="eyebrow">Miami 🇺🇸 → Ecuador 🇪🇨 · Venezuela 🇻🇪</p><h1>Centro de acopio</h1><p class="lead">${esc(acopio.promesa)}</p><p class="cta-row"><a class="btn btn-primary btn-lg" href="#entregar">Cómo entregar</a> <a class="btn btn-ghost btn-lg" href="/tienda/">Catálogo de impacto</a></p></section>`,
+  body: `
+<section class="band answer"><h2>¿Qué es el centro de acopio de Miami?</h2><p class="answer-text">Es la bodega donde SOS Infante recibe donaciones en especie en Fort Lauderdale, las clasifica con voluntariado y las envía a las sedes de Quito y Valera. Lo que no se puede enviar se vende en la tienda solidaria y ese dinero paga el flete del resto.</p></section>
+<section class="band"><h2>Qué recibimos</h2><div class="grid-2">
+<div><h3>Sí recibimos</h3><ul class="mini-list big">${acopio.aceptamos.map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>
+<div><h3>No recibimos</h3><ul class="mini-list big">${acopio.noAceptamos.map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>
+</div></section>
+<section class="band"><h2>De tu caja a sus manos</h2>
+<div class="steps-grid">${acopio.flujo.map((f) => `<div class="step"><p class="num">${f[0]}</p><h3>${esc(f[1])}</h3><p>${esc(f[2])}</p></div>`).join('')}</div>
+<p class="mini">${esc(acopio.nota)}</p></section>
+<section class="band" id="entregar"><h2>Cómo entregar tu donación</h2>
+<ul class="mini-list big">
+<li><strong>En persona:</strong> ${esc(acopio.direccion)}. ${esc(acopio.horario)}.</li>
+<li><strong>Recolección a domicilio:</strong> desde 10 cajas en el condado de Broward y Miami-Dade, agendando por WhatsApp.</li>
+<li><strong>Colecta de empresa o escuela:</strong> entregamos contenedor rotulado, material de campaña y reporte final de lo recaudado.</li>
+<li><strong>Envío desde otra ciudad:</strong> escríbenos a <a href="mailto:${site.email}">${site.email}</a> y coordinamos la guía.</li>
+</ul>
+<p class="cta-row"><a class="btn btn-primary btn-lg" href="https://wa.me/${site.whatsapp.replace(/[^0-9]/g, '')}">Agendar por WhatsApp</a> <a class="btn btn-ghost btn-lg" href="/contacto/#alianzas">Colecta corporativa</a></p></section>
+<section class="band answer"><h2>Trazabilidad</h2><p class="answer-text">Cada entrega se registra con donante, tipo y peso. Cuando el envío llega a Quito o Valera, quien donó recibe el reporte de su caja: qué contenía, a cuántas familias llegó y el acta de entrega con fotografías sin rostros de menores.</p></section>
+${donaBlock}${newsBlock}`
+}));
+
+/* ---------- campanas ---------- */
+write('campanas/index.html', layout({
+  url: '/campanas/',
+  title: 'Campañas 2026 · SOS Infante',
+  description: 'Calendario de campañas de SOS Infante: Amor sin violencia, Vuelta a clases, Mes de la niñez, Formar 1.000 adultos protectores, Giving Tuesday y Navidad Shungo.',
+  jsonld: [
+    crumbs([['Inicio', '/'], ['Campañas', '/campanas/']]),
+    { '@context': 'https://schema.org', '@type': 'ItemList', name: 'Campañas 2026', itemListElement: campanas.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.nombre, description: c.gancho })) }
+  ],
+  hero: `<section class="hero hero-big"><p class="eyebrow">Calendario 2026</p><h1>Seis campañas al año</h1><p class="lead">Un ritmo fijo de convocatoria: cada campaña tiene meta, producto en tienda y activo de acopio. Así el equipo no improvisa y la comunidad sabe cuándo la necesitamos.</p><p class="cta-row"><a class="btn btn-primary btn-lg" href="/voluntariado/">Sumarme a una campaña</a></p></section>`,
+  body: `<section class="band">
+<table class="tbl"><caption>Calendario de campañas</caption>
+<thead><tr><th scope="col">Mes</th><th scope="col">Campaña</th><th scope="col">Gancho</th><th scope="col">Activo</th><th scope="col">Meta</th></tr></thead>
+<tbody>${campanas.map((c) => `<tr><td>${esc(c.mes)}</td><td><strong>${esc(c.nombre)}</strong></td><td>${esc(c.gancho)}</td><td>${esc(c.activo)}</td><td>${esc(c.meta)}</td></tr>`).join('')}</tbody></table>
+</section>
+<section class="band"><h2>Cómo funciona cada campaña</h2><div class="steps-grid">
+<div class="step"><p class="num">01</p><h3>Anuncio</h3><p>Landing propia, correo a la base y activación de aliados con 3 semanas de anticipación.</p></div>
+<div class="step"><p class="num">02</p><h3>Activación</h3><p>Acopio en Miami, reto en redes y recaudación entre pares: cada voluntario abre su propia meta.</p></div>
+<div class="step"><p class="num">03</p><h3>Cierre</h3><p>Transmisión del envío o de la jornada, con contador público de lo alcanzado.</p></div>
+<div class="step"><p class="num">04</p><h3>Reporte</h3><p>A los 30 días, informe de entrega a cada donante y conversión a donación mensual.</p></div>
+</div></section>
+${donaBlock}${newsBlock}`
+}));
+
+/* ---------- aliados ---------- */
+write('aliados/index.html', layout({
+  url: '/aliados/',
+  title: 'Aliados: empresas, escuelas y fundaciones · SOS Infante',
+  description: 'Formas de aliarse con SOS Infante: patrocinio de cohortes, colectas corporativas en Miami, talleres pagados y matching de donaciones del equipo.',
+  jsonld: [crumbs([['Inicio', '/'], ['Aliados', '/aliados/']])],
+  hero: `<section class="hero hero-sm"><p class="eyebrow">Aliados</p><h1>Alianzas que se pueden medir</h1><p class="lead">Cada alianza entrega un reporte con nombre, número y fecha. Nada de logos sin resultado.</p></section>`,
+  body: `<section class="band"><div class="grid-2">
+<article class="card"><p class="tag">Desde USD 2.500</p><h3>Patrocina una cohorte</h3><p>25 adultos formados en Adulto Protector con 6 sesiones y seguimiento a 90 días. Reporte con evidencia y mención en el informe trimestral.</p></article>
+<article class="card"><p class="tag">Sin costo directo</p><h3>Colecta corporativa en Miami</h3><p>Entregamos contenedor rotulado, material de campaña y charla para el equipo. Al cierre, reporte de kilos, destino y familias alcanzadas.</p></article>
+<article class="card"><p class="tag">Desde USD 1.200</p><h3>Taller Adulto Protector para tu equipo</h3><p>Formación para colaboradores con hijas e hijos: señales de alerta, disciplina sin violencia y rutas de denuncia. Financia talleres gratuitos en escuelas públicas.</p></article>
+<article class="card"><p class="tag">Matching</p><h3>Duplica lo que dona tu equipo</h3><p>Tu empresa iguala las donaciones del personal durante una campaña. Es la forma más barata de multiplicar recaudación y compromiso interno.</p></article>
+<article class="card"><p class="tag">Escuelas</p><h3>Programa escolar</h3><p>Talleres para familias y docentes, más el reto Todo Posi con estudiantes. Incluye kit descargable y acompañamiento.</p></article>
+<article class="card"><p class="tag">Fundaciones y cooperación</p><h3>Proyectos cofinanciados</h3><p>Presentamos línea base, marco lógico, presupuesto por resultado y auditoría externa anual.</p></article>
+</div>
+<p class="cta-row" style="margin-top:1.6rem"><a class="btn btn-primary btn-lg" href="/contacto/#alianzas">Hablar con alianzas</a></p></section>
+${newsBlock}`
+}));
+
+/* ---------- prensa ---------- */
+write('prensa/index.html', layout({
+  url: '/prensa/',
+  title: 'Prensa y datos citables · SOS Infante',
+  description: 'Kit de prensa de SOS Infante: descripción oficial, vocerías, cifras verificables y guía para cubrir violencia contra la niñez sin revictimizar.',
+  jsonld: [crumbs([['Inicio', '/'], ['Prensa', '/prensa/']])],
+  hero: `<section class="hero hero-sm"><p class="eyebrow">Prensa</p><h1>Kit de prensa</h1><p class="lead">Todo lo que necesitas para cubrirnos bien, en una página.</p></section>`,
+  body: `
+<section class="band answer"><h2>Descripción oficial</h2><p class="answer-text">${esc(site.description)}</p><p class="mini">Nombre legal: ${esc(site.legalName)} · Fundada en ${site.founded} · Contacto de prensa: <a href="mailto:${site.email}">${site.email}</a> · ${site.telefono}</p></section>
+<section class="band"><h2>Cifras citables</h2><div class="grid-3">${cifras.map((c) => `<figure class="cifra"><strong>${c.dato}</strong><figcaption>${esc(c.texto)} <cite>${esc(c.fuente)}</cite></figcaption></figure>`).join('')}</div></section>
+<section class="band"><h2>Cómo cubrir violencia contra la niñez</h2><ul class="mini-list big">
+<li>Un embarazo en una niña menor de 14 años es consecuencia de un delito: nómbralo así, no como “embarazo adolescente”.</li>
+<li>No publiques datos que permitan identificar a la víctima: nombre, escuela, barrio o rostro.</li>
+<li>Evita el detalle morboso del hecho; informa la ruta de denuncia y dónde pedir ayuda.</li>
+<li>Cita la fuente y el año de cada cifra.</li>
+<li>Incluye siempre un teléfono de emergencia: 911 (EE.UU. y Venezuela), ECU 911 (Ecuador).</li>
+</ul></section>
+<section class="band"><h2>Recursos</h2><ul class="mini-list big">
+<li><a href="/assets/logo.svg">Logotipo (SVG)</a></li>
+<li><a href="/llms.txt">Resumen institucional en texto plano</a></li>
+<li><a href="/transparencia/">Metas públicas y uso de fondos</a></li>
+<li><a href="/feed.xml">Feed RSS de novedades</a></li>
+</ul></section>${newsBlock}`
+}));
 
 /* ---------- voluntariado ---------- */
 write('voluntariado/index.html', layout({
@@ -656,19 +838,22 @@ write('tienda/index.html', layout({
       name: 'Tienda solidaria SOS Infante',
       url: site.domain + '/tienda/',
       provider: { '@id': site.domain + '/#organization' },
-      itemListElement: tienda.productos.map((p, i) => ({
+      itemListElement: catalogoImpacto.concat(tienda.productos).map((p, i) => ({
         '@type': 'Offer',
         position: i + 1,
-        itemOffered: { '@type': 'Product', name: p.nombre, category: p.categoria },
+        itemOffered: { '@type': 'Product', name: p.nombre, category: p.categoria || 'Catálogo de impacto', description: p.detalle || undefined },
         price: (p.oferta || p.precio).toFixed(2),
         priceCurrency: 'USD',
         availability: 'https://schema.org/InStock'
       }))
     }
   ],
-  hero: `<section class="hero hero-sm"><p class="eyebrow">Tienda</p><h1>Compra que sostiene</h1><p class="lead">${esc(tienda.intro)}</p></section>`,
+  hero: `<section class="hero hero-big"><p class="eyebrow">Tienda solidaria</p><h1>Compra algo que llega a manos concretas</h1><p class="lead">Dos formas: el catálogo de impacto, donde compras exactamente lo que se entrega en Ecuador y Venezuela, y la tienda de marca, que sostiene la operación.</p><p class="cta-row"><a class="btn btn-primary btn-lg" href="#impacto">Catálogo de impacto</a> <a class="btn btn-ghost btn-lg" href="#productos">Productos</a></p></section>`,
   body: `
-<section class="band"><h2>Categorías</h2><div class="grid-4">
+<section class="band" id="impacto"><h2>Catálogo de impacto</h2>
+<p>Eliges qué se entrega y dónde. Recibes el acta de entrega con fotografías sin rostros de menores.</p>
+<div class="grid-3">${catalogoImpacto.map((c) => `<article class="card"><p class="tag">${esc(c.entrega)}</p><h3>${esc(c.nombre)}</h3><p class="price">$${c.precio.toFixed(2)}</p><p>${esc(c.detalle)}</p><p><a class="btn btn-primary" href="/dona/?item=${encodeURIComponent(c.nombre)}">Regalar</a></p></article>`).join('')}</div></section>
+<section class="band" id="productos"><h2>Categorías</h2><div class="grid-4">
 ${tienda.categorias.map((c) => `<article class="card"><h3>${esc(c.nombre)}</h3><p class="mini">${c.items} productos</p></article>`).join('')}
 </div></section>
 <section class="band"><h2>Productos</h2><div class="grid-4">

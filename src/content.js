@@ -417,4 +417,128 @@ const impacto = [
   { n: '1.200', l: 'ninas y ninos atendidos, meta 2026' }
 ];
 
-module.exports = { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales, embudoVoluntariado, confianza, impacto };
+
+/* ===== Estructura institucional ===== */
+const departamentos = [
+  {
+    slug: 'direccion',
+    nombre: 'Direccion Ejecutiva',
+    mision: 'Sostener la estrategia, el presupuesto y la relacion con el directorio y los aliados.',
+    entregables: ['Plan anual y presupuesto por sede', 'Reporte trimestral de impacto', 'Relacion con directorio y auditoria'],
+    roles: ['Direccion ejecutiva', 'Asistencia de direccion', 'Control de gestion']
+  },
+  {
+    slug: 'programas',
+    nombre: 'Programas y Territorio',
+    mision: 'Ejecutar los proyectos en campo con calidad y medir resultados reales, no actividades.',
+    entregables: ['Cohortes de Adulto Protector', 'Brigadas Shungo Corazon', 'Linea base y medicion por beneficiario'],
+    roles: ['Coordinacion de programas', 'Facilitadores', 'Trabajo social', 'Medicina y nutricion']
+  },
+  {
+    slug: 'salvaguarda',
+    nombre: 'Salvaguarda y Psicologia',
+    mision: 'Proteger a cada nina, nino y adolescente que entra en contacto con la organizacion, y sostener la atencion psicologica.',
+    entregables: ['Politica de salvaguarda y verificacion de antecedentes', 'Canal de denuncias con respuesta en 72 horas', 'Terapia breve y derivaciones'],
+    roles: ['Psicologia clinica', 'Oficial de salvaguarda', 'Asesoria legal']
+  },
+  {
+    slug: 'desarrollo',
+    nombre: 'Desarrollo y Alianzas',
+    mision: 'Conseguir y retener los ingresos: donantes mensuales, empresas, fundaciones y cooperacion.',
+    entregables: ['Programa de donantes mensuales', 'Portafolio de patrocinios corporativos', 'Postulaciones a fondos y grants'],
+    roles: ['Fundraising', 'Alianzas corporativas', 'Redaccion de propuestas', 'Gestion de donantes']
+  },
+  {
+    slug: 'comunicacion',
+    nombre: 'Comunicacion y Marca',
+    mision: 'Convertir la operacion en relato publico y el relato en accion: donar, postular, difundir.',
+    entregables: ['Calendario editorial y de campanas', 'Kit de prensa y vocerias', 'Contenido con consentimiento y rostros protegidos'],
+    roles: ['Editorial', 'Social media', 'Diseno', 'Audiovisual', 'Traduccion es/en']
+  },
+  {
+    slug: 'marketplace',
+    nombre: 'Marketplace y Operaciones',
+    mision: 'Que el centro de acopio de Miami y la tienda financien la operacion y abastezcan a Ecuador y Venezuela.',
+    entregables: ['Acopio, clasificacion y despacho', 'Tienda en linea y catalogo de impacto', 'Tramites aduaneros y trazabilidad de cada caja'],
+    roles: ['Logistica y bodega', 'Comercio electronico', 'Compras y proveedores', 'Voluntariado de clasificacion']
+  },
+  {
+    slug: 'datos',
+    nombre: 'Datos, Tecnologia e IA',
+    mision: 'Que cada decision se tome con datos y que la tecnologia le devuelva horas al equipo.',
+    entregables: ['CRM unico de donantes y voluntariado', 'Tablero de metas por proyecto y sede', 'Automatizaciones e IA operativa'],
+    roles: ['Analitica de datos', 'Desarrollo web', 'Automatizacion / IA', 'Soporte CRM']
+  }
+];
+
+const gobernanza = [
+  ['Directorio', 'Aprueba estrategia, presupuesto y politica de salvaguarda. Se reune trimestralmente.'],
+  ['Direccion ejecutiva', 'Ejecuta el plan y responde ante el directorio con indicadores publicos.'],
+  ['Comite de salvaguarda', 'Independiente de programas. Recibe y resuelve denuncias en 72 horas.'],
+  ['Auditoria externa', 'Revision anual de estados financieros y publicacion del resumen en la web.'],
+  ['Consejo consultivo', 'Voluntariado experto en ninez, salud mental, logistica y tecnologia.']
+];
+
+/* ===== Centro de acopio Miami ===== */
+const acopio = {
+  ciudad: 'Miami / Fort Lauderdale',
+  direccion: '3800 Inverrary Blvd, Fort Lauderdale, FL 33319',
+  horario: 'Lunes a viernes, 08h00 a 17h00',
+  promesa: 'Lo que entra en Miami termina en manos de una familia en Ecuador o Venezuela, o se convierte en el dinero que paga ese envio.',
+  aceptamos: [
+    'Ropa y calzado infantil en buen estado, limpio y sin roturas',
+    'Utiles escolares y mochilas',
+    'Juguetes nuevos o en excelente estado, sin piezas faltantes',
+    'Alimentos no perecibles sellados y con fecha vigente (minimo 6 meses)',
+    'Articulos de higiene y panales sellados',
+    'Equipamiento medico basico no invasivo, nuevo y en empaque original'
+  ],
+  noAceptamos: [
+    'Medicamentos vencidos, abiertos o sin receta autorizada',
+    'Ropa danada, humeda o con manchas',
+    'Muebles voluminosos y electrodomesticos grandes',
+    'Vehiculos (no aplican a exencion aduanera salvo uso especial)',
+    'Alimentos preparados o perecibles'
+  ],
+  flujo: [
+    ['01', 'Recepcion', 'Registro de cada entrega con donante, tipo y peso. Recibo deducible en el acto.'],
+    ['02', 'Clasificacion', 'Voluntariado separa en tres destinos: envio humanitario, venta en tienda o reciclaje responsable.'],
+    ['03', 'Consolidacion', 'Palet por destino, inventario valorizado y documentacion de donacion.'],
+    ['04', 'Despacho', 'Carga aerea o maritima desde Miami a Guayaquil/Quito y a Venezuela via aliados locales.'],
+    ['05', 'Nacionalizacion', 'Tramite de exencion de tributos ante SENAE via Ecuapass y retiro por la sede local.'],
+    ['06', 'Entrega y trazabilidad', 'Entrega a familias con acta y foto sin rostro; el donante recibe el reporte de su caja.']
+  ],
+  nota:
+    'En Ecuador, las donaciones del exterior a favor de instituciones privadas sin fines de lucro estan exentas de tributos al comercio exterior (salvo tasas por servicios aduaneros) cuando la entidad esta registrada en el RUC y presenta la solicitud en Ecuapass; el marco exige convenio de cooperacion con institucion del sector publico. Fuente: SENAE.'
+};
+
+/* ===== Modelo de ingresos ===== */
+const lineasIngreso = [
+  { linea: 'Donantes mensuales', margen: '≈ 95 %', rol: 'Ingreso predecible que cubre nomina y programas base.', meta: 'USD 120.000 / ano' },
+  { linea: 'Catalogo de impacto (tienda)', margen: '≈ 85 %', rol: 'Compra con destino concreto: kit alimentario, kit escolar, sesion de terapia.', meta: 'USD 90.000 / ano' },
+  { linea: 'Reventa de donaciones en especie (Miami)', margen: '≈ 70 %', rol: 'Inventario donado, sin costo de mercaderia; financia el flete a Ecuador y Venezuela.', meta: 'USD 150.000 / ano' },
+  { linea: 'Merchandising bajo demanda', margen: '20–40 %', rol: 'Marca y pertenencia mas que caja; cero inventario, cero riesgo.', meta: 'USD 30.000 / ano' },
+  { linea: 'Alianzas corporativas y grants', margen: '≈ 90 %', rol: 'Patrocinio de cohortes completas y de la operacion logistica.', meta: 'USD 180.000 / ano' },
+  { linea: 'Servicios de formacion a empresas y escuelas', margen: '≈ 60 %', rol: 'Talleres Adulto Protector pagados que subsidian los gratuitos.', meta: 'USD 60.000 / ano' }
+];
+
+const catalogoImpacto = [
+  { nombre: 'Kit alimentario familiar (1 mes)', precio: 35, entrega: 'Quito y Valera', detalle: 'Arroz, legumbres, aceite, atun, avena y leche en polvo para una familia de cuatro.' },
+  { nombre: 'Kit escolar completo', precio: 25, entrega: 'Quito y Valera', detalle: 'Mochila, cuadernos, utiles y uniforme basico para un ano lectivo.' },
+  { nombre: 'Sesion de terapia psicologica', precio: 40, entrega: 'Quito y Valera', detalle: 'Una sesion de terapia breve con psicologa especializada en trauma infantil.' },
+  { nombre: 'Beca de arteterapia (1 mes)', precio: 120, entrega: 'Quito y Valera', detalle: 'Cuatro talleres de Artis Terapia con dupla arte + psicologia.' },
+  { nombre: 'Brigada medica comunitaria', precio: 250, entrega: 'Valera', detalle: 'Jornada de control medico y nutricional para 40 ninas y ninos.' },
+  { nombre: 'Cohorte Adulto Protector', precio: 2500, entrega: 'Las tres sedes', detalle: '25 adultos formados en 6 sesiones con seguimiento a 90 dias.' }
+];
+
+/* ===== Campanas recurrentes ===== */
+const campanas = [
+  { mes: 'Febrero', nombre: 'Amor sin violencia', gancho: 'San Valentin resignificado: el amor no lastima.', activo: 'Reto en redes + kit docente', meta: 'Captacion de donantes mensuales' },
+  { mes: 'Abril', nombre: 'Vuelta a clases (Sierra)', gancho: 'Cada mochila es un ano escolar que no se abandona.', activo: 'Kit escolar en catalogo de impacto + acopio de utiles en Miami', meta: '1.000 kits escolares' },
+  { mes: 'Junio', nombre: 'Mes de la ninez', gancho: 'Dia de la ninez con actividades en las tres sedes.', activo: 'Jornada Todo Posi + brigadas', meta: 'Alcance masivo y voluntariado nuevo' },
+  { mes: 'Agosto', nombre: 'Vuelta a clases (Costa y Venezuela)', gancho: 'Segunda ola escolar del ano.', activo: 'Acopio corporativo con empresas de Florida', meta: '800 kits escolares' },
+  { mes: 'Octubre', nombre: 'Formar 1.000 adultos protectores', gancho: 'Campana de formacion masiva con escuelas aliadas.', activo: 'Cohortes patrocinadas por empresas', meta: '1.000 adultos formados' },
+  { mes: 'Diciembre', nombre: 'Giving Tuesday + Navidad Shungo', gancho: 'El cierre del ano y el momento de mayor donacion del calendario.', activo: 'Matching de empresas + peer to peer', meta: '30 % de la recaudacion anual' }
+];
+
+module.exports = { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales, embudoVoluntariado, confianza, impacto, departamentos, gobernanza, acopio, lineasIngreso, catalogoImpacto, campanas };
