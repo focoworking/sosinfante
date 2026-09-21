@@ -5,11 +5,20 @@ const path = require('path');
 const { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales, embudoVoluntariado, confianza, impacto, departamentos, gobernanza, acopio, lineasIngreso, catalogoImpacto, campanas } = require('./src/content.js');
 
 const OUT = path.join(__dirname, 'site');
+// Prefijo para publicar en subcarpeta (p. ej. GitHub Pages de proyecto):
+//   BASE_PATH=/sosinfante node build.js
+const BASE = (process.env.BASE_PATH || '').replace(/\/$/, '');
+const rebase = (html) =>
+  BASE
+    ? html
+        .replace(/(href|src)="\/(?!\/)/g, `$1="${BASE}/`)
+        .replace(/(content=")\/(?!\/)/g, `$1${BASE}/`)
+    : html;
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const write = (rel, body) => {
   const file = path.join(OUT, rel);
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, body);
+  fs.writeFileSync(file, rel.endsWith('.html') ? rebase(body) : body);
   pages.push(rel);
 };
 const pages = [];

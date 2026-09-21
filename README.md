@@ -26,6 +26,25 @@ npx serve site         # o cualquier servidor estático
 4. Sustituir el logo SVG provisional por el original y añadir fotografía real (rostros de menores protegidos por defecto).
 5. Verificar el dominio en Google Search Console y Bing Webmaster Tools, y enviar `sitemap.xml`.
 
-## Despliegue
+## Ver el sitio
 
-`.github/workflows/deploy.yml` publica `site/` en GitHub Pages en cada push a la rama principal.
+**En local** (lo más rápido):
+
+```bash
+git clone https://github.com/focoworking/sosinfante.git
+cd sosinfante && git checkout claude/reapertura-website-proyecto-social-tjyc91
+node build.js && npx --yes serve site      # abre http://localhost:3000
+```
+
+**En GitHub Pages** (URL pública, gratis): en el repositorio, Settings → Pages →
+Source: **GitHub Actions**. Con eso, cada push a `main` o a una rama `claude/**`
+publica el sitio en `https://focoworking.github.io/sosinfante/`.
+
+**En el servidor propio** (sosinfante.org): sube el contenido de `site/` por FTP o
+rsync a la raíz pública. Es HTML estático: no necesita PHP, base de datos ni Node
+en el servidor.
+
+```bash
+node build.js                       # rutas absolutas desde la raíz del dominio
+BASE_PATH=/sosinfante node build.js # si se publica en una subcarpeta
+```
