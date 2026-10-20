@@ -26,22 +26,58 @@ jobs:
         with:
           node-version: '22'
 
-      # Activa GitHub Pages en modo "GitHub Actions" si todavía no lo está,
-      # en lugar de fallar con "Get Pages site failed".
-      - id: pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
+      # GitHub Pages solo puede activarlo una persona con permisos de
+      # administración (Settings → Pages → Source: GitHub Actions). El token
+      # del workflow no puede crear el sitio, así que si todavía no existe
+      # avisamos y terminamos bien, en vez de fallar en cada push.
+      - id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh api "repos/${{ github.repository }}/pages" >/dev/null 2>&1; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            {
+              echo "## GitHub Pages todavía no está activado"
+              echo
+              echo "El sitio compila correctamente, pero no hay dónde publicarlo."
+              echo
+              echo "Para activarlo, una persona con permisos de administración debe ir a"
+              echo "**Settings → Pages → Build and deployment → Source: GitHub Actions**"
+              echo "y volver a ejecutar este workflow."
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
 
-      # El prefijo sale de la propia configuración de Pages: en un sitio de
+      - id: pages
+        if: steps.check.outputs.ready == 'true'
+        uses: actions/configure-pages@v5
+
+      # El prefijo de rutas sale de la configuración de Pages: en un sitio de
       # proyecto es /sosinfante y en un dominio propio queda vacío.
-      - run: node build.js
+      - if: steps.check.outputs.ready == 'true'
+        run: node build.js
         env:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
 
-      - uses: actions/upload-pages-artifact@v4
+      - if: steps.check.outputs.ready == 'true'
+        uses: actions/upload-pages-artifact@v4
         with:
           path: site
 
       - id: deploy
+        if: steps.check.outputs.ready == 'true'
         uses: actions/deploy-pages@v4
+
+  # Comprueba que el sitio compila, esté o no activado Pages.
+  build-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - run: node build.js
+      - run: |
+          test -f site/index.html
+          echo "Páginas generadas: $(find site -name '*.html' | wc -l)"

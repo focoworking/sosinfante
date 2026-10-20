@@ -37,8 +37,11 @@ node build.js && npx --yes serve site      # abre http://localhost:3000
 ```
 
 **En GitHub Pages** (URL pública, gratis): en el repositorio, Settings → Pages →
-Source: **GitHub Actions**. Con eso, cada push a `main` o a una rama `claude/**`
-publica el sitio en `https://focoworking.github.io/sosinfante/`.
+Build and deployment → Source: **GitHub Actions**. Este paso solo puede darlo una
+persona con permisos de administración: el token de Actions no puede crear el
+sitio. Hasta entonces el workflow compila el sitio y avisa en el resumen del run,
+sin marcar error. Una vez activado, cada push a `main` o a una rama `claude/**`
+publica en `https://focoworking.github.io/sosinfante/`.
 
 **En el servidor propio** (sosinfante.org): sube el contenido de `site/` por FTP o
 rsync a la raíz pública. Es HTML estático: no necesita PHP, base de datos ni Node
