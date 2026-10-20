@@ -356,6 +356,8 @@ const tienda = {
   ]
 };
 
+const LEGAL_ACTUALIZADO = '2026-09-06'; // fecha de la ultima revision del texto legal
+
 const legales = [
   {
     slug: 'privacidad',
@@ -541,4 +543,4 @@ const campanas = [
   { mes: 'Diciembre', nombre: 'Giving Tuesday + Navidad Shungo', gancho: 'El cierre del ano y el momento de mayor donacion del calendario.', activo: 'Matching de empresas + peer to peer', meta: '30 % de la recaudacion anual' }
 ];
 
-module.exports = { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales, embudoVoluntariado, confianza, impacto, departamentos, gobernanza, acopio, lineasIngreso, catalogoImpacto, campanas };
+module.exports = { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales, LEGAL_ACTUALIZADO, embudoVoluntariado, confianza, impacto, departamentos, gobernanza, acopio, lineasIngreso, catalogoImpacto, campanas };

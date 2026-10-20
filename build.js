@@ -2,7 +2,7 @@
 /* Generador estatico sin dependencias. `node build.js` -> ./site */
 const fs = require('fs');
 const path = require('path');
-const { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales, embudoVoluntariado, confianza, impacto, departamentos, gobernanza, acopio, lineasIngreso, catalogoImpacto, campanas } = require('./src/content.js');
+const { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales, LEGAL_ACTUALIZADO, embudoVoluntariado, confianza, impacto, departamentos, gobernanza, acopio, lineasIngreso, catalogoImpacto, campanas } = require('./src/content.js');
 
 const OUT = path.join(__dirname, 'site');
 // Prefijo para publicar en subcarpeta (p. ej. GitHub Pages de proyecto):
@@ -649,7 +649,7 @@ write('voluntariado/index.html', layout({
       hiringOrganization: { '@id': site.domain + '/#organization' },
       jobLocation: sedes.map((s) => ({ '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: s.ciudad, addressCountry: s.pais } })),
       jobLocationType: 'TELECOMMUTE',
-      datePosted: new Date().toISOString().slice(0, 10),
+      datePosted: '2026-09-06',
       directApply: true
     },
     {
@@ -880,7 +880,7 @@ legales.forEach((l) => {
     title: `${l.titulo} · SOS Infante`,
     description: l.resumen,
     jsonld: [crumbs([['Inicio', '/'], [l.titulo, `/legal/${l.slug}/`]])],
-    hero: `<section class="hero hero-sm"><p class="eyebrow">Legal · actualizado ${new Date().toISOString().slice(0, 10)}</p><h1>${esc(l.titulo)}</h1><p class="lead">${esc(l.resumen)}</p></section>`,
+    hero: `<section class="hero hero-sm"><p class="eyebrow">Legal · actualizado ${LEGAL_ACTUALIZADO}</p><h1>${esc(l.titulo)}</h1><p class="lead">${esc(l.resumen)}</p></section>`,
     body: l.secciones.map((sec) => `<section class="band article"><h2>${esc(sec[0])}</h2><p>${esc(sec[1])}</p></section>`).join('') +
       `<section class="band"><p class="mini">Dudas sobre estas políticas: <a href="mailto:${site.email}">${site.email}</a>.</p></section>`
   }));
