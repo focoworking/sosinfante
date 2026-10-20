@@ -21,7 +21,11 @@ const write = (rel, body) => {
   fs.writeFileSync(file, rel.endsWith('.html') ? rebase(body) : body);
   pages.push(rel);
 };
+fs.rmSync(OUT, { recursive: true, force: true });
 const pages = [];
+const LOGO = fs.readFileSync(path.join(__dirname, 'src/assets/logo.svg'), 'utf8')
+  .replace(/<\?xml[^>]*\?>\s*/, '')
+  .replace('<svg ', '<svg class="logo-svg" ');
 
 const NAV = [
   ['/fundacion/', 'fundación'],
@@ -55,13 +59,13 @@ function layout({ url, title, description, body, jsonld = [], lang = 'es', hero 
 <meta property="og:image" content="${site.domain}/assets/og.svg">
 <meta property="og:locale" content="${lang === 'en' ? 'en_US' : 'es_419'}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="${site.color}">
+<meta name="theme-color" content="#1EB5C4">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="${site.name} — blog" href="/feed.xml">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Archivo+Black&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Montserrat:wght@800&display=swap">
 <link rel="stylesheet" href="/assets/styles.css">
 ${ld}
 </head>
@@ -69,9 +73,7 @@ ${ld}
 <a class="skip" href="#main">Saltar al contenido</a>
 <div class="topbar">Reapertura 2026 · Miami 🇺🇸 · Quito 🇪🇨 · Valera 🇻🇪 — <a href="/voluntariado/">postula al voluntariado</a></div>
 <header class="site-head">
-  <a class="logo" href="/" aria-label="${site.name}, inicio">
-    <img src="/assets/logo.svg" alt="${site.name}" width="120" height="64">
-  </a>
+  <a class="logo" href="/" aria-label="${site.name}, inicio">${LOGO}</a>
   <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">☰</button>
   <nav id="nav" class="nav" aria-label="Principal">
     <ul>${NAV.map(([h, t]) => `<li><a href="${h}"${url === h ? ' aria-current="page"' : ''}>${t}</a></li>`).join('')}</ul>
@@ -88,7 +90,7 @@ ${body}
 <footer class="site-foot">
   <div class="foot-grid">
     <div>
-      <img src="/assets/logo.svg" alt="" width="110" height="58" class="foot-logo">
+      <span class="foot-logo" aria-hidden="true">${LOGO}</span>
       <p>${esc(site.tagline)}.<br>Miami · Quito · Valera</p>
       <p class="mini">${esc(identidad.lema)}</p>
     </div>
@@ -134,7 +136,7 @@ ${body}
   <p class="legal"><a href="/legal/privacidad/">Privacidad</a> · <a href="/legal/terminos/">Términos</a> · <a href="/legal/devoluciones/">Retornos y devoluciones</a></p>
   <p class="legal">© ${new Date().getFullYear()} ${esc(site.legalName)}. Si una niña, niño o adolescente está en riesgo inmediato, llama a emergencias: 911 (EE.UU. y Venezuela) · ECU 911 (Ecuador).</p>
 </footer>
-<a class="wa" href="https://wa.me/${site.whatsapp.replace(/[^0-9]/g, '')}" aria-label="Escríbenos por WhatsApp">✆</a>
+<a class="wa" href="https://wa.me/${site.whatsapp.replace(/[^0-9]/g, '')}" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.98c2.12 0 4.1.83 5.6 2.33a7.85 7.85 0 0 1 2.32 5.6c0 4.37-3.55 7.93-7.92 7.93a7.9 7.9 0 0 1-4.03-1.1l-.29-.17-2.99.78.8-2.92-.19-.3a7.86 7.86 0 0 1-1.21-4.22c0-4.37 3.55-7.93 7.91-7.93zm-2.3 4.1c-.17 0-.45.07-.69.32-.24.25-.9.88-.9 2.14s.92 2.48 1.05 2.65c.13.17 1.8 2.75 4.37 3.75 2.13.84 2.57.67 3.03.63.46-.04 1.49-.61 1.7-1.2.21-.59.21-1.09.15-1.2-.06-.1-.23-.17-.48-.29-.25-.13-1.49-.73-1.72-.82-.23-.08-.4-.12-.56.13-.17.25-.65.82-.79.98-.15.17-.29.19-.54.07-.25-.13-1.06-.39-2.02-1.25-.75-.66-1.25-1.49-1.4-1.74-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.36-.77-1.86-.2-.49-.4-.42-.56-.43h-.48z"/></svg></a>
 <div class="sticky-cta">
   <a class="btn btn-primary" href="/dona/">Donar</a>
   <a class="btn btn-ghost" href="/voluntariado/">Ser voluntario</a>
@@ -164,7 +166,7 @@ const orgLd = {
   location: sedes.map((s) => ({
     '@type': 'Place',
     name: `${site.name} ${s.ciudad}`,
-    address: { '@type': 'PostalAddress', addressLocality: s.ciudad, addressRegion: s.region, addressCountry: s.pais },
+    address: { '@type': 'PostalAddress', addressLocality: s.ciudad, addressRegion: s.region, addressCountry: s.país },
     geo: { '@type': 'GeoCoordinates', latitude: s.lat, longitude: s.lng }
   })),
   contactPoint: sedes.map((s) => ({
@@ -215,7 +217,7 @@ const newsBlock = `<section class="band news"><div class="inner">
 /* ---------- home ---------- */
 write('index.html', layout({
   url: '/',
-  title: 'SOS Infante · Ninez sin violencia en Miami, Quito y Valera',
+  title: 'SOS Infante · Niñez sin violencia en Miami, Quito y Valera',
   description: site.description,
   jsonld: [orgLd, websiteLd, {
     '@context': 'https://schema.org',
@@ -280,28 +282,20 @@ ${donaBlock}
 ${newsBlock}`
 }));
 
-/* ---------- nosotros ---------- */
-write('nosotros/index.html', layout({
-  url: '/nosotros/',
-  title: 'Quiénes somos · SOS Infante',
-  description: 'Visión, valores y método de SOS Infante: amor, fe, oportunidades, servicio y generosidad al servicio de una niñez sin violencia.',
-  jsonld: [orgLd, crumbs([['Inicio', '/'], ['Nosotros', '/nosotros/']])],
-  hero: `<section class="hero hero-sm"><p class="eyebrow">Nosotros</p><h1>Una vida, una esperanza. Uno a la vez.</h1><p class="lead">${esc(identidad.promesa)}</p></section>`,
-  body: `
-<section class="band"><p><a class="btn btn-ghost" href="/fundacion/">Ver la ficha institucional completa: misión, gobierno y modelo de ingresos</a></p></section>
-<section class="band answer"><h2>Visión</h2><p class="answer-text">${esc(identidad.vision)}</p><p>${esc(identidad.creencia)}</p></section>
-<section class="band"><h2>Valores</h2><div class="grid-3">
-${identidad.valores.map((v) => `<article class="card"><p class="tag">${esc(v.nombre)}</p><h3>${esc(v.frase)}</h3><p>${esc(v.texto)}</p></article>`).join('')}
-</div></section>
-<section class="band"><h2>Cómo trabajamos</h2>
-<ol class="steps">
-<li><strong>Detectar.</strong> Formamos adultos protectores en escuelas y comunidades para reconocer señales tempranas.</li>
-<li><strong>Atender.</strong> Brigadas médicas, nutricionales y psicológicas para infantes expuestos a violencia.</li>
-<li><strong>Acompañar.</strong> Rutas de denuncia, apoyo legal y seguimiento a 90 días.</li>
-<li><strong>Reportar.</strong> Metas públicas por proyecto y por sede en la página de transparencia.</li>
-</ol></section>
-${donaBlock}`
-}));
+/* ---------- nosotros: URL histórica, redirige a /fundacion/ ---------- */
+write('nosotros/index.html', `<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Quiénes somos · ${site.name}</title>
+<link rel="canonical" href="${site.domain}/fundacion/">
+<meta name="robots" content="noindex,follow">
+<meta http-equiv="refresh" content="0; url=/fundacion/">
+</head>
+<body>
+<p>Esta página se trasladó a <a href="/fundacion/">la ficha de la fundación</a>.</p>
+</body>
+</html>`);
 
 /* ---------- proyectos ---------- */
 write('proyectos/index.html', layout({
@@ -371,7 +365,7 @@ sedes.forEach((s) => {
         url: `${site.domain}/sedes/${s.slug}/`,
         parentOrganization: { '@id': site.domain + '/#organization' },
         email: s.contacto,
-        address: { '@type': 'PostalAddress', addressLocality: s.ciudad, addressRegion: s.region, addressCountry: s.pais },
+        address: { '@type': 'PostalAddress', addressLocality: s.ciudad, addressRegion: s.region, addressCountry: s.país },
         geo: { '@type': 'GeoCoordinates', latitude: s.lat, longitude: s.lng },
         areaServed: `${s.ciudad}, ${s.pais}`,
         knowsLanguage: s.idioma.split(' / ')
@@ -482,7 +476,6 @@ write('fundacion/index.html', layout({
   hero: `<section class="hero hero-big"><p class="eyebrow">La fundación</p><h1>Una vida, una esperanza. Uno a la vez.</h1><p class="lead">${esc(identidad.promesa)}</p><p class="cta-row"><a class="btn btn-primary btn-lg" href="/fundacion/departamentos/">Ver departamentos</a> <a class="btn btn-ghost btn-lg" href="/transparencia/">Transparencia</a></p></section>`,
   body: `
 <section class="band answer"><h2>Misión</h2><p class="answer-text">Prevenir y atender la violencia física, psicológica y sexual contra niñas, niños y adolescentes, formando adultos protectores y sosteniendo emocional, profesional y económicamente a la niñez en Ecuador, Venezuela y la comunidad latina de Estados Unidos.</p></section>
-<section class="band"><p><a class="btn btn-ghost" href="/fundacion/">Ver la ficha institucional completa: misión, gobierno y modelo de ingresos</a></p></section>
 <section class="band answer"><h2>Visión</h2><p class="answer-text">${esc(identidad.vision)}</p><p>${esc(identidad.creencia)}</p></section>
 <section class="band"><h2>Valores</h2><div class="grid-3">${identidad.valores.map((v) => `<article class="card"><p class="tag">${esc(v.nombre)}</p><h3>${esc(v.frase)}</h3><p>${esc(v.texto)}</p></article>`).join('')}</div></section>
 <section class="band"><h2>Gobierno</h2>
@@ -571,7 +564,7 @@ write('campanas/index.html', layout({
   title: 'Campañas 2026 · SOS Infante',
   description: 'Calendario de campañas de SOS Infante: Amor sin violencia, Vuelta a clases, Mes de la niñez, Formar 1.000 adultos protectores, Giving Tuesday y Navidad Shungo.',
   jsonld: [
-    crumbs([['Inicio', '/'], ['Campañas', '/campanas/']]),
+    crumbs([['Inicio', '/'], ['Campañas', '/campañas/']]),
     { '@context': 'https://schema.org', '@type': 'ItemList', name: 'Campañas 2026', itemListElement: campanas.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.nombre, description: c.gancho })) }
   ],
   hero: `<section class="hero hero-big"><p class="eyebrow">Calendario 2026</p><h1>Seis campañas al año</h1><p class="lead">Un ritmo fijo de convocatoria: cada campaña tiene meta, producto en tienda y activo de acopio. Así el equipo no improvisa y la comunidad sabe cuándo la necesitamos.</p><p class="cta-row"><a class="btn btn-primary btn-lg" href="/voluntariado/">Sumarme a una campaña</a></p></section>`,
@@ -647,7 +640,7 @@ write('voluntariado/index.html', layout({
       description: 'Voluntariado en psicología, medicina, trabajo social, editorial, social media, diseño, datos, traducción y logística para programas de protección de la niñez.',
       employmentType: 'VOLUNTEER',
       hiringOrganization: { '@id': site.domain + '/#organization' },
-      jobLocation: sedes.map((s) => ({ '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: s.ciudad, addressCountry: s.pais } })),
+      jobLocation: sedes.map((s) => ({ '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: s.ciudad, addressCountry: s.país } })),
       jobLocationType: 'TELECOMMUTE',
       datePosted: '2026-09-06',
       directApply: true
@@ -896,7 +889,7 @@ write('404.html', layout({
 }));
 
 /* ---------- archivos maquina ---------- */
-const urls = pages.filter((p) => p !== '404.html').map((p) => '/' + p.replace(/index\.html$/, '').replace(/\.html$/, ''));
+const urls = pages.filter((p) => p !== '404.html' && p !== 'nosotros/index.html').map((p) => '/' + p.replace(/index\.html$/, '').replace(/\.html$/, ''));
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => `<url><loc>${site.domain}${u}</loc><changefreq>weekly</changefreq><priority>${u === '/' ? '1.0' : '0.7'}</priority></url>`).join('\n')}
