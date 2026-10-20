@@ -28,7 +28,7 @@ const sedes = [
   {
     slug: 'miami',
     ciudad: 'Miami',
-    país: 'Estados Unidos',
+    pais: 'Estados Unidos',
     bandera: '🇺🇸',
     rol: 'Sede de alianzas, recaudación internacional y voluntariado corporativo',
     apertura: 'Reapertura 2026',
@@ -36,7 +36,7 @@ const sedes = [
     lat: 25.7617,
     lng: -80.1918,
     resumen:
-      'Miami es el nodo diaspora: conecta a familias latinas, empresas y fundaciones de Florida con los programas de protección en Ecuador y Venezuela.',
+      'Miami es el nodo diáspora: conecta a familias latinas, empresas y fundaciones de Florida con los programas de protección en Ecuador y Venezuela.',
     programas: ['Adulto Protector en escuelas bilingues', 'Alianzas corporativas', 'Fondo de emergencia regional'],
     contacto: 'accion@sosinfante.org',
     idioma: 'es / en'
@@ -44,7 +44,7 @@ const sedes = [
   {
     slug: 'quito',
     ciudad: 'Quito',
-    país: 'Ecuador',
+    pais: 'Ecuador',
     bandera: '🇪🇨',
     rol: 'Sede operativa historica: prevención, atención psicológica y campañas',
     apertura: 'Operación continua desde 2018 · relanzamiento 2026',
@@ -52,7 +52,7 @@ const sedes = [
     lat: -0.1807,
     lng: -78.4678,
     resumen:
-      'Desde Quito coordinamos talleres en unidades educativas, atención psicológica a sobrevivientes y las campañas publicas de prevención.',
+      'Desde Quito coordinamos talleres en unidades educativas, atención psicológica a sobrevivientes y las campañas públicas de prevención.',
     programas: ['Shungo Corazón', 'Todo Posi', 'Adulto Protector', 'Embarazo infantil: cero tolerancia'],
     contacto: 'accion@sosinfante.org',
     idioma: 'es'
@@ -60,7 +60,7 @@ const sedes = [
   {
     slug: 'valera',
     ciudad: 'Valera',
-    país: 'Venezuela',
+    pais: 'Venezuela',
     bandera: '🇻🇪',
     rol: 'Nueva sede: asistencia alimentaria, médica y escuela de adultos protectores',
     apertura: 'Apertura 2026',
@@ -146,12 +146,12 @@ const proyectos = [
 const cifras = [
   {
     dato: '4 de cada 10',
-    texto: 'mujeres ha manifestado ser victima de algun tipo de atentado de naturaleza sexual a lo largo de su vida.',
-    fuente: 'Encuesta nacional de violencia de genero, Ecuador'
+    texto: 'mujeres ha manifestado ser víctima de algún tipo de atentado de naturaleza sexual a lo largo de su vida.',
+    fuente: 'Encuesta nacional de violencia de género, Ecuador'
   },
   {
     dato: '1 de cada 4',
-    texto: 'niños menores de 5 años (cerca de 176 millones) vive en un hogar donde su madre es victima de violencia basada en genero.',
+    texto: 'niños menores de 5 años (cerca de 176 millones) vive en un hogar donde su madre es víctima de violencia basada en género.',
     fuente: 'UNICEF, 2020'
   },
   {
@@ -242,7 +242,7 @@ const faqsVoluntariado = [
     a: 'Si. Tras la aplicación y la entrevista se piden documentos básicos de identidad y la firma de un compromiso de voluntariado por el período acordado. Todo contacto directo con niñez suma verificación de antecedentes y formación en salvaguarda.'
   },
   {
-    q: '¿El voluntariado tiene algun costo?',
+    q: '¿El voluntariado tiene algún costo?',
     a: 'No obligamos a dar donativos ni pagos mensuales por participar. Existe un valor único de USD 50 que cubre carnet de identificación, camiseta y material impreso de uso interno para el nuevo voluntariado.'
   },
 ];
@@ -407,14 +407,14 @@ const embudoVoluntariado = [
 ];
 
 const confianza = [
-  { titulo: 'Metas publicas', texto: 'Publicamos la meta anual de cada proyecto y su avance real cada trimestre, también cuando vamos abajo.', href: '/transparencia/' },
+  { titulo: 'Metas públicas', texto: 'Publicamos la meta anual de cada proyecto y su avance real cada trimestre, también cuando vamos abajo.', href: '/transparencia/' },
   { titulo: 'Salvaguarda infantil', texto: 'Verificación de antecedentes, política de dos adultos y canal de denuncias con respuesta en 72 horas.', href: '/transparencia/#salvaguarda' },
   { titulo: '78% a atención directa', texto: 'De cada dólar, 78 centavos van a brigadas, terapia, alimentos y materiales.', href: '/transparencia/' }
 ];
 
 const impacto = [
   { n: '5', l: 'proyectos activos' },
-  { n: '3', l: 'paises: EE.UU., Ecuador, Venezuela' },
+  { n: '3', l: 'países: EE.UU., Ecuador, Venezuela' },
   { n: '3.000', l: 'adultos protectores, meta 2026' },
   { n: '1.200', l: 'niñas y niños atendidos, meta 2026' }
 ];
@@ -425,49 +425,49 @@ const departamentos = [
   {
     slug: 'direccion',
     nombre: 'Dirección Ejecutiva',
-    misión: 'Sostener la estrategia, el presupuesto y la relación con el directorio y los aliados.',
+    mision: 'Sostener la estrategia, el presupuesto y la relación con el directorio y los aliados.',
     entregables: ['Plan anual y presupuesto por sede', 'Reporte trimestral de impacto', 'Relación con directorio y auditoría'],
     roles: ['Dirección ejecutiva', 'Asistencia de dirección', 'Control de gestión']
   },
   {
     slug: 'programas',
     nombre: 'Programas y Territorio',
-    misión: 'Ejecutar los proyectos en campo con calidad y medir resultados reales, no actividades.',
+    mision: 'Ejecutar los proyectos en campo con calidad y medir resultados reales, no actividades.',
     entregables: ['Cohortes de Adulto Protector', 'Brigadas Shungo Corazón', 'Linea base y medicion por beneficiario'],
     roles: ['Coordinacion de programas', 'Facilitadores', 'Trabajo social', 'Medicina y nutricion']
   },
   {
     slug: 'salvaguarda',
     nombre: 'Salvaguarda y Psicología',
-    misión: 'Proteger a cada niña, niño y adolescente que entra en contacto con la organización, y sostener la atención psicológica.',
+    mision: 'Proteger a cada niña, niño y adolescente que entra en contacto con la organización, y sostener la atención psicológica.',
     entregables: ['Política de salvaguarda y verificación de antecedentes', 'Canal de denuncias con respuesta en 72 horas', 'Terapia breve y derivaciones'],
     roles: ['Psicología clinica', 'Oficial de salvaguarda', 'Asesoria legal']
   },
   {
     slug: 'desarrollo',
     nombre: 'Desarrollo y Alianzas',
-    misión: 'Conseguir y retener los ingresos: donantes mensuales, empresas, fundaciones y cooperación.',
+    mision: 'Conseguir y retener los ingresos: donantes mensuales, empresas, fundaciones y cooperación.',
     entregables: ['Programa de donantes mensuales', 'Portafolio de patrocinios corporativos', 'Postulaciones a fondos y grants'],
     roles: ['Fundraising', 'Alianzas corporativas', 'Redaccion de propuestas', 'Gestión de donantes']
   },
   {
     slug: 'comunicacion',
     nombre: 'Comunicación y Marca',
-    misión: 'Convertir la operación en relato publico y el relato en accion: donar, postular, difundir.',
+    mision: 'Convertir la operación en relato público y el relato en acción: donar, postular, difundir.',
     entregables: ['Calendario editorial y de campañas', 'Kit de prensa y vocerias', 'Contenido con consentimiento y rostros protegidos'],
     roles: ['Editorial', 'Social media', 'Diseño', 'Audiovisual', 'Traducción es/en']
   },
   {
     slug: 'marketplace',
     nombre: 'Marketplace y Operaciones',
-    misión: 'Que el centro de acopio de Miami y la tienda financien la operación y abastezcan a Ecuador y Venezuela.',
+    mision: 'Que el centro de acopio de Miami y la tienda financien la operación y abastezcan a Ecuador y Venezuela.',
     entregables: ['Acopio, clasificación y despacho', 'Tienda en linea y catalogo de impacto', 'Tramites aduaneros y trazabilidad de cada caja'],
     roles: ['Logística y bodega', 'Comercio electronico', 'Compras y proveedores', 'Voluntariado de clasificación']
   },
   {
     slug: 'datos',
     nombre: 'Datos, Tecnología e IA',
-    misión: 'Que cada decision se tome con datos y que la tecnología le devuelva horas al equipo.',
+    mision: 'Que cada decision se tome con datos y que la tecnología le devuelva horas al equipo.',
     entregables: ['CRM único de donantes y voluntariado', 'Tablero de metas por proyecto y sede', 'Automatizaciones e IA operativa'],
     roles: ['Analitica de datos', 'Desarrollo web', 'Automatizacion / IA', 'Soporte CRM']
   }

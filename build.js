@@ -15,10 +15,21 @@ const rebase = (html) =>
         .replace(/(content=")\/(?!\/)/g, `$1${BASE}/`)
     : html;
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// Marca los bloques que aparecen al desplazar. Sin JS siguen visibles.
+const animar = (html) =>
+  html
+    .replace(/<section class="band/g, '<section data-reveal class="band')
+    .replace(/<div class="(grid-2|grid-3|grid-4|steps-grid|trust)"/g,
+             '<div data-reveal data-reveal-stagger class="$1"')
+    .replace(/<ol class="flow"/g, '<ol data-reveal data-reveal-stagger class="flow"');
+
 const write = (rel, body) => {
   const file = path.join(OUT, rel);
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, rel.endsWith('.html') ? rebase(body) : body);
+  if (rel.endsWith('.html') && /\bundefined\b/.test(body)) {
+    throw new Error(`La página ${rel} contiene «undefined»: revisa los nombres de campo en src/content.js`);
+  }
+  fs.writeFileSync(file, rel.endsWith('.html') ? rebase(animar(body)) : body);
   pages.push(rel);
 };
 fs.rmSync(OUT, { recursive: true, force: true });
@@ -36,6 +47,14 @@ const NAV = [
   ['/voluntariado/', 'voluntariado'],
   ['/campanas/', 'campañas']
 ];
+
+const CINTA_TEXTOS = [
+  'Miami acopia', 'Quito y Valera reciben', 'Adulto Protector', 'Shungo Corazón',
+  'Todo Posi', 'Artis Terapia', 'Una vida, una esperanza', 'Uno a la vez'
+];
+const cinta = `<div class="cinta" aria-hidden="true"><div class="cinta__pista">${
+  CINTA_TEXTOS.concat(CINTA_TEXTOS).map((t) => `<span>${t}</span>`).join('')
+}</div></div>`;
 
 function layout({ url, title, description, body, jsonld = [], lang = 'es', hero = '' }) {
   const canonical = site.domain + url;
@@ -84,9 +103,17 @@ ${ld}
   </div>
 </header>
 ${hero}
+${cinta}
 <main id="main">
 ${body}
 </main>
+<section class="foot-cta">
+  <div class="inner">
+    <h2>Haz que la próxima caja llegue</h2>
+    <p>Dona, entrega en el centro de acopio de Miami o súmate como voluntario. Cada aporte se asigna a un proyecto y a una sede, y se reporta cada trimestre.</p>
+    <p class="cta-row"><a class="btn btn-primary btn-lg" href="/dona/">Donar</a> <a class="btn btn-ghost btn-lg" href="/voluntariado/">Ser voluntario</a> <a class="btn btn-ghost btn-lg" href="/acopio/">Donar en especie</a></p>
+  </div>
+</section>
 <footer class="site-foot">
   <div class="foot-grid">
     <div>
@@ -133,6 +160,7 @@ ${body}
       </ul>
     </div>
   </div>
+  <div class="foot-mark" aria-hidden="true">${LOGO}</div>
   <p class="legal"><a href="/legal/privacidad/">Privacidad</a> · <a href="/legal/terminos/">Términos</a> · <a href="/legal/devoluciones/">Retornos y devoluciones</a></p>
   <p class="legal">© ${new Date().getFullYear()} ${esc(site.legalName)}. Si una niña, niño o adolescente está en riesgo inmediato, llama a emergencias: 911 (EE.UU. y Venezuela) · ECU 911 (Ecuador).</p>
 </footer>
@@ -166,7 +194,7 @@ const orgLd = {
   location: sedes.map((s) => ({
     '@type': 'Place',
     name: `${site.name} ${s.ciudad}`,
-    address: { '@type': 'PostalAddress', addressLocality: s.ciudad, addressRegion: s.region, addressCountry: s.país },
+    address: { '@type': 'PostalAddress', addressLocality: s.ciudad, addressRegion: s.region, addressCountry: s.pais },
     geo: { '@type': 'GeoCoordinates', latitude: s.lat, longitude: s.lng }
   })),
   contactPoint: sedes.map((s) => ({
@@ -230,7 +258,11 @@ write('index.html', layout({
     <h1>¿Imaginas un mundo con adultos protectores?</h1>
     <p class="lead">${esc(site.description)}</p>
     <p class="cta-row"><a class="btn btn-primary btn-lg" href="/dona/">Donar ahora</a> <a class="btn btn-ghost btn-lg" href="/voluntariado/">Quiero ser voluntario</a></p>
-    <div class="hero-stats">${impacto.map((i) => `<div><strong>${esc(i.n)}</strong><span>${esc(i.l)}</span></div>`).join('')}</div>
+    <div class="hero-stats">${impacto.map((i) => {
+      const n = Number(String(i.n).replace(/\./g, ''));
+      const attr = Number.isFinite(n) ? ` data-count="${n}"` : '';
+      return `<div><strong${attr}>${esc(i.n)}</strong><span>${esc(i.l)}</span></div>`;
+    }).join('')}</div>
   </section>`,
   body: `
 <section class="band answer">
@@ -365,7 +397,7 @@ sedes.forEach((s) => {
         url: `${site.domain}/sedes/${s.slug}/`,
         parentOrganization: { '@id': site.domain + '/#organization' },
         email: s.contacto,
-        address: { '@type': 'PostalAddress', addressLocality: s.ciudad, addressRegion: s.region, addressCountry: s.país },
+        address: { '@type': 'PostalAddress', addressLocality: s.ciudad, addressRegion: s.region, addressCountry: s.pais },
         geo: { '@type': 'GeoCoordinates', latitude: s.lat, longitude: s.lng },
         areaServed: `${s.ciudad}, ${s.pais}`,
         knowsLanguage: s.idioma.split(' / ')
@@ -640,7 +672,7 @@ write('voluntariado/index.html', layout({
       description: 'Voluntariado en psicología, medicina, trabajo social, editorial, social media, diseño, datos, traducción y logística para programas de protección de la niñez.',
       employmentType: 'VOLUNTEER',
       hiringOrganization: { '@id': site.domain + '/#organization' },
-      jobLocation: sedes.map((s) => ({ '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: s.ciudad, addressCountry: s.país } })),
+      jobLocation: sedes.map((s) => ({ '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: s.ciudad, addressCountry: s.pais } })),
       jobLocationType: 'TELECOMMUTE',
       datePosted: '2026-09-06',
       directApply: true
