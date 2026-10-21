@@ -407,6 +407,7 @@ const faqs = [
 
 const blog = [
   {
+    id: 'reapertura',
     slug: 'reabertura-2026',
     titulo: 'O SOS Infante reabre: Miami, Quito e Valera',
     fecha: '2026-09-06',
@@ -420,6 +421,7 @@ const blog = [
     ]
   },
   {
+    id: 'valera',
     slug: 'por-que-valera',
     titulo: 'Por que abrimos em Valera, na Venezuela',
     fecha: '2026-09-06',
@@ -433,6 +435,7 @@ const blog = [
     ]
   },
   {
+    id: 'senales',
     slug: 'sinais-de-violencia-infantil',
     titulo: 'Como reconhecer sinais de violência contra crianças',
     fecha: '2026-09-06',

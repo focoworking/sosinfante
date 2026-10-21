@@ -90,6 +90,15 @@ const SLUGS = {
     quito: { es: 'quito', en: 'quito', pt: 'quito' },
     valera: { es: 'valera', en: 'valera', pt: 'valera' }
   },
+  nota: {
+    reapertura: { es: 'reapertura-2026', en: 'reopening-2026', pt: 'reabertura-2026' },
+    valera: { es: 'valera-nueva-sede', en: 'why-valera', pt: 'por-que-valera' },
+    senales: {
+      es: 'como-reconocer-senales-violencia-infantil',
+      en: 'warning-signs-of-child-abuse',
+      pt: 'sinais-de-violencia-infantil'
+    }
+  },
   legal: {
     privacidad: { es: 'privacidad', en: 'privacy', pt: 'privacidade' },
     terminos: { es: 'terminos', en: 'terms', pt: 'termos' },

@@ -167,28 +167,28 @@ const formasDeApoyo = [
     monto: 'desde USD 10',
     texto: 'Sostiene la atención psicológica y los kits alimentarios de Shungo Corazón todo el año.',
     cta: 'Donar mensual',
-    href: '/dona/#mensual'
+    href: 'dona#mensual'
   },
   {
     titulo: 'Donación única',
     monto: 'el monto que decidas',
     texto: 'Cubre brigadas médicas y materiales de los talleres Adulto Protector.',
     cta: 'Donar una vez',
-    href: '/dona/#única'
+    href: 'dona#unica'
   },
   {
     titulo: 'Empresas y fundaciones',
     monto: 'alianzas desde USD 2.500',
     texto: 'Patrocinio de cohortes completas de Adulto Protector con reporte de impacto trimestral.',
     cta: 'Hablar con alianzas',
-    href: '/contacto/#alianzas'
+    href: 'contacto#alianzas'
   },
   {
     titulo: 'Voluntariado',
     monto: 'tu tiempo',
     texto: 'Psicología, medicina, diseño, datos, traducción y logística en las tres sedes.',
     cta: 'Postular',
-    href: '/involucrate/#voluntariado'
+    href: 'voluntariado'
   }
 ];
 
@@ -250,6 +250,7 @@ faqs.push(...faqsVoluntariado);
 
 const blog = [
   {
+    id: 'reapertura',
     slug: 'reapertura-2026',
     titulo: 'SOS Infante reabre: Miami, Quito y Valera',
     fecha: '2026-09-06',
@@ -263,6 +264,7 @@ const blog = [
     ]
   },
   {
+    id: 'valera',
     slug: 'valera-nueva-sede',
     titulo: 'Por que abrimos en Valera, Venezuela',
     fecha: '2026-09-06',
@@ -276,6 +278,7 @@ const blog = [
     ]
   },
   {
+    id: 'senales',
     slug: 'como-reconocer-senales-violencia-infantil',
     titulo: 'Como reconocer señales de violencia contra la niñez',
     fecha: '2026-09-06',
@@ -407,9 +410,9 @@ const embudoVoluntariado = [
 ];
 
 const confianza = [
-  { titulo: 'Metas públicas', texto: 'Publicamos la meta anual de cada proyecto y su avance real cada trimestre, también cuando vamos abajo.', href: '/transparencia/' },
-  { titulo: 'Salvaguarda infantil', texto: 'Verificación de antecedentes, política de dos adultos y canal de denuncias con respuesta en 72 horas.', href: '/transparencia/#salvaguarda' },
-  { titulo: '78% a atención directa', texto: 'De cada dólar, 78 centavos van a brigadas, terapia, alimentos y materiales.', href: '/transparencia/' }
+  { titulo: 'Metas públicas', texto: 'Publicamos la meta anual de cada proyecto y su avance real cada trimestre, también cuando vamos abajo.', href: 'transparencia' },
+  { titulo: 'Salvaguarda infantil', texto: 'Verificación de antecedentes, política de dos adultos y canal de denuncias con respuesta en 72 horas.', href: 'transparencia#salvaguarda' },
+  { titulo: '78% a atención directa', texto: 'De cada dólar, 78 centavos van a brigadas, terapia, alimentos y materiales.', href: 'transparencia' }
 ];
 
 const impacto = [

@@ -572,3 +572,15 @@ body.nav-abierto .site-head{
 @media print{
   .cinta,.foot-cta,.foot-mark{display:none}
 }
+
+/* ---- selector de idioma ---- */
+.idiomas{display:inline-flex;align-items:center;gap:.1rem;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.idioma{
+  display:inline-block;padding:.42rem .55rem;font-size:var(--fs-mini);font-weight:700;
+  letter-spacing:.06em;text-decoration:none;color:var(--ink-2);line-height:1;
+}
+.idioma:hover{background:var(--celeste-soft);color:var(--celeste-ink)}
+.idioma.actual{background:var(--celeste);color:var(--negro)}
+@media (max-width:720px){
+  .site-head:not(.nav-abierto) .head-cta .idiomas{display:inline-flex}
+}
