@@ -573,17 +573,69 @@ body.nav-abierto .site-head{
   .cinta,.foot-cta,.foot-mark{display:none}
 }
 
-/* ---- selector de idioma ---- */
-.idiomas{display:inline-flex;align-items:center;gap:.1rem;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-.idioma{
-  display:inline-block;padding:.42rem .55rem;font-size:var(--fs-mini);font-weight:700;
-  letter-spacing:.06em;text-decoration:none;color:var(--ink-2);line-height:1;
+/* ---- selector de idioma: ventana flotante a media altura, lado izquierdo ---- */
+.lang-float{
+  position:fixed;left:1rem;top:50%;transform:translateY(-50%);
+  z-index:60;display:flex;flex-direction:column;align-items:flex-start;gap:.4rem;
 }
-.idioma:hover{background:var(--celeste-soft);color:var(--celeste-ink)}
-.idioma.actual{background:var(--celeste);color:var(--negro)}
+.lang-float svg{width:24px;height:24px;display:block;flex:0 0 auto;border-radius:50%}
+
+/* pastilla cerrada: solo la bandera del idioma activo */
+.lang-chip{
+  display:flex;align-items:center;gap:.4rem;
+  padding:.38rem;border:1px solid rgba(8,6,7,.10);border-radius:999px;
+  background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  color:var(--ink-2);cursor:pointer;
+  box-shadow:0 8px 24px rgba(8,6,7,.12);
+  transition:box-shadow .25s ease,transform .25s ease;
+}
+.lang-chip:hover,.lang-chip:focus-visible{
+  box-shadow:0 12px 30px rgba(8,6,7,.18);transform:translateX(2px);
+}
+.lang-code{
+  max-width:0;overflow:hidden;white-space:nowrap;opacity:0;
+  font-size:.64rem;font-weight:700;letter-spacing:.12em;
+  transition:max-width .25s ease,opacity .2s ease;
+}
+.lang-chip:hover .lang-code,
+.lang-chip:focus-visible .lang-code{max-width:3rem;opacity:1;padding-right:.35rem}
+
+/* lista desplegada: los otros dos idiomas */
+.lang-menu{
+  list-style:none;margin:0;padding:.3rem;
+  display:flex;flex-direction:column;gap:.1rem;
+  border:1px solid rgba(8,6,7,.10);border-radius:16px;
+  background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  box-shadow:0 14px 34px rgba(8,6,7,.16);
+  opacity:0;visibility:hidden;transform:translateY(-8px) scale(.94);transform-origin:top left;
+  transition:opacity .22s ease,transform .22s ease,visibility .22s;
+}
+.lang-float.abierto .lang-menu{opacity:1;visibility:visible;transform:none}
+.lang-menu li{margin:0}
+.lang-menu a{
+  display:flex;align-items:center;gap:.55rem;
+  padding:.42rem .85rem .42rem .42rem;border-radius:12px;
+  text-decoration:none;color:var(--negro);
+  font-size:.8rem;font-weight:600;white-space:nowrap;line-height:1.1;
+}
+.lang-menu a:hover,.lang-menu a:focus-visible{background:var(--celeste-soft);color:var(--celeste-ink)}
+
+/* sin JS la lista aparece al pasar el cursor, para que nunca quede inservible */
+.lang-float:hover .lang-menu,
+.lang-float:focus-within .lang-menu{opacity:1;visibility:visible;transform:none}
+
 @media (max-width:720px){
-  .site-head:not(.nav-abierto) .head-cta .idiomas{display:inline-flex}
+  .lang-float{left:.55rem;gap:.3rem}
+  .lang-float svg{width:20px;height:20px}
+  .lang-chip{padding:.32rem}
+  .lang-menu{padding:.25rem;border-radius:14px}
+  .lang-menu a span{display:none}
+  .lang-menu a{padding:.34rem}
 }
+@media (prefers-reduced-motion:reduce){
+  .lang-chip,.lang-code,.lang-menu{transition:none}
+}
+@media print{.lang-float{display:none}}
 
 /* ---- avisos de contenido y listado de fuentes ---- */
 .aviso{background:#FFF8E8;border-left:5px solid #C98A1B;border-top:0}
