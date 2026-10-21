@@ -92,15 +92,17 @@ ${ld}
 <a class="skip" href="#main">Saltar al contenido</a>
 <div class="topbar">Reapertura 2026 · Miami 🇺🇸 · Quito 🇪🇨 · Valera 🇻🇪 — <a href="/voluntariado/">postula al voluntariado</a></div>
 <header class="site-head">
-  <a class="logo" href="/" aria-label="${site.name}, inicio">${LOGO}</a>
-  <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">☰</button>
+  <div class="head-top">
+    <a class="logo" href="/" aria-label="${site.name}, inicio">${LOGO}</a>
+    <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú"><span></span><span></span></button>
+  </div>
   <nav id="nav" class="nav" aria-label="Principal">
     <ul>${NAV.map(([h, t]) => `<li><a href="${h}"${url === h ? ' aria-current="page"' : ''}>${t}</a></li>`).join('')}</ul>
+    <div class="head-cta">
+      <a class="lang" href="${lang === 'en' ? '/' : '/en/'}" hreflang="${lang === 'en' ? 'es' : 'en'}">${lang === 'en' ? 'ES' : 'EN'}</a>
+      <a class="btn btn-primary" href="/dona/">Donar</a>
+    </div>
   </nav>
-  <div class="head-cta">
-    <a class="lang" href="${lang === 'en' ? '/' : '/en/'}" hreflang="${lang === 'en' ? 'es' : 'en'}">${lang === 'en' ? 'ES' : 'EN'}</a>
-    <a class="btn btn-primary" href="/dona/">Donar</a>
-  </div>
 </header>
 ${hero}
 ${cinta}

@@ -23,12 +23,6 @@
       var y = window.scrollY;
       head.classList.toggle('is-stuck', y > 24);
 
-      var menuAbierto = nav && nav.getAttribute('data-open') === 'true';
-      if (!menuAbierto && y > 320) {
-        head.classList.toggle('is-hidden', y > lastY + 6);
-      } else {
-        head.classList.remove('is-hidden');
-      }
       lastY = y;
       ticking = false;
     };
@@ -60,7 +54,6 @@
       burger.setAttribute('aria-expanded', String(abrir));
       burger.setAttribute('aria-label', abrir ? 'Cerrar menú' : 'Abrir menú');
       document.body.classList.toggle('nav-abierto', abrir);
-      if (abrir && head) head.classList.remove('is-hidden');
     };
 
     burger.addEventListener('click', function () {
