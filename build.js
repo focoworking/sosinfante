@@ -995,6 +995,7 @@ write('site.webmanifest', JSON.stringify({
 /* ---------- assets ---------- */
 fs.mkdirSync(path.join(OUT, 'assets'), { recursive: true });
 for (const f of fs.readdirSync(path.join(__dirname, 'src/assets'))) {
-  fs.copyFileSync(path.join(__dirname, 'src/assets', f), path.join(OUT, 'assets', f));
+  const destino = f === '.htaccess' ? path.join(OUT, f) : path.join(OUT, 'assets', f);
+  fs.copyFileSync(path.join(__dirname, 'src/assets', f), destino);
 }
 console.log(`OK · ${pages.length} archivos generados en /site`);

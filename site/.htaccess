@@ -1,0 +1,73 @@
+# Reglas del servidor para sosinfante.org (Apache / Hostinger)
+# Se genera con el sitio y se sube junto a él.
+
+# --- HTTPS y dominio canónico ---------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Fuerza HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # Fuerza www (el dominio histórico del sitio)
+  RewriteCond %{HTTP_HOST} ^sosinfante\.org$ [NC]
+  RewriteRule ^(.*)$ https://www.sosinfante.org/$1 [R=301,L]
+
+  # Quita index.html de las URLs
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+  RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
+
+  # Añade la barra final a las carpetas
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ /$1/ [R=301,L]
+</IfModule>
+
+# --- Páginas de error ------------------------------------------------------
+ErrorDocument 404 /404.html
+
+# --- Compresión ------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/rss+xml image/svg+xml
+</IfModule>
+
+# --- Caché -----------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                          "access plus 1 week"
+  ExpiresByType text/html                 "access plus 0 seconds"
+  ExpiresByType text/css                  "access plus 1 month"
+  ExpiresByType application/javascript    "access plus 1 month"
+  ExpiresByType image/svg+xml             "access plus 1 month"
+  ExpiresByType image/webp                "access plus 6 months"
+  ExpiresByType image/jpeg                "access plus 6 months"
+  ExpiresByType image/png                 "access plus 6 months"
+  ExpiresByType application/xml           "access plus 1 day"
+  ExpiresByType text/plain                "access plus 1 day"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  <FilesMatch "\.(css|js|svg|woff2)$">
+    Header set Cache-Control "public, max-age=2592000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# --- Tipos y codificación --------------------------------------------------
+AddDefaultCharset UTF-8
+AddType image/svg+xml .svg
+AddType text/plain .txt
+
+# --- Redirecciones del sitio anterior -------------------------------------
+# Las URLs de 2022 que cambian de dirección. Añadir aquí cualquier otra que
+# aparezca en Search Console como 404 después de la migración.
+Redirect 301 /nosotros/ /fundacion/
+Redirect 301 /involucrate /involucrate/

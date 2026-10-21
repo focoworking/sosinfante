@@ -1,0 +1,77 @@
+name: Publicar en Hostinger
+# Cada cambio en la rama de trabajo compila el sitio y lo sube por FTP al
+# hosting. No hace falta tocar nada en hPanel después de la configuración
+# inicial: basta con un commit.
+on:
+  push:
+    branches: [main, 'claude/**']
+  workflow_dispatch:
+    inputs:
+      destino:
+        description: 'Carpeta remota (por defecto la del secreto FTP_DIR)'
+        required: false
+        type: string
+
+concurrency:
+  group: hostinger
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      # El sitio vive en la raíz del dominio, así que no lleva prefijo de rutas.
+      - name: Compilar
+        run: node build.js
+
+      - name: Comprobar que hay credenciales
+        id: cred
+        env:
+          HOST: ${{ secrets.FTP_HOST }}
+        run: |
+          if [ -z "$HOST" ]; then
+            echo "listo=false" >> "$GITHUB_OUTPUT"
+            {
+              echo "## Faltan las credenciales de FTP"
+              echo
+              echo "Añade en **Settings → Secrets and variables → Actions** del repositorio:"
+              echo "\`FTP_HOST\`, \`FTP_USER\`, \`FTP_PASSWORD\` y, si el destino no es"
+              echo "\`public_html/\`, también \`FTP_DIR\`."
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "listo=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Subir por FTP
+        if: steps.cred.outputs.listo == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+          port: ${{ vars.FTP_PORT || 21 }}
+          local-dir: ./site/
+          server-dir: ${{ inputs.destino || secrets.FTP_DIR || 'public_html/' }}
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+
+      - name: Resumen
+        if: steps.cred.outputs.listo == 'true'
+        run: |
+          {
+            echo "## Sitio publicado"
+            echo
+            echo "- Páginas subidas: $(find site -name '*.html' | wc -l)"
+            echo "- Destino: \`${{ inputs.destino || secrets.FTP_DIR || 'public_html/' }}\`"
+            echo "- Comprueba en https://www.sosinfante.org/"
+          } >> "$GITHUB_STEP_SUMMARY"
