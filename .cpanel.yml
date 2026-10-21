@@ -19,11 +19,11 @@ deployment:
     - /bin/cp -R index.html $DEPLOYPATH
     - /bin/cp -R involucrate $DEPLOYPATH
     - /bin/cp -R legal $DEPLOYPATH
-    - /bin/cp -R llms-full.txt $DEPLOYPATH
     - /bin/cp -R llms.txt $DEPLOYPATH
     - /bin/cp -R nosotros $DEPLOYPATH
     - /bin/cp -R prensa $DEPLOYPATH
     - /bin/cp -R proyectos $DEPLOYPATH
+    - /bin/cp -R pt $DEPLOYPATH
     - /bin/cp -R robots.txt $DEPLOYPATH
     - /bin/cp -R sedes $DEPLOYPATH
     - /bin/cp -R site.webmanifest $DEPLOYPATH
