@@ -584,3 +584,10 @@ body.nav-abierto .site-head{
 @media (max-width:720px){
   .site-head:not(.nav-abierto) .head-cta .idiomas{display:inline-flex}
 }
+
+/* ---- avisos de contenido y listado de fuentes ---- */
+.aviso{background:#FFF8E8;border-left:5px solid #C98A1B;border-top:0}
+.aviso p{margin:0;font-size:var(--fs-small);color:#6B5415;max-width:78ch}
+.fuentes{background:var(--gris-soft);border-top:0}
+.fuentes h2{font-size:var(--fs-h3);text-transform:uppercase;letter-spacing:.12em;color:var(--gris-ink)}
+.fuentes a{overflow-wrap:anywhere}

@@ -22,6 +22,8 @@ const RUTAS = {
     prensa: '/prensa/',
     faq: '/faq/',
     contacto: '/contacto/',
+    casos: '/casos-reales/',
+    caso: '/casos-reales/{slug}/',
     blog: '/blog/',
     nota: '/blog/{slug}/',
     legal: '/legal/{slug}/'
@@ -46,6 +48,8 @@ const RUTAS = {
     prensa: '/en/press/',
     faq: '/en/faq/',
     contacto: '/en/contact/',
+    casos: '/en/real-cases/',
+    caso: '/en/real-cases/{slug}/',
     blog: '/en/stories/',
     nota: '/en/stories/{slug}/',
     legal: '/en/legal/{slug}/'
@@ -70,6 +74,8 @@ const RUTAS = {
     prensa: '/pt/imprensa/',
     faq: '/pt/perguntas/',
     contacto: '/pt/contato/',
+    casos: '/pt/casos-reais/',
+    caso: '/pt/casos-reais/{slug}/',
     blog: '/pt/historias/',
     nota: '/pt/historias/{slug}/',
     legal: '/pt/legal/{slug}/'

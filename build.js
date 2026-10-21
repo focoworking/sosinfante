@@ -59,9 +59,24 @@ const archivoDe = (url) => url.replace(/^\//, '').replace(/\/$/, '') + (url === 
 
 /* ---------- plantilla común ---------- */
 
+// Una página solo declara alternativa en los idiomas donde realmente existe.
+function idiomasCon(clave, slug) {
+  if (clave !== 'casos' && clave !== 'caso') return null;
+  return IDIOMAS.filter((i) => {
+    try {
+      const m = require(`./src/i18n/casos-${i.codigo}.js`);
+      if (!m.casos.length) return false;
+      return clave === 'casos' || m.casos.some((c) => c.id === slug);
+    } catch (e) {
+      return false;
+    }
+  }).map((i) => i.codigo);
+}
+
 function plantilla({ L, C, T, P, url, clave, slug, title, description, body, hero = '', jsonld = [] }) {
   const canonical = DOMINIO + url;
-  const alts = alternativas(clave, slug);
+  const permitidos = idiomasCon(clave, slug);
+  const alts = alternativas(clave, slug).filter((a) => !permitidos || permitidos.includes(a.idioma.codigo));
   const ld = jsonld.map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('');
   const R = (c, s) => ruta(c, L, s);
 
@@ -158,6 +173,7 @@ ${body}
         <li><a href="${R('aliados')}">${T.pie.aliados}</a></li>
         <li><a href="${R('prensa')}">${T.pie.prensa}</a></li>
         <li><a href="${R('blog')}">${T.pie.blog}</a></li>
+        ${(() => { try { require(`./src/i18n/casos-${L}.js`); return `<li><a href="${R('casos')}">${UI[L].pie.casos}</a></li>`; } catch (e) { return ''; } })()}
         <li><a href="${R('faq')}">${T.pie.faq}</a></li>
         <li><a href="${R('contacto')}">${T.pie.contactoEnlace}</a></li>
       </ul>
@@ -206,6 +222,8 @@ ${body}
 
 function generarIdioma(L) {
   const C = require(`./src/i18n/${L}.js`);
+  let CASOS = null;
+  try { CASOS = require(`./src/i18n/casos-${L}.js`); } catch (e) { /* ese idioma aún no tiene la sección */ }
   const T = UI[L];
   const P = PAGINAS[L];
   const R = (c, s) => ruta(c, L, s);
@@ -727,6 +745,78 @@ ${C.blog.map((b) => `<article class="card"><p class="tag"><time datetime="${b.fe
       body: `<section class="band article">${b.cuerpo.map((p) => `<p>${esc(p)}</p>`).join('')}</section>${bloqueDonacion}`
     });
   });
+
+  /* --- casos reales --- */
+  if (CASOS && CASOS.casos.length) {
+    const M = CASOS.META;
+    const nombreCat = (slug) => (M.categorias.find((c) => c.slug === slug) || { nombre: slug }).nombre;
+
+    pagina({
+      clave: 'casos',
+      title: `${M.titulo} · ${C.site.name}`,
+      description: M.descripcion,
+      jsonld: [
+        migas([[T.inicio, R('home')], [M.titulo, R('casos')]]),
+        {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: M.titulo,
+          description: M.descripcion,
+          url: DOMINIO + R('casos'),
+          isPartOf: { '@id': DOMINIO + '/#website' },
+          about: { '@type': 'Thing', name: M.titulo },
+          hasPart: CASOS.casos.map((c) => ({ '@type': 'Article', headline: c.titulo, url: DOMINIO + R('caso', c.id), datePublished: c.fecha }))
+        }
+      ],
+      hero: `<section class="hero hero-big"><p class="eyebrow">${esc(M.titulo)}</p><h1>${esc(M.titulo)}</h1><p class="lead">${esc(M.intro)}</p></section>`,
+      body: `
+<section class="band aviso"><p>${esc(M.aviso)}</p></section>
+${M.categorias
+  .map((cat) => {
+    const lista = CASOS.casos.filter((c) => c.categoria === cat.slug);
+    if (!lista.length) return '';
+    return `<section class="band"><h2>${esc(cat.nombre)}</h2><div class="grid-2">
+${lista.map((c) => `<article class="card"><p class="tag">${esc(c.pais)} · <time datetime="${c.fecha}">${c.fecha}</time></p><h3><a href="${R('caso', c.id)}">${esc(c.titulo)}</a></h3><p>${esc(c.resumen)}</p></article>`).join('')}
+</div></section>`;
+  })
+  .join('')}
+${bloqueBoletin}`
+    });
+
+    CASOS.casos.forEach((c) => {
+      pagina({
+        clave: 'caso',
+        slug: c.id,
+        title: `${c.titulo} · ${M.titulo} · ${C.site.name}`,
+        description: c.resumen,
+        jsonld: [
+          migas([[T.inicio, R('home')], [M.titulo, R('casos')], [c.titulo, R('caso', c.id)]]),
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: c.titulo,
+            description: c.resumen,
+            datePublished: c.fecha,
+            dateModified: c.fecha,
+            inLanguage: T.htmlLang,
+            articleSection: nombreCat(c.categoria),
+            author: { '@type': 'Organization', name: C.site.name },
+            publisher: { '@id': DOMINIO + '/#organization' },
+            mainEntityOfPage: DOMINIO + R('caso', c.id),
+            citation: c.fuentes.map((f) => ({ '@type': 'CreativeWork', name: f.nombre, url: f.url }))
+          }
+        ],
+        hero: `<section class="hero hero-sm"><p class="eyebrow">${esc(nombreCat(c.categoria))} · ${esc(c.pais)} · <time datetime="${c.fecha}">${c.fecha}</time></p><h1>${esc(c.titulo)}</h1><p class="lead">${esc(c.resumen)}</p></section>`,
+        body: `
+<section class="band aviso"><p>${esc(M.aviso)}</p></section>
+<section class="band article">${c.cuerpo.map((p) => `<p>${esc(p)}</p>`).join('')}</section>
+<section class="band fuentes"><h2>${T.etiquetas.fuente}</h2><ul class="mini-list big">
+${c.fuentes.map((f) => `<li><a href="${f.url}" rel="noopener nofollow">${esc(f.nombre)}</a></li>`).join('')}
+</ul><p class="mini">${esc(M.aviso)}</p></section>
+${bloqueDonacion}${bloqueBoletin}`
+      });
+    });
+  }
 
   /* --- legales --- */
   C.legales.forEach((l) => {
