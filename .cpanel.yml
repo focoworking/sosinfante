@@ -10,6 +10,7 @@ deployment:
     - /bin/cp -R assets $DEPLOYPATH
     - /bin/cp -R blog $DEPLOYPATH
     - /bin/cp -R campanas $DEPLOYPATH
+    - /bin/cp -R casos-reales $DEPLOYPATH
     - /bin/cp -R contacto $DEPLOYPATH
     - /bin/cp -R dona $DEPLOYPATH
     - /bin/cp -R en $DEPLOYPATH
