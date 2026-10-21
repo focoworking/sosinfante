@@ -1,7 +1,9 @@
 name: Rama publicable
-# Mantiene la rama `publish` con el sitio ya compilado en su raíz.
-# Hostinger (hPanel → Avanzado → GIT) se conecta a esa rama y despliega
-# directamente: sin contraseñas, sin FTP y sin subir archivos a mano.
+# Mantiene la rama `publish` con el sitio ya compilado en su raíz, más el
+# archivo .cpanel.yml que cPanel necesita para desplegarlo.
+# Sirve para cualquier hosting con Git: GoDaddy cPanel (Git Version Control),
+# Hostinger (hPanel → Avanzado → GIT) y similares. Sin contraseñas y sin
+# subir archivos a mano.
 on:
   push:
     branches: [main, 'claude/**']
@@ -27,6 +29,21 @@ jobs:
       - name: Compilar el sitio
         run: node build.js
 
+      # cPanel lee este archivo al pulsar «Desplegar HEAD»: copia el contenido
+      # de la rama a la carpeta pública del dominio.
+      - name: Preparar el despliegue de cPanel
+        run: |
+          {
+            printf -- '---\n'
+            printf 'deployment:\n'
+            printf '  tasks:\n'
+            printf '    - export DEPLOYPATH=$HOME/public_html/\n'
+            printf '    - /bin/mkdir -p $DEPLOYPATH\n'
+            printf '    - /bin/cp -R ./ $DEPLOYPATH\n'
+            printf '    - /bin/rm -f $DEPLOYPATH/.cpanel.yml\n'
+          } > site/.cpanel.yml
+          cat site/.cpanel.yml
+
       - name: Actualizar la rama publish
         run: |
           set -e
@@ -48,7 +65,7 @@ jobs:
             echo "- Páginas: $(find site -name '*.html' | wc -l)"
             echo "- Origen: commit \`${GITHUB_SHA::7}\`"
             echo
-            echo "En hPanel → Avanzado → GIT, el repositorio apunta a la rama"
-            echo "\`publish\`. Pulsa **Deploy** o deja activado el despliegue"
-            echo "automático para que se actualice solo."
+            echo "Conecta el hosting a la rama \`publish\` y pulsa Desplegar."
+            echo "En cPanel de GoDaddy: Git Version Control → Create → URL del"
+            echo "repositorio y rama \`publish\` → Manage → Deploy HEAD Commit."
           } >> "$GITHUB_STEP_SUMMARY"

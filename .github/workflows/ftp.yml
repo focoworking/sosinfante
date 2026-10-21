@@ -1,7 +1,8 @@
-name: Publicar en Hostinger
-# Cada cambio en la rama de trabajo compila el sitio y lo sube por FTP al
-# hosting. No hace falta tocar nada en hPanel después de la configuración
-# inicial: basta con un commit.
+name: Publicar por FTP
+# Cada cambio compila el sitio y lo sube por FTP al hosting.
+# Sirve para GoDaddy, Hostinger o cualquier alojamiento con FTP/FTPS.
+# Alternativa sin contraseñas: el workflow «Rama publicable», que deja el
+# sitio listo para que cPanel lo despliegue por Git.
 on:
   push:
     branches: [main, 'claude/**']
@@ -13,7 +14,7 @@ on:
         type: string
 
 concurrency:
-  group: hostinger
+  group: ftp
   cancel-in-progress: false
 
 jobs:
