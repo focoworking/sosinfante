@@ -52,6 +52,18 @@ jobs:
         env:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
 
+      # Con el dominio propio configurado en Settings -> Pages, GitHub sirve el
+      # sitio en www.sosinfante.org. El archivo CNAME se recrea en cada
+      # despliegue para que la configuracion no se pierda.
+      - if: steps.pages.outcome == 'success'
+        run: |
+          if [ -z "${{ steps.pages.outputs.base_path }}" ]; then
+            echo "www.sosinfante.org" > site/CNAME
+            echo "CNAME escrito: dominio propio activo"
+          else
+            echo "Sitio de proyecto en ${{ steps.pages.outputs.base_path }}; sin CNAME"
+          fi
+
       - if: steps.pages.outcome == 'success'
         uses: actions/upload-pages-artifact@v4
         with:
