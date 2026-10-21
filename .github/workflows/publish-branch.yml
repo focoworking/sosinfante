@@ -1,0 +1,54 @@
+name: Rama publicable
+# Mantiene la rama `publish` con el sitio ya compilado en su raíz.
+# Hostinger (hPanel → Avanzado → GIT) se conecta a esa rama y despliega
+# directamente: sin contraseñas, sin FTP y sin subir archivos a mano.
+on:
+  push:
+    branches: [main, 'claude/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Compilar el sitio
+        run: node build.js
+
+      - name: Actualizar la rama publish
+        run: |
+          set -e
+          cd site
+          git init -q
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Sitio compilado desde ${GITHUB_SHA::7}"
+          git push -q --force \
+            "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" \
+            HEAD:refs/heads/publish
+
+      - name: Resumen
+        run: |
+          {
+            echo "## Rama \`publish\` actualizada"
+            echo
+            echo "- Páginas: $(find site -name '*.html' | wc -l)"
+            echo "- Origen: commit \`${GITHUB_SHA::7}\`"
+            echo
+            echo "En hPanel → Avanzado → GIT, el repositorio apunta a la rama"
+            echo "\`publish\`. Pulsa **Deploy** o deja activado el despliegue"
+            echo "automático para que se actualice solo."
+          } >> "$GITHUB_STEP_SUMMARY"
