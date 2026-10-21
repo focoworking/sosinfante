@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=$HOME/public_html/sosinfante.org/
+    - export DEPLOYPATH=$( [ -d $HOME/public_html/sosinfante.org ] && echo $HOME/public_html/sosinfante.org/ || echo $HOME/public_html/ )
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/cp -R .htaccess $DEPLOYPATH
     - /bin/cp -R 404.html $DEPLOYPATH
