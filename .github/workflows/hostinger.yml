@@ -34,7 +34,27 @@ jobs:
         id: cred
         env:
           HOST: ${{ secrets.FTP_HOST }}
+          USER: ${{ secrets.FTP_USER }}
+          PASS: ${{ secrets.FTP_PASSWORD }}
+          DIR: ${{ secrets.FTP_DIR }}
         run: |
+          # Informa de cuáles llegan, sin imprimir ningún valor.
+          {
+            echo "### Credenciales que ve el workflow"
+            echo
+            echo "| Secreto | Estado |"
+            echo "|---|---|"
+            for n in HOST USER PASS DIR; do
+              v="${!n}"
+              if [ -n "$v" ]; then
+                echo "| FTP_$n | presente (${#v} caracteres) |"
+              else
+                echo "| FTP_$n | ausente |"
+              fi
+            done
+            echo
+          } >> "$GITHUB_STEP_SUMMARY"
+
           if [ -z "$HOST" ]; then
             echo "listo=false" >> "$GITHUB_OUTPUT"
             {
