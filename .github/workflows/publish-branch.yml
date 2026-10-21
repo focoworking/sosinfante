@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v5
         with:
@@ -29,33 +31,46 @@ jobs:
       - name: Compilar el sitio
         run: node build.js
 
-      # cPanel lee este archivo al pulsar «Desplegar HEAD»: copia el contenido
-      # de la rama a la carpeta pública del dominio.
+      # cPanel lee este archivo al pulsar «Desplegar HEAD»: copia el sitio a la
+      # carpeta del dominio sosinfante.org (dominio adicional dentro de
+      # public_html). Nunca toca public_html/ raíz ni copia la carpeta .git.
       - name: Preparar el despliegue de cPanel
         run: |
           {
             printf -- '---\n'
             printf 'deployment:\n'
             printf '  tasks:\n'
-            printf '    - export DEPLOYPATH=$HOME/public_html/\n'
+            printf '    - export DEPLOYPATH=$HOME/public_html/sosinfante.org/\n'
             printf '    - /bin/mkdir -p $DEPLOYPATH\n'
-            printf '    - /bin/cp -R ./ $DEPLOYPATH\n'
-            printf '    - /bin/rm -f $DEPLOYPATH/.cpanel.yml\n'
+            for f in $(cd site && ls -A); do
+              [ "$f" = ".cpanel.yml" ] && continue
+              printf '    - /bin/cp -R %s $DEPLOYPATH\n' "$f"
+            done
           } > site/.cpanel.yml
           cat site/.cpanel.yml
 
+      # Conserva el historial de la rama publish para que cPanel pueda hacer
+      # «Update from Remote» sin conflictos de historias no relacionadas.
       - name: Actualizar la rama publish
         run: |
           set -e
-          cd site
-          git init -q
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch -q origin publish; then
+            git worktree add -q ../pub FETCH_HEAD
+          else
+            git worktree add -q --detach ../pub
+            (cd ../pub && git checkout -q --orphan publish-tmp && git rm -rqf .)
+          fi
+          rsync -a --delete --exclude .git site/ ../pub/
+          cd ../pub
           git add -A
-          git commit -q -m "Sitio compilado desde ${GITHUB_SHA::7}"
-          git push -q --force \
-            "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" \
-            HEAD:refs/heads/publish
+          if git diff --cached --quiet; then
+            echo "Sin cambios en el sitio compilado"
+          else
+            git commit -q -m "Sitio compilado desde ${GITHUB_SHA::7}"
+            git push -q origin HEAD:refs/heads/publish
+          fi
 
       - name: Resumen
         run: |
