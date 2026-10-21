@@ -604,5 +604,6 @@ const casos = [
 
 const lote3 = require('./casos-es-lote3.js');
 const lote4 = require('./casos-es-lote4.js');
+const lote5 = require('./casos-es-lote5.js');
 
-module.exports = { META, casos: casos.concat(lote3, lote4) };
+module.exports = { META, casos: casos.concat(lote3, lote4, lote5) };
