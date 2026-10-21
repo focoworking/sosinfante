@@ -54,6 +54,17 @@ function escribir(rel, cuerpo) {
   }
 }
 
+/* ---------- banderas simbólicas del selector de idioma ---------- */
+// Tres marcas circulares, dibujadas a mano para que se vean iguales en todos
+// los sistemas (los emoji de bandera no existen en Windows).
+// Español usa el tricolor amarillo-azul-rojo que comparten Ecuador y Venezuela,
+// las dos sedes hispanohablantes del proyecto.
+const BANDERAS = {
+  es: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><defs><clipPath id="bx-es"><circle cx="12" cy="12" r="11"/></clipPath></defs><g clip-path="url(#bx-es)"><rect width="24" height="12" fill="#FFD100"/><rect y="12" width="24" height="6" fill="#0B3B8F"/><rect y="18" width="24" height="6" fill="#D52B1E"/></g><circle cx="12" cy="12" r="11" fill="none" stroke="rgba(8,6,7,.18)"/></svg>',
+  en: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><defs><clipPath id="bx-en"><circle cx="12" cy="12" r="11"/></clipPath></defs><g clip-path="url(#bx-en)"><rect width="24" height="24" fill="#F7F7F7"/><g fill="#B22234"><rect y="0" width="24" height="1.85"/><rect y="3.7" width="24" height="1.85"/><rect y="7.4" width="24" height="1.85"/><rect y="11.1" width="24" height="1.85"/><rect y="14.8" width="24" height="1.85"/><rect y="18.5" width="24" height="1.85"/><rect y="22.2" width="24" height="1.8"/></g><rect width="11" height="12.95" fill="#3C3B6E"/></g><circle cx="12" cy="12" r="11" fill="none" stroke="rgba(8,6,7,.18)"/></svg>',
+  pt: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><defs><clipPath id="bx-pt"><circle cx="12" cy="12" r="11"/></clipPath></defs><g clip-path="url(#bx-pt)"><rect width="24" height="24" fill="#009B3A"/><path d="M12 3.4 21.6 12 12 20.6 2.4 12Z" fill="#FFCC29"/><circle cx="12" cy="12" r="4.3" fill="#002776"/></g><circle cx="12" cy="12" r="11" fill="none" stroke="rgba(8,6,7,.18)"/></svg>'
+};
+
 // Convierte una ruta del sitio en la ruta de archivo correspondiente.
 const archivoDe = (url) => url.replace(/^\//, '').replace(/\/$/, '') + (url === '/' ? 'index.html' : '/index.html');
 
@@ -77,6 +88,14 @@ function plantilla({ L, C, T, P, url, clave, slug, title, description, body, her
   const canonical = DOMINIO + url;
   const permitidos = idiomasCon(clave, slug);
   const alts = alternativas(clave, slug).filter((a) => !permitidos || permitidos.includes(a.idioma.codigo));
+  // El selector siempre ofrece los tres idiomas. Si esta página todavía no
+  // existe en uno de ellos, ese idioma lleva a su portada en lugar de
+  // desaparecer, para que nadie se quede sin poder cambiar de idioma.
+  const menuIdiomas = alternativas(clave, slug).map((a) =>
+    !permitidos || permitidos.includes(a.idioma.codigo)
+      ? a
+      : { idioma: a.idioma, url: ruta('home', a.idioma.codigo) }
+  );
   const ld = jsonld.map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('');
   const R = (c, s) => ruta(c, L, s);
 
@@ -134,19 +153,24 @@ ${ld}
   <nav id="nav" class="nav" aria-label="${T.menuPrincipal}">
     <ul>${nav.map(([c, t]) => `<li><a href="${R(c)}"${clave === c ? ' aria-current="page"' : ''}>${t}</a></li>`).join('')}</ul>
     <div class="head-cta">
-      <div class="idiomas" role="group" aria-label="${T.cambiarIdioma}">
-        ${alts
-          .map((a) =>
-            a.idioma.codigo === L
-              ? `<span class="idioma actual" aria-current="true">${a.idioma.etiqueta}</span>`
-              : `<a class="idioma" href="${a.url}" hreflang="${a.idioma.hreflang}" lang="${a.idioma.hreflang}">${a.idioma.etiqueta}</a>`
-          )
-          .join('')}
-      </div>
       <a class="btn btn-primary" href="${R('dona')}">${T.donar}</a>
     </div>
   </nav>
 </header>
+${menuIdiomas.length > 1 ? `<div class="lang-float" data-idiomas='${JSON.stringify(alts.map((a) => ({ c: a.idioma.codigo, u: a.url })))}' data-actual="${L}">
+  <button class="lang-chip" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="${T.elegirIdioma}">
+    ${BANDERAS[L]}<span class="lang-code">${IDIOMAS.find((i) => i.codigo === L).etiqueta}</span>
+  </button>
+  <ul id="lang-menu" class="lang-menu">
+    ${menuIdiomas
+      .filter((a) => a.idioma.codigo !== L)
+      .map(
+        (a) =>
+          `<li><a href="${a.url}" hreflang="${a.idioma.hreflang}" lang="${a.idioma.hreflang}" data-idioma="${a.idioma.codigo}">${BANDERAS[a.idioma.codigo]}<span>${a.idioma.nombre}</span></a></li>`
+      )
+      .join('')}
+  </ul>
+</div>` : ''}
 ${hero}
 <main id="main">
 ${body}

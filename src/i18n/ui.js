@@ -78,7 +78,8 @@ module.exports = {
       fuente: 'Fuente',
       meta: 'Meta'
     },
-    cambiarIdioma: 'Idioma'
+    cambiarIdioma: 'Idioma',
+    elegirIdioma: 'Elegir idioma del sitio'
   },
 
   en: {
@@ -158,7 +159,8 @@ module.exports = {
       fuente: 'Source',
       meta: 'Goal'
     },
-    cambiarIdioma: 'Language'
+    cambiarIdioma: 'Language',
+    elegirIdioma: 'Choose site language'
   },
 
   pt: {
@@ -238,6 +240,7 @@ module.exports = {
       fuente: 'Fonte',
       meta: 'Meta'
     },
-    cambiarIdioma: 'Idioma'
+    cambiarIdioma: 'Idioma',
+    elegirIdioma: 'Escolher idioma do site'
   }
 };

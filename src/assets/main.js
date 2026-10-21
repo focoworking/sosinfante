@@ -134,4 +134,73 @@
       }
     });
   });
+  /* ---------- 6. Selector de idioma flotante ----------
+     Cerrado muestra solo la bandera del idioma activo. Al abrirlo aparecen
+     los otros dos. En la primera visita desde fuera del sitio, si el idioma
+     del dispositivo es uno de los otros dos, se cambia solo una vez y se
+     recuerda la elección. Quien elige a mano manda siempre. */
+  (function () {
+    var caja = document.querySelector('.lang-float');
+    if (!caja) return;
+
+    var chip = caja.querySelector('.lang-chip');
+    var actual = caja.getAttribute('data-actual');
+    var alternativas = [];
+    try { alternativas = JSON.parse(caja.getAttribute('data-idiomas') || '[]'); } catch (e) { alternativas = []; }
+
+    var CLAVE = 'sosinfante:idioma';
+    var guardar = function (codigo) {
+      try { localStorage.setItem(CLAVE, codigo); } catch (e) { /* modo privado */ }
+    };
+    var leer = function () {
+      try { return localStorage.getItem(CLAVE); } catch (e) { return null; }
+    };
+
+    /* -- abrir y cerrar -- */
+    var abrir = function (si) {
+      caja.classList.toggle('abierto', si);
+      chip.setAttribute('aria-expanded', si ? 'true' : 'false');
+    };
+    chip.addEventListener('click', function () {
+      abrir(!caja.classList.contains('abierto'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!caja.contains(e.target)) abrir(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') abrir(false);
+    });
+
+    /* -- elección manual: se recuerda y gana sobre la detección -- */
+    caja.querySelectorAll('[data-idioma]').forEach(function (a) {
+      a.addEventListener('click', function () { guardar(a.getAttribute('data-idioma')); });
+    });
+
+    /* -- autodetección, solo al entrar desde fuera y solo una vez -- */
+    var destinoDe = function (codigo) {
+      for (var i = 0; i < alternativas.length; i++) {
+        if (alternativas[i].c === codigo) return alternativas[i].u;
+      }
+      return null;
+    };
+
+    var interno = document.referrer && document.referrer.indexOf(location.origin) === 0;
+    if (interno || navigator.webdriver) return;
+
+    var elegido = leer();
+    if (!elegido) {
+      var lista = navigator.languages && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || ''];
+      for (var i = 0; i < lista.length && !elegido; i++) {
+        var base = String(lista[i]).toLowerCase().split('-')[0];
+        if (destinoDe(base)) elegido = base;
+      }
+      if (elegido) guardar(elegido);
+    }
+
+    if (!elegido || elegido === actual) return;
+    var destino = destinoDe(elegido);
+    if (destino && destino !== location.pathname) location.replace(destino);
+  })();
 })();
