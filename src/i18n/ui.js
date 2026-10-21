@@ -20,7 +20,8 @@ module.exports = {
       acopio: 'centro de acopio',
       tienda: 'tienda',
       voluntariado: 'voluntariado',
-      campanas: 'campañas'
+      campanas: 'campañas',
+      casos: 'casos reales'
     },
     topbar: 'Reapertura 2026 · Miami 🇺🇸 · Quito 🇪🇨 · Valera 🇻🇪 —',
     topbarEnlace: 'postula al voluntariado',
@@ -99,7 +100,8 @@ module.exports = {
       acopio: 'donation center',
       tienda: 'shop',
       voluntariado: 'volunteer',
-      campanas: 'campaigns'
+      campanas: 'campaigns',
+      casos: 'real cases'
     },
     topbar: 'Reopening 2026 · Miami 🇺🇸 · Quito 🇪🇨 · Valera 🇻🇪 —',
     topbarEnlace: 'apply to volunteer',
@@ -178,7 +180,8 @@ module.exports = {
       acopio: 'centro de coleta',
       tienda: 'loja',
       voluntariado: 'voluntariado',
-      campanas: 'campanhas'
+      campanas: 'campanhas',
+      casos: 'casos reais'
     },
     topbar: 'Reabertura 2026 · Miami 🇺🇸 · Quito 🇪🇨 · Valera 🇻🇪 —',
     topbarEnlace: 'inscreva-se no voluntariado',

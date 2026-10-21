@@ -89,6 +89,11 @@ function plantilla({ L, C, T, P, url, clave, slug, title, description, body, her
     ['voluntariado', T.nav.voluntariado],
     ['campanas', T.nav.campanas]
   ];
+  // Casos reales entra al menú solo en los idiomas donde la sección existe.
+  try {
+    require(`./src/i18n/casos-${L}.js`);
+    nav.push(['casos', T.nav.casos]);
+  } catch (e) { /* ese idioma aún no tiene la sección */ }
 
   return `<!doctype html>
 <html lang="${T.htmlLang}">
