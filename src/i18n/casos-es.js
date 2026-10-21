@@ -303,7 +303,283 @@ const casos = [
       copy:
         'Lo que debe alertarte no es un gesto aislado, sino algo que antes no pasaba y ahora sí. Guía por edades, de 0 a 17 años, y qué hacer en las primeras 24 horas.'
     }
+  },
+
+  {
+    id: 'ecuador-1388-ninas-madres',
+    slug: 'ecuador-1388-ninas-fueron-madres-en-2025',
+    categoria: 'cifras',
+    pais: 'Ecuador',
+    fecha: '2026-10-21',
+    titulo: '1.388 niñas de 10 a 14 años fueron madres en 2025',
+    resumen:
+      'El dato lo publicó el INEC en agosto de 2026. Casi cuatro partos diarios de niñas que, por edad, no pueden consentir una relación sexual.',
+    cuerpo: [
+      'El Registro Estadístico de Nacidos Vivos del INEC contabilizó 1.388 nacimientos de madres de 10 a 14 años durante 2025 en Ecuador. Son casi cuatro partos diarios, y equivalen a una tasa de 1,8 por cada mil niñas de ese grupo de edad.',
+      'Frente a 2024, cuando hubo 1.621, la cifra cae un 14,4 % y es la tasa más baja desde 2006. Es una mejora real y conviene decirlo. También conviene decir lo otro: 1.388 sigue siendo una cifra de emergencia.',
+      'La razón es jurídica antes que estadística. En Ecuador, una niña menor de 14 años no puede consentir una relación sexual; cualquier acto de esa naturaleza es violación según el Código Orgánico Integral Penal. Un parto en ese grupo de edad es, por tanto, la evidencia física de un delito que ya ocurrió. No es un problema de educación sexual insuficiente: es un caso penal con una víctima identificable.',
+      'Un estudio del Ministerio de Salud y el UNFPA estimó que el 80 % de los embarazos en menores de 14 años eran producto de violencia sexual. Es una cifra de 2012 y conviene citarla con su fecha, pero sigue siendo la referencia más citada en el país.',
+      'Hay una diferencia técnica que se presta a confusión: los nacidos vivos del INEC no son lo mismo que los embarazos. No incluyen pérdidas, interrupciones ni partos no registrados. El número real de niñas embarazadas es mayor que el número de niñas que dieron a luz.',
+      'Qué cambia esto para quien quiera ayudar: cada uno de esos 1.388 casos debería tener un expediente penal abierto y una niña recibiendo acompañamiento psicológico y legal. La distancia entre esos dos números —partos registrados y expedientes con sentencia— es el verdadero indicador del sistema.'
+    ],
+    fuentes: [
+      { nombre: 'Radio Pichincha — 1.388 niñas fueron madres en Ecuador en 2025 (datos INEC)', url: 'https://www.radiopichincha.com/embarazo-infantil-ecuador-1388-ninas-2025/' },
+      { nombre: 'Prensa Latina — Ecuador registró 1.388 nacimientos de madres menores de 15 años', url: 'https://www.prensa-latina.cu/2026/08/23/ecuador-registro-mil-388-nacimientos-de-madres-menores-de-15-anos/' },
+      { nombre: 'El Diario — Partos de menores de edad en Ecuador', url: 'https://www.eldiario.ec/ecuador/mas-de-1300-ninas-fueron-madres-y-los-partos-de-menores-de-edad-marcan-una-dura-realidad-en-ecuador-23082026' }
+    ],
+    social: {
+      titular: 'Cuatro cada día',
+      copy:
+        'En Ecuador, 1.388 niñas de 10 a 14 años dieron a luz en 2025, según el INEC. A esa edad la ley no admite consentimiento: cada caso es la evidencia de un delito. La cifra bajó 14 % frente a 2024, y sigue siendo una emergencia.'
+    }
+  },
+
+  {
+    id: 'ecuador-amazonia-tasa',
+    slug: 'la-amazonia-donde-la-tasa-se-dispara',
+    categoria: 'cifras',
+    pais: 'Ecuador',
+    fecha: '2026-10-21',
+    titulo: 'La Amazonía, donde la tasa se multiplica por tres',
+    resumen:
+      'Morona Santiago casi triplica la media nacional. El mapa del embarazo infantil en Ecuador coincide con el mapa de la distancia a un hospital.',
+    cuerpo: [
+      'La tasa nacional de nacimientos en niñas de 10 a 14 años fue de 1,8 por cada mil en 2025. En Morona Santiago fue de 4,9. Le siguen Napo con 3,8, Zamora Chinchipe con 3,7 y Pastaza con 3,5. Las cuatro son provincias amazónicas.',
+      'Cuando un indicador social se concentra así en el territorio, rara vez se explica por la cultura y casi siempre por el acceso. En esas provincias, la distancia al centro de salud más cercano se mide en horas de camino, muchas comunidades no tienen cobertura telefónica estable para llamar a emergencias, y la unidad educativa más próxima puede estar a una hora de trayecto.',
+      'Cada una de esas distancias es una oportunidad perdida de detección. El sistema de protección de la niñez funciona cuando hay un adulto formado cerca: una profesora, una enfermera, una promotora comunitaria. Donde ese adulto no existe o atiende a diez comunidades, la señal no llega a tiempo.',
+      'También hay un efecto estadístico que conviene nombrar: en poblaciones pequeñas, las tasas se mueven mucho con pocos casos. Eso no invalida el dato, pero obliga a mirar la serie de varios años antes de declarar una tendencia.',
+      'La consecuencia para un programa de prevención es de diseño, no de discurso: formar adultos protectores en la Amazonía no puede replicar el modelo urbano de talleres presenciales semanales. Exige formación de agentes locales que ya viven allí, materiales que funcionen sin conexión y un canal de consulta que opere por radio o mensajería intermitente.'
+    ],
+    fuentes: [
+      { nombre: 'Primicias — Embarazo adolescente en Ecuador y las provincias más afectadas', url: 'https://www.primicias.ec/sociedad/ecuador-salud-embarazo-adolescente-ninas-partos-diarios-provincias-violencia-sexual-117342/' },
+      { nombre: 'Radio Pichincha — Embarazo infantil en Ecuador, datos por provincia', url: 'https://www.radiopichincha.com/embarazo-infantil-ecuador-1388-ninas-2025/' }
+    ],
+    social: {
+      titular: 'El mapa lo dice todo',
+      copy:
+        'Tasa nacional: 1,8 por cada mil niñas de 10 a 14 años. Morona Santiago: 4,9. Napo: 3,8. El embarazo infantil en Ecuador se concentra donde el hospital y la escuela quedan a horas de camino.'
+    }
+  },
+
+  {
+    id: 'meta-2035',
+    slug: 'una-meta-para-2035-que-ya-se-cumplio',
+    categoria: 'justicia',
+    pais: 'Ecuador',
+    fecha: '2026-10-21',
+    titulo: 'Una meta para 2035 que los datos de 2025 ya alcanzaron',
+    resumen:
+      'La política intersectorial se propone llegar a una tasa de 1,81 en diez años. El registro de 2025 ya marcó 1,8. Vale la pena mirar esa aritmética de cerca.',
+    cuerpo: [
+      'Ecuador aprobó una Política Intersectorial para el Abordaje Integral del Embarazo en Adolescentes con horizonte 2026-2035, con financiamiento y protocolo de protección asociados. Entre sus metas figura reducir a 1,81 la tasa de embarazo en niñas de 10 a 14 años hacia 2035.',
+      'El dato que conviene poner al lado: según el INEC, la tasa de nacidos vivos en ese grupo fue de 1,8 por cada mil niñas en 2025.',
+      'Antes de concluir nada, hay que ser rigurosos con la comparación. La meta habla de tasa de embarazo y el registro del INEC mide nacidos vivos, que es un subconjunto: no incluye pérdidas, interrupciones ni partos sin registro. Son dos indicadores distintos y es posible que la meta esté definida sobre una base de cálculo diferente.',
+      'Dicho eso, la coincidencia numérica merece una pregunta pública dirigida a quien diseñó la política: ¿cuál es exactamente el indicador de base, en qué año se fijó, y qué reducción real representa respecto de los datos de 2025? Si la respuesta no está publicada, la meta no es verificable, y una meta no verificable no compromete a nadie.',
+      'Este es el tipo de control que una organización de la sociedad civil puede ejercer sin confrontación: leer el documento, comparar con la estadística oficial y pedir la metodología por escrito. No hace falta denunciar nada; basta con preguntar bien y publicar la respuesta.'
+    ],
+    fuentes: [
+      { nombre: 'Vicepresidencia del Ecuador — Plan trimestral y política de prevención hasta 2035', url: 'https://www.vicepresidencia.gob.ec/el-gobierno-nacional-aprueba-plan-trimestral-para-prevenir-el-embarazo-adolescente-e-impulsa-su-protocolo-de-proteccion-y-financiamiento-hasta-2035/' },
+      { nombre: 'El Telégrafo — Ecuador adopta política para reducir el embarazo adolescente hasta 2035', url: 'https://www.eltelegrafo.com.ec/noticias/salud/220/ecuador-politica-embarazo-adolescente-2035' },
+      { nombre: 'Radio Pichincha — Tasa de 2025 según el INEC', url: 'https://www.radiopichincha.com/embarazo-infantil-ecuador-1388-ninas-2025/' }
+    ],
+    social: {
+      titular: 'Una meta a diez años',
+      copy:
+        'La política pública de Ecuador se propone llegar en 2035 a una tasa de 1,81 en niñas de 10 a 14 años. El registro oficial de 2025 ya marcó 1,8. Puede que midan cosas distintas: por eso hay que pedir la metodología.'
+    }
+  },
+
+  {
+    id: 'dato-mal-citado',
+    slug: 'cuando-un-dato-se-cita-mal',
+    categoria: 'cifras',
+    pais: 'Ecuador',
+    fecha: '2026-10-21',
+    titulo: 'Cuando un dato se cita mal, el problema pierde fuerza',
+    resumen:
+      '«88 niñas dan a luz cada día» circuló como titular. El número es real, pero no dice lo que parece. Y esa diferencia la aprovechan quienes niegan el problema.',
+    cuerpo: [
+      'La cifra de 88 partos diarios se usó públicamente en Ecuador asociada a la palabra niñas. Una verificación periodística mostró que corresponde a todas las madres menores de 20 años: en 2024 hubo 32.201 nacimientos en ese grupo, que dividido entre los días del año da 88.',
+      'El dato es correcto y el problema que describe es grave. El error está en la etiqueta. Cuando se llama niñas a las madres de 19 años, se mezcla una realidad penal —una menor de 14 que no puede consentir— con otra distinta, que exige otras políticas.',
+      'Para una organización que trabaja con datos, esto no es un detalle de estilo. Cada vez que una cifra mal etiquetada se desmonta, quienes quieren restar importancia al problema obtienen un argumento gratis: si se exageró ahí, dicen, se exagera en todo. El costo lo paga la causa, no quien se equivocó.',
+      'La regla interna que seguimos es simple y la hacemos pública para que se nos pueda exigir. Primero: nombrar siempre el grupo de edad exacto. Segundo: distinguir denuncias de casos, y casos de víctimas, porque un caso puede tener varias. Tercero: decir el periodo y el organismo. Cuarto: si el dato tiene más de tres años, advertirlo en la misma frase.',
+      'La cifra que sí corresponde a niñas en sentido estricto está en el mismo registro: 1.388 nacimientos de madres de 10 a 14 años en 2025. No necesita inflarse para ser intolerable.'
+    ],
+    fuentes: [
+      { nombre: 'Lupa — Verificación: ¿88 niñas dan a luz al día en Ecuador?', url: 'https://lupa.com.ec/verificaciones/embarazo-adolescente-ecuador/' },
+      { nombre: 'Primicias — Partos diarios y provincias más afectadas', url: 'https://www.primicias.ec/sociedad/ecuador-salud-embarazo-adolescente-ninas-partos-diarios-provincias-violencia-sexual-117342/' }
+    ],
+    social: {
+      titular: 'Un dato mal citado le hace un favor a quien niega el problema',
+      copy:
+        'El titular decía «88 niñas dan a luz cada día». El número real corresponde a madres menores de 20 años. La cifra que sí habla de niñas: 1.388 partos de menores de 15 años en 2025. No hace falta exagerar.'
+    }
+  },
+
+  {
+    id: 'grooming-ecuador',
+    slug: 'grooming-en-ecuador-de-22-a-124-denuncias',
+    categoria: 'escuela',
+    pais: 'Ecuador',
+    fecha: '2026-10-21',
+    titulo: 'Captación en línea: de 22 denuncias en 2014 a 124 en 2024',
+    resumen:
+      'Las denuncias por grooming se quintuplicaron en una década en Ecuador. Lo relevante no es el crecimiento, sino lo que revela sobre dónde ocurre hoy el primer contacto.',
+    cuerpo: [
+      'Según ChildFund, las denuncias por grooming —la captación de un menor en línea por parte de un adulto que finge ser otra persona o gana su confianza para fines sexuales— pasaron de 22 en 2014 a 124 en 2024 en Ecuador, con 1.584 denuncias acumuladas en ese periodo. La organización señala además que el 52 % de los casos de violencia sexual digital registrados por la Fiscalía están vinculados a esta modalidad.',
+      'Un análisis realizado en Quito con datos de la Fiscalía entre 2020 y 2024 eleva esa proporción al 86,6 % de las denuncias de violencia sexual digital en el cantón. Son mediciones distintas —una nacional, otra local— y no deben compararse directamente, pero ambas apuntan al mismo desplazamiento: el primer contacto dejó de ocurrir en el parque.',
+      'En encuestas de la misma organización a adolescentes ecuatorianos, el 62,4 % reconoce la sextorsión como un riesgo y el 59,3 % identifica el grooming. Los adolescentes saben que existe. Lo que suele faltar es la certeza de que, si cuentan lo que pasó, en casa no van a quitarles el teléfono y culparlos.',
+      'Ese detalle decide todo. La reacción más común de una madre o un padre ante una señal digital es retirar el dispositivo. Para el adolescente, eso convierte la denuncia en un castigo, y la próxima vez callará. La respuesta útil es la contraria: conservar la conversación como prueba, hacer capturas con fecha, no borrar nada, no responder al adulto y acudir a la fiscalía.',
+      'Para prevenir, tres acuerdos domésticos funcionan mejor que cualquier control: que nadie que se conoció en línea se convierta en un encuentro presencial sin un adulto informado; que las conversaciones privadas con adultos desconocidos se cuenten en casa sin consecuencias; y que el hogar tenga claro que la vergüenza es del adulto que capta, nunca del menor.'
+    ],
+    fuentes: [
+      { nombre: 'Vistazo — Casos de grooming en Ecuador se quintuplicaron entre 2014 y 2024 (ChildFund)', url: 'https://vistazo.com/actualidad/nacional/2025-06-26-grooming-en-linea-ninos-adolescentes-ecuador-quintuplicaron-childfund-KE9574682' },
+      { nombre: 'ChildFund Ecuador — Investigación sobre uso de internet y violencias digitales', url: 'https://www.childfund.ec/wp-content/uploads/2025/06/Investigacion-USI-OSEAC.pdf' },
+      { nombre: 'Consejo de Protección de Derechos de Quito — Ciberdelitos contra la niñez', url: 'https://proteccionderechosquito.gob.ec/wp-content/uploads/2026/01/V14-CPD_Ciberdelitos_30122025.pdf' }
+    ],
+    social: {
+      titular: 'No le quites el teléfono',
+      copy:
+        'Las denuncias por captación en línea de menores se quintuplicaron en Ecuador en una década. Si tu hija o hijo te cuenta algo: no borres nada, haz capturas con fecha, no respondas al adulto y acude a la fiscalía. Quitar el teléfono enseña a callar.'
+    }
+  },
+
+  {
+    id: 'venezuela-captacion-en-linea',
+    slug: 'venezuela-20913-publicaciones-de-captacion',
+    categoria: 'cifras',
+    pais: 'Venezuela',
+    fecha: '2026-10-21',
+    titulo: 'Venezuela: 20.913 publicaciones rastreadas y ninguna cifra oficial',
+    resumen:
+      'Una investigación periodística encontró en una sola red social miles de mensajes asociados a la captación de menores. El Estado no publica datos sobre esto.',
+    cuerpo: [
+      'Una investigación de El Espectador y El Clip documentó 20.913 publicaciones en Facebook con frases asociadas a la captación de niñas, niños y adolescentes en Venezuela. La cifra no proviene de un registro estatal: la obtuvieron los periodistas rastreando la propia plataforma.',
+      'En paralelo, organizaciones como Fundación Habla, la Red por los Derechos Humanos de Niños, Niñas y Adolescentes y SoftwareLibre reportan recibir al menos dos casos mensuales cada una. Son organizaciones pequeñas, con equipos reducidos; lo que llega a ellas es la punta visible.',
+      'El contexto que hace esto más grave es la conectividad desigual. Muchos adolescentes acceden a internet desde el teléfono de un adulto o desde un punto compartido, lo que significa que no hay un historial propio que un cuidador pueda revisar, ni una cuenta que se pueda recuperar si algo sale mal.',
+      'La policía científica venezolana ha advertido sobre plataformas de juego con mensajería integrada, que es donde ocurre buena parte del primer contacto. Un adulto no necesita acceder a una red social para hablar con un niño: le basta un chat dentro de un videojuego.',
+      'Sin estadística oficial, la prevención depende de lo que haga cada familia y cada escuela. Tres medidas concretas, que no requieren presupuesto: revisar juntos qué aplicaciones del teléfono permiten que un desconocido escriba; acordar que cualquier adulto que pida secreto es motivo para contarlo en casa; y guardar, no borrar, cualquier conversación incómoda.'
+    ],
+    fuentes: [
+      { nombre: 'El Espectador — Del juego al grooming: niños y niñas en Venezuela acosados en la red', url: 'https://www.elespectador.com/investigacion/del-juego-al-grooming-ninos-y-ninas-en-venezuela-acosados-en-la-red/' },
+      { nombre: 'El Clip — Niños y niñas en Venezuela acosados en la red', url: 'https://www.elclip.org/ninos-y-ninas-en-venezuela-acosados-en-la-red/' }
+    ],
+    social: {
+      titular: 'Donde no hay cifras, cuenta la prensa',
+      copy:
+        'Una investigación periodística rastreó 20.913 publicaciones asociadas a la captación de menores en Venezuela. No hay estadística oficial sobre esto. Tres medidas domésticas que sí funcionan, en el enlace.'
+    }
+  },
+
+  {
+    id: 'oea-ninas-81',
+    slug: 'ninas-81-por-ciento-captacion-digital',
+    categoria: 'cifras',
+    pais: 'América Latina',
+    fecha: '2026-10-21',
+    titulo: 'En la captación digital, ocho de cada diez víctimas son niñas',
+    resumen:
+      'El informe regional de 2025 cuantifica una brecha que condiciona cualquier campaña de prevención: el riesgo en línea no se reparte por igual.',
+    cuerpo: [
+      'El informe de 2025 del Instituto Interamericano del Niño, la Niña y Adolescentes, de la OEA, sobre explotación sexual en el entorno digital recoge datos de once Estados, entre ellos Ecuador. Uno de sus hallazgos: las niñas resultaron más propensas que los niños a sufrir captación en línea, en una proporción de 81 % frente a 19 %.',
+      'Esa asimetría tiene consecuencias prácticas que se suelen pasar por alto. Una campaña dirigida a «los niños» en abstracto reparte el mensaje por igual entre quienes corren ocho veces más riesgo y quienes corren uno. Y cuando el material de prevención está diseñado en masculino genérico, las adolescentes no se reconocen en él.',
+      'La brecha tampoco significa que los niños varones estén a salvo. Significa algo distinto y más incómodo: que denuncian menos. El estigma sobre la victimización masculina sigue siendo fuerte, y en muchos entornos un adolescente que cuenta lo que le pasó teme que se cuestione su masculinidad antes que se persiga al agresor.',
+      'Por eso un programa serio necesita dos mensajes distintos y no uno solo. A las adolescentes, herramientas concretas frente a la captación y la sextorsión. A los adolescentes varones, permiso explícito para hablar: que sepan que le pasa a muchos, que no los define y que contarlo no los pone en cuestión.'
+    ],
+    fuentes: [
+      { nombre: 'OEA / IIN — Explotación sexual de niñas, niños y adolescentes en el entorno digital (2025)', url: 'https://scm.oas.org/pdfs/2025/ReportIINS.pdf' },
+      { nombre: 'ChildFund Ecuador — Percepción de riesgos digitales en adolescentes', url: 'https://www.childfund.ec/wp-content/uploads/2025/06/Investigacion-USI-OSEAC.pdf' }
+    ],
+    social: {
+      titular: '81 % frente a 19 %',
+      copy:
+        'En la captación en línea de menores, ocho de cada diez víctimas son niñas, según el informe regional de la OEA de 2025. Que los varones aparezcan menos no significa que estén a salvo: significa que denuncian menos.'
+    }
+  },
+
+  {
+    id: 'primeras-24-horas',
+    slug: 'las-primeras-24-horas-despues-de-una-revelacion',
+    categoria: 'familia',
+    pais: 'Guía práctica',
+    fecha: '2026-10-21',
+    titulo: 'Las primeras 24 horas después de que un niño cuenta',
+    resumen:
+      'Lo que haga el primer adulto que escucha determina buena parte de lo que pase después, en el proceso judicial y en la recuperación.',
+    cuerpo: [
+      'Un niño que decide contar suele hacerlo una vez, en una frase corta, en un momento inesperado: en el auto, antes de dormir, mientras pasa otra cosa. Rara vez vuelve a intentarlo si la primera reacción le enseña que no debía hacerlo.',
+      'Lo que ayuda en los primeros minutos. Escuchar sin interrumpir y sin completar sus frases. Creerle y decírselo en voz alta. Dejar claro que no tiene culpa. Mantener la calma visible: un adulto que se derrumba le enseña que lo que dijo es insoportable, y que la próxima vez más vale callar.',
+      'Lo que daña, aunque la intención sea buena. Interrogar con preguntas cerradas o sugeridas, que contaminan el testimonio y pueden invalidarlo como prueba. Prometer guardar el secreto, una promesa que habrá que romper. Confrontar al presunto agresor, que avisa y permite destruir evidencia o presionar al niño. Hacerle repetir el relato ante varias personas: cada repetición desgasta y suele introducir contradicciones que luego se usan en su contra.',
+      'Lo que hay que hacer en las primeras horas. Anotar por escrito, lo antes posible, exactamente lo que el niño dijo con sus propias palabras, con fecha y hora. No lavar ni desechar ropa si el hecho es reciente. Buscar atención médica si hay lesiones o riesgo, informando que se trata de un posible delito. Activar la ruta de denuncia: en Ecuador, Fiscalía o ECU 911; en Estados Unidos, 911 y la línea estatal correspondiente; en Venezuela, 911 y las organizaciones de protección de la zona.',
+      'Y algo que casi nunca se dice: el adulto que escuchó también necesita apoyo. Sostener esa información en soledad es una de las razones por las que muchos casos se quedan a medio camino.'
+    ],
+    fuentes: [
+      { nombre: 'Human Rights Watch — Obstáculos de las víctimas para acceder a la justicia en Ecuador', url: 'https://www.hrw.org/news/2020/12/09/ecuador-high-levels-sexual-violence-schools' },
+      { nombre: 'Cecodap — Educar para proteger', url: 'https://cecodap.org/educarparaproteger-vamos-todos-contra-el-abuso-y-la-explotacion-sexual-infantil/' }
+    ],
+    social: {
+      titular: 'Lo cuenta una vez',
+      copy:
+        'Un niño suele contar una sola vez, en una frase corta. No interrogues, no prometas guardar el secreto, no confrontes al adulto señalado. Anota sus palabras exactas con fecha y activa la ruta. Lo que hagas en 24 horas pesa años.'
+    }
+  },
+
+  {
+    id: 'sextorsion-adolescentes',
+    slug: 'sextorsion-como-opera-y-que-hacer',
+    categoria: 'escuela',
+    pais: 'Ecuador y Venezuela',
+    fecha: '2026-10-21',
+    titulo: 'Sextorsión: cómo opera y qué hacer en la primera hora',
+    resumen:
+      'El 62,4 % de los adolescentes ecuatorianos encuestados la reconoce como riesgo. Casi ninguno sabe que la respuesta correcta es la contraria a su primer impulso.',
+    cuerpo: [
+      'El esquema es casi siempre el mismo. Un contacto nuevo establece confianza en días o semanas, consigue una imagen íntima y, en el momento en que la tiene, cambia el tono: exige dinero, más imágenes o un encuentro, bajo la amenaza de enviar el material a la familia, al colegio o a los contactos de la víctima.',
+      'En encuestas de ChildFund a adolescentes ecuatorianos, el 62,4 % reconoce la sextorsión como un riesgo y el 59,3 % identifica el grooming. Saben que existe. Lo que no saben es qué hacer en la hora siguiente, y ese vacío es el que explota el agresor: la amenaza funciona porque la víctima cree que está sola y que tiene minutos para decidir.',
+      'El primer impulso suele ser pagar o ceder. Es exactamente lo contrario de lo que funciona: ceder confirma que la amenaza da resultado y la escalada continúa, casi siempre con exigencias mayores.',
+      'La respuesta correcta tiene cuatro pasos. Dejar de responder, sin bloquear todavía, para no perder el historial. Capturar todo: perfil, conversación, nombres de usuario, fecha y hora. Contárselo a un adulto de confianza ese mismo día; el silencio es el único recurso real del extorsionador. Y denunciar ante la fiscalía o la unidad de delitos informáticos, llevando las capturas.',
+      'Lo que un adulto debe decir, palabra por palabra, si un adolescente le cuenta: «no es tu culpa, no estás en problemas, y esto se arregla». Esas tres frases hacen más por la investigación que cualquier software de control parental, porque son las que consiguen que el caso llegue a conocerse el mismo día y no seis meses después.'
+    ],
+    fuentes: [
+      { nombre: 'ChildFund Ecuador — Investigación sobre uso de internet y violencias digitales', url: 'https://www.childfund.ec/wp-content/uploads/2025/06/Investigacion-USI-OSEAC.pdf' },
+      { nombre: 'Asamblea Nacional del Ecuador — Alerta sobre delitos cometidos a través de redes sociales', url: 'https://www.asambleanacional.gob.ec/es/noticia/117824-organizacion-our-rescue-alerta-sobre-el-incremento-de' },
+      { nombre: 'OEA / IIN — Explotación sexual en el entorno digital (2025)', url: 'https://scm.oas.org/pdfs/2025/ReportIINS.pdf' }
+    ],
+    social: {
+      titular: 'Tres frases que lo cambian todo',
+      copy:
+        '«No es tu culpa, no estás en problemas, y esto se arregla». Si un adolescente te cuenta que lo están extorsionando con una imagen: no respondas al agresor, captura todo, no cedas y denuncia. Ceder solo aumenta la exigencia.'
+    }
+  },
+
+  {
+    id: 'lenguaje-que-encubre',
+    slug: 'el-lenguaje-que-encubre',
+    categoria: 'justicia',
+    pais: 'Ecuador y Venezuela',
+    fecha: '2026-10-21',
+    titulo: 'El lenguaje que encubre: cinco expresiones que conviene dejar de usar',
+    resumen:
+      'Algunas palabras de uso corriente en prensa y en conversación convierten un delito en un suceso sin responsable. Cambiarlas no es corrección política: es precisión.',
+    cuerpo: [
+      '«Embarazo adolescente» aplicado a una niña de doce años. En Ecuador, una menor de 14 años no puede consentir; el hecho es violación. La expresión reparte la responsabilidad sobre la víctima y hace desaparecer al agresor de la frase.',
+      '«Relación» o «romance» entre un adulto y un menor. No existe relación donde no puede haber consentimiento. El término sugiere reciprocidad y es el mismo que usa el agresor para describir lo ocurrido.',
+      '«Abuso» a secas, cuando los hechos descritos constituyen violación. El Código Orgánico Integral Penal distingue las figuras; usar la más leve para todo suaviza lo que ocurrió y, en el relato público, rebaja la expectativa de pena.',
+      '«Se dejó llevar», «provocó», «ya parecía mayor». Cualquier fórmula que describa la apariencia o la conducta del menor traslada la causa a la víctima. La edad no se negocia con la apariencia.',
+      '«Se resolvió en familia». No existe resolución familiar de un delito de acción penal pública. Esa expresión suele describir un acuerdo económico o una presión sobre la madre, y deja al agresor con acceso al niño.',
+      'Una recomendación práctica para medios y para cualquiera que publique sobre esto: nombrar el hecho por su figura legal, mantener al agresor como sujeto de la oración —«un adulto agredió», no «la niña fue agredida»—, no publicar datos que permitan identificar a la víctima, y cerrar siempre con la ruta de denuncia y un teléfono.'
+    ],
+    fuentes: [
+      { nombre: 'Human Rights Watch — Informe Mundial 2025, capítulo Ecuador', url: 'https://www.hrw.org/es/world-report/2025/country-chapters/ecuador' },
+      { nombre: 'Defensoría del Pueblo del Ecuador — Casos de violencia sexual contra NNA y sentencias', url: 'https://www.dpe.gob.ec/mas-de-52-mil-casos-de-violencia-sexual-en-contra-de-ninos-ninas-y-adolescentes-nna-entre-enero-de-2018-y-junio-de-2023-y-solo-un-415-han-recibido-sentencia/' }
+    ],
+    social: {
+      titular: 'Cinco expresiones que conviene jubilar',
+      copy:
+        '«Embarazo adolescente» en una niña de doce. «Relación» entre un adulto y un menor. «Se resolvió en familia». Cada una borra al responsable de la frase. Cómo nombrarlo con precisión, en el enlace.'
+    }
   }
+
 ];
 
 module.exports = { META, casos };
