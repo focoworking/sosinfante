@@ -40,7 +40,9 @@ jobs:
             printf -- '---\n'
             printf 'deployment:\n'
             printf '  tasks:\n'
-            printf '    - export DEPLOYPATH=$HOME/public_html/sosinfante.org/\n'
+            # Detecta solo si el dominio es principal (public_html) o adicional
+            # (public_html/sosinfante.org), para que funcione sin tocar nada.
+            printf '    - export DEPLOYPATH=$( [ -d $HOME/public_html/sosinfante.org ] && echo $HOME/public_html/sosinfante.org/ || echo $HOME/public_html/ )\n'
             printf '    - /bin/mkdir -p $DEPLOYPATH\n'
             for f in $(cd site && ls -A); do
               [ "$f" = ".cpanel.yml" ] && continue
