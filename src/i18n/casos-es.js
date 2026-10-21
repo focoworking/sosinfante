@@ -30,11 +30,12 @@ const META = {
 const casos = [
   {
     id: 'ecuador-denuncia-cada-90-minutos',
+    accion: { texto: 'Esa cifra baja cuando hay un adulto formado cerca. Cada cohorte de Adulto Protector son 25 personas que dejan de dudar.', cta: 'Formar una cohorte', destino: 'dona' },
     slug: 'ecuador-una-denuncia-cada-90-minutos',
     categoria: 'cifras',
     pais: 'Ecuador',
     fecha: '2026-10-21',
-    titulo: 'Ecuador: una denuncia cada 90 minutos',
+    titulo: 'Una denuncia cada 90 minutos',
     resumen:
       'La Fiscalía registró 86.962 denuncias por delitos contra la integridad sexual de menores de edad entre 2015 y 2025. El dato que importa no es el total: es el ritmo.',
     cuerpo: [
@@ -58,11 +59,12 @@ const casos = [
 
   {
     id: 'ecuador-agresor-de-casa',
+    accion: { texto: 'Si el riesgo vive dentro de casa, la barrera tiene que vivir cerca. Puedes ser esa barrera en seis sesiones.', cta: 'Quiero formarme', destino: 'voluntariado' },
     slug: 'ecuador-el-agresor-casi-siempre-vive-en-casa',
     categoria: 'familia',
     pais: 'Ecuador',
     fecha: '2026-10-21',
-    titulo: 'El agresor casi siempre vive en casa',
+    titulo: 'El peligro no toca el timbre',
     resumen:
       'La Fiscalía ecuatoriana estimó que entre el 85 % y el 90 % de los agresores pertenecen al núcleo familiar o al círculo de conocidos. Eso cambia por completo dónde hay que poner la prevención.',
     cuerpo: [
@@ -84,11 +86,12 @@ const casos = [
 
   {
     id: 'ecuador-escuelas-seis-mil',
+    accion: { texto: 'Un colegio con protocolo real cambia esta estadística. Llevamos la formación a tu unidad educativa.', cta: 'Solicitar el taller', destino: 'contacto' },
     slug: 'ecuador-mas-de-6700-casos-en-escuelas',
     categoria: 'escuela',
     pais: 'Ecuador',
     fecha: '2026-10-21',
-    titulo: 'Más de 6.700 casos en las escuelas de Ecuador',
+    titulo: 'Seis mil expedientes',
     resumen:
       'Human Rights Watch documentó una década de violencia sexual en el sistema educativo ecuatoriano. El problema no fue solo lo que ocurrió: fue lo que las escuelas hicieron después.',
     cuerpo: [
@@ -113,11 +116,12 @@ const casos = [
 
   {
     id: 'escuela-protocolo-que-protege',
+    accion: { texto: 'Pide hoy el protocolo del colegio de tu hija o hijo. Si no te convence, escríbenos y lo revisamos contigo.', cta: 'Escribirnos', destino: 'contacto' },
     slug: 'el-protocolo-escolar-que-protege-a-la-institucion',
     categoria: 'escuela',
     pais: 'Ecuador y Venezuela',
     fecha: '2026-10-21',
-    titulo: 'Cuando el protocolo protege a la institución y no al estudiante',
+    titulo: 'El protocolo que no protege',
     resumen:
       'Hay una diferencia práctica entre un protocolo escolar que funciona y uno que existe. La señal de alarma es a quién se avisa primero.',
     cuerpo: [
@@ -140,11 +144,12 @@ const casos = [
 
   {
     id: 'venezuela-zulia-cada-tres-dias',
+    accion: { texto: 'Donde no hay cifras oficiales, contar es resistir. Sostén el trabajo de registro y atención en Valera.', cta: 'Sostener la operación', destino: 'dona' },
     slug: 'venezuela-zulia-cada-tres-dias',
     categoria: 'cifras',
     pais: 'Venezuela',
     fecha: '2026-10-21',
-    titulo: 'Zulia: un caso cada tres días, y es un subregistro',
+    titulo: 'Uno cada tres días',
     resumen:
       'Sin estadísticas oficiales actualizadas, el recuento del estado Zulia en 2025 tuvo que hacerse rastreando publicaciones en redes. Aun así, el patrón del agresor quedó claro.',
     cuerpo: [
@@ -168,11 +173,12 @@ const casos = [
 
   {
     id: 'venezuela-ministerio-publico-7165',
+    accion: { texto: 'Lo que falta no es conciencia: son horas de terapia disponibles. Cuarenta dólares pagan una sesión.', cta: 'Regalar una sesión', destino: 'tienda' },
     slug: 'venezuela-7165-casos-y-un-vacio-de-datos',
     categoria: 'cifras',
     pais: 'Venezuela',
     fecha: '2026-10-21',
-    titulo: 'Venezuela: 7.165 casos y un vacío de datos',
+    titulo: 'El dato que falta',
     resumen:
       'La última cifra nacional difundida cubre de enero de 2022 a mayo de 2023. Lo que vino después no está publicado, y esa ausencia también es un dato.',
     cuerpo: [
@@ -196,11 +202,12 @@ const casos = [
 
   {
     id: 'instituciones-fe-patron',
+    accion: { texto: 'La secuencia se rompe en el primer paso. Lleva la política de salvaguarda a tu comunidad.', cta: 'Pedir la guía', destino: 'contacto' },
     slug: 'instituciones-de-fe-el-patron-que-se-repite',
     categoria: 'instituciones-fe',
     pais: 'Ecuador y Venezuela',
     fecha: '2026-10-21',
-    titulo: 'Instituciones de fe: el patrón que se repite',
+    titulo: 'El patrón que se repite',
     resumen:
       'Los casos documentados en la región comparten una secuencia reconocible. Entenderla sirve más que indignarse con cada episodio por separado.',
     cuerpo: [
@@ -224,11 +231,12 @@ const casos = [
 
   {
     id: 'cuatro-preguntas-institucion',
+    accion: { texto: 'Haz las cuatro preguntas esta semana. Y si quieres que formemos al equipo de esa institución, dilo.', cta: 'Proponer una formación', destino: 'contacto' },
     slug: 'cuatro-preguntas-antes-de-dejar-a-tu-hijo',
     categoria: 'instituciones-fe',
     pais: 'Ecuador, Venezuela y Estados Unidos',
     fecha: '2026-10-21',
-    titulo: 'Cuatro preguntas antes de dejar a tu hijo en cualquier institución',
+    titulo: 'Cuatro preguntas en recepción',
     resumen:
       'Sirven igual para un colegio, un club deportivo, un grupo juvenil o una parroquia. Se responden en cinco minutos y revelan casi todo.',
     cuerpo: [
@@ -252,11 +260,12 @@ const casos = [
 
   {
     id: 'impunidad-415',
+    accion: { texto: 'Acompañar de verdad empieza después de la denuncia. Tu aporte mensual sostiene ese acompañamiento.', cta: 'Donar cada mes', destino: 'dona' },
     slug: 'el-4-15-por-ciento',
     categoria: 'justicia',
     pais: 'Ecuador',
     fecha: '2026-10-21',
-    titulo: 'El 4,15 %: lo que pasa después de denunciar',
+    titulo: 'El 4,15 %',
     resumen:
       'De 52.051 casos reportados en cinco años y medio, 2.161 llegaron a sentencia. El resto describe el verdadero recorrido de una familia que decide denunciar.',
     cuerpo: [
@@ -279,11 +288,12 @@ const casos = [
 
   {
     id: 'senales-por-edad',
+    accion: { texto: 'Reconocer la señal es la mitad; saber qué hacer es la otra. Las dos se aprenden.', cta: 'Aprender el método', destino: 'voluntariado' },
     slug: 'senales-de-alerta-por-edad',
     categoria: 'familia',
     pais: 'Guía práctica',
     fecha: '2026-10-21',
-    titulo: 'Señales de alerta, ordenadas por edad',
+    titulo: 'Señales, edad por edad',
     resumen:
       'Lo que en un niño de cuatro años es una señal, en uno de doce puede ser normal. Esta guía separa por etapas lo que conviene mirar.',
     cuerpo: [
@@ -307,11 +317,12 @@ const casos = [
 
   {
     id: 'ecuador-1388-ninas-madres',
+    accion: { texto: 'Cada caso debería tener un expediente y una niña acompañada. Nosotros ponemos el acompañamiento.', cta: 'Apoyar el programa', destino: 'dona' },
     slug: 'ecuador-1388-ninas-fueron-madres-en-2025',
     categoria: 'cifras',
     pais: 'Ecuador',
     fecha: '2026-10-21',
-    titulo: '1.388 niñas de 10 a 14 años fueron madres en 2025',
+    titulo: 'Cuatro partos al día',
     resumen:
       'El dato lo publicó el INEC en agosto de 2026. Casi cuatro partos diarios de niñas que, por edad, no pueden consentir una relación sexual.',
     cuerpo: [
@@ -336,11 +347,12 @@ const casos = [
 
   {
     id: 'ecuador-amazonia-tasa',
+    accion: { texto: 'Llegar a la Amazonía cuesta más y por eso casi nadie va. Tu aporte paga ese trayecto.', cta: 'Financiar una brigada', destino: 'tienda' },
     slug: 'la-amazonia-donde-la-tasa-se-dispara',
     categoria: 'cifras',
     pais: 'Ecuador',
     fecha: '2026-10-21',
-    titulo: 'La Amazonía, donde la tasa se multiplica por tres',
+    titulo: 'El mapa del riesgo',
     resumen:
       'Morona Santiago casi triplica la media nacional. El mapa del embarazo infantil en Ecuador coincide con el mapa de la distancia a un hospital.',
     cuerpo: [
@@ -363,11 +375,12 @@ const casos = [
 
   {
     id: 'meta-2035',
+    accion: { texto: 'Pedir la metodología es gratis y cambia políticas. Súmate al trabajo de incidencia.', cta: 'Quiero participar', destino: 'voluntariado' },
     slug: 'una-meta-para-2035-que-ya-se-cumplio',
     categoria: 'justicia',
     pais: 'Ecuador',
     fecha: '2026-10-21',
-    titulo: 'Una meta para 2035 que los datos de 2025 ya alcanzaron',
+    titulo: 'Una meta que ya se cumplió',
     resumen:
       'La política intersectorial se propone llegar a una tasa de 1,81 en diez años. El registro de 2025 ya marcó 1,8. Vale la pena mirar esa aritmética de cerca.',
     cuerpo: [
@@ -391,11 +404,12 @@ const casos = [
 
   {
     id: 'dato-mal-citado',
+    accion: { texto: 'Compartir una cifra bien citada protege la causa. Toma los datos de aquí y úsalos.', cta: 'Ver el kit de prensa', destino: 'prensa' },
     slug: 'cuando-un-dato-se-cita-mal',
     categoria: 'cifras',
     pais: 'Ecuador',
     fecha: '2026-10-21',
-    titulo: 'Cuando un dato se cita mal, el problema pierde fuerza',
+    titulo: 'El dato que te desarma',
     resumen:
       '«88 niñas dan a luz cada día» circuló como titular. El número es real, pero no dice lo que parece. Y esa diferencia la aprovechan quienes niegan el problema.',
     cuerpo: [
@@ -418,11 +432,12 @@ const casos = [
 
   {
     id: 'grooming-ecuador',
+    accion: { texto: 'Habla con tu hija o hijo esta noche, antes de que haga falta. Y pásale esta guía a otra familia.', cta: 'Conocer los programas', destino: 'proyectos' },
     slug: 'grooming-en-ecuador-de-22-a-124-denuncias',
     categoria: 'escuela',
     pais: 'Ecuador',
     fecha: '2026-10-21',
-    titulo: 'Captación en línea: de 22 denuncias en 2014 a 124 en 2024',
+    titulo: 'De 22 a 124 denuncias',
     resumen:
       'Las denuncias por grooming se quintuplicaron en una década en Ecuador. Lo relevante no es el crecimiento, sino lo que revela sobre dónde ocurre hoy el primer contacto.',
     cuerpo: [
@@ -446,11 +461,12 @@ const casos = [
 
   {
     id: 'venezuela-captacion-en-linea',
+    accion: { texto: 'Tres medidas domésticas, cero presupuesto. Difúndelas donde haga falta.', cta: 'Ver más guías', destino: 'casos' },
     slug: 'venezuela-20913-publicaciones-de-captacion',
     categoria: 'cifras',
     pais: 'Venezuela',
     fecha: '2026-10-21',
-    titulo: 'Venezuela: 20.913 publicaciones rastreadas y ninguna cifra oficial',
+    titulo: 'Veinte mil mensajes rastreados',
     resumen:
       'Una investigación periodística encontró en una sola red social miles de mensajes asociados a la captación de menores. El Estado no publica datos sobre esto.',
     cuerpo: [
@@ -473,11 +489,12 @@ const casos = [
 
   {
     id: 'oea-ninas-81',
+    accion: { texto: 'Una campaña que habla a todos por igual no protege a nadie en particular. Ayúdanos a dirigirla bien.', cta: 'Apoyar la campaña', destino: 'dona' },
     slug: 'ninas-81-por-ciento-captacion-digital',
     categoria: 'cifras',
     pais: 'América Latina',
     fecha: '2026-10-21',
-    titulo: 'En la captación digital, ocho de cada diez víctimas son niñas',
+    titulo: 'Ocho de cada diez son niñas',
     resumen:
       'El informe regional de 2025 cuantifica una brecha que condiciona cualquier campaña de prevención: el riesgo en línea no se reparte por igual.',
     cuerpo: [
@@ -499,11 +516,12 @@ const casos = [
 
   {
     id: 'primeras-24-horas',
+    accion: { texto: 'Guarda esta página. El día que haga falta, no habrá tiempo de buscarla.', cta: 'Ver la ruta completa', destino: 'faq' },
     slug: 'las-primeras-24-horas-despues-de-una-revelacion',
     categoria: 'familia',
     pais: 'Guía práctica',
     fecha: '2026-10-21',
-    titulo: 'Las primeras 24 horas después de que un niño cuenta',
+    titulo: 'Las primeras 24 horas',
     resumen:
       'Lo que haga el primer adulto que escucha determina buena parte de lo que pase después, en el proceso judicial y en la recuperación.',
     cuerpo: [
@@ -526,11 +544,12 @@ const casos = [
 
   {
     id: 'sextorsion-adolescentes',
+    accion: { texto: 'Dile esas tres frases hoy, sin que haya pasado nada. Es lo que hace que te lo cuenten mañana.', cta: 'Llevar el taller a tu escuela', destino: 'contacto' },
     slug: 'sextorsion-como-opera-y-que-hacer',
     categoria: 'escuela',
     pais: 'Ecuador y Venezuela',
     fecha: '2026-10-21',
-    titulo: 'Sextorsión: cómo opera y qué hacer en la primera hora',
+    titulo: 'Tres frases que lo cambian todo',
     resumen:
       'El 62,4 % de los adolescentes ecuatorianos encuestados la reconoce como riesgo. Casi ninguno sabe que la respuesta correcta es la contraria a su primer impulso.',
     cuerpo: [
@@ -554,11 +573,12 @@ const casos = [
 
   {
     id: 'lenguaje-que-encubre',
+    accion: { texto: 'Si escribes, publicas o enseñas, estas reglas te sirven. Están abiertas para que las uses.', cta: 'Kit para prensa y docentes', destino: 'prensa' },
     slug: 'el-lenguaje-que-encubre',
     categoria: 'justicia',
     pais: 'Ecuador y Venezuela',
     fecha: '2026-10-21',
-    titulo: 'El lenguaje que encubre: cinco expresiones que conviene dejar de usar',
+    titulo: 'Las palabras que encubren',
     resumen:
       'Algunas palabras de uso corriente en prensa y en conversación convierten un delito en un suceso sin responsable. Cambiarlas no es corrección política: es precisión.',
     cuerpo: [
@@ -582,4 +602,6 @@ const casos = [
 
 ];
 
-module.exports = { META, casos };
+const lote3 = require('./casos-es-lote3.js');
+
+module.exports = { META, casos: casos.concat(lote3) };

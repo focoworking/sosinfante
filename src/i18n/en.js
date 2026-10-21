@@ -112,7 +112,7 @@ const proyectos = [
     tipo: 'Direct care program',
     sedes: ['quito', 'valera'],
     resumen:
-      '«Shungo» means heart in Kichwa, the Andean language — it also stands for tenderness and love. The program delivers integrated care to children living in vulnerable conditions.',
+      '«Shungo» means heart in Kichwa, an Indigenous language of Ecuador — it also stands for tenderness and love. The program delivers integrated care to children living in vulnerable conditions.',
     detalle:
       'Mobile brigades combine a medical and nutritional check-up, monthly food kits, and short-term counseling for children exposed to violence. It runs with partner schools and community centers, which is how we reach children who would never make it to a clinic on their own.',
     metricas: ['Medical and nutritional screening', 'Short-term counseling, 8 sessions', 'Monthly food kits'],
@@ -385,7 +385,7 @@ const faqs = [
   },
   {
     q: 'What does «Shungo» mean?',
-    a: 'Shungo means heart in Kichwa, an Andean language spoken in Ecuador. It also carries the sense of tenderness and love, and it gives its name to our medical, nutritional and mental health program.'
+    a: 'Shungo means heart in Kichwa, an Indigenous language of Ecuador spoken by Andean peoples. It also carries the sense of tenderness and love, and it gives its name to our medical, nutritional and mental health program.'
   },
   {
     q: 'How much time does volunteering take?',

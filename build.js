@@ -810,6 +810,7 @@ ${bloqueBoletin}`
         body: `
 <section class="band aviso"><p>${esc(M.aviso)}</p></section>
 <section class="band article">${c.cuerpo.map((p) => `<p>${esc(p)}</p>`).join('')}</section>
+${c.accion ? `<section class="band accion"><div class="inner"><p>${esc(c.accion.texto)}</p><p class="cta-row"><a class="btn btn-primary btn-lg" href="${R(c.accion.destino)}">${esc(c.accion.cta)}</a></p></div></section>` : ''}
 <section class="band fuentes"><h2>${T.etiquetas.fuente}</h2><ul class="mini-list big">
 ${c.fuentes.map((f) => `<li><a href="${f.url}" rel="noopener nofollow">${esc(f.nombre)}</a></li>`).join('')}
 </ul><p class="mini">${esc(M.aviso)}</p></section>

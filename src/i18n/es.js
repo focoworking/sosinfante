@@ -96,7 +96,7 @@ const proyectos = [
     tipo: 'Programa de atención directa',
     sedes: ['quito', 'valera'],
     resumen:
-      '«Shungo» viene del kichwa y significa corazón: ternura, cariño, amor. Atención integral a niñas y niños en situación de vulnerabilidad.',
+      '«Shungo» significa corazón en kichwa, lengua originaria del Ecuador, y nombra también la ternura y el cariño. Atención integral a niñas y niños en situación de vulnerabilidad.',
     detalle:
       'Brigadas que combinan control médico y nutricional, entrega de alimentos, y terapia psicológica breve para infantes expuestos a violencia. Se ejecuta con unidades educativas y centros comunitarios aliados.',
     metricas: ['Atención médica + nutricional', 'Terapia psicológica breve (8 sesiones)', 'Kits alimentarios mensuales'],
@@ -223,7 +223,7 @@ const faqs = [
   },
   {
     q: '¿Que significa Shungo?',
-    a: 'Shungo proviene del kichwa y puede significar corazón; también se usa para nombrar la ternura, el cariño y el amor. Da nombre al programa de asistencia médica, alimentaria y mental de SOS Infante.'
+    a: 'Shungo significa corazón en kichwa, lengua originaria del Ecuador hablada por los pueblos andinos; también se usa para nombrar la ternura, el cariño y el amor. Da nombre al programa de asistencia médica, alimentaria y mental de SOS Infante.'
   }
 ];
 

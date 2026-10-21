@@ -112,7 +112,7 @@ const proyectos = [
     tipo: 'Programa de atendimento direto',
     sedes: ['quito', 'valera'],
     resumen:
-      '«Shungo» significa coração em kichwa, língua andina — e também quer dizer ternura e carinho. O programa oferece atendimento integral a crianças em situação de vulnerabilidade.',
+      '«Shungo» significa coração em kichwa, língua originária do Equador — e também quer dizer ternura e carinho. O programa oferece atendimento integral a crianças em situação de vulnerabilidade.',
     detalle:
       'Brigadas itinerantes reúnem avaliação médica e nutricional, cestas mensais de alimentos e atendimento psicológico breve para crianças expostas à violência. Funciona junto a escolas e centros comunitários parceiros, que é como chegamos a quem nunca chegaria sozinho a um posto de saúde.',
     metricas: ['Avaliação médica e nutricional', 'Atendimento psicológico breve, 8 sessões', 'Cestas mensais de alimentos'],
@@ -385,7 +385,7 @@ const faqs = [
   },
   {
     q: 'O que significa «Shungo»?',
-    a: 'Shungo significa coração em kichwa, língua andina falada no Equador. Também carrega o sentido de ternura e carinho, e dá nome ao programa de atendimento médico, alimentar e de saúde mental.'
+    a: 'Shungo significa coração em kichwa, língua originária do Equador falada pelos povos andinos. Também carrega o sentido de ternura e carinho, e dá nome ao programa de atendimento médico, alimentar e de saúde mental.'
   },
   {
     q: 'Quanto tempo o voluntariado exige?',
