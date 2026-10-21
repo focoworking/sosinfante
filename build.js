@@ -335,9 +335,9 @@ write('nosotros/index.html', `<!doctype html>
 write('proyectos/index.html', layout({
   url: '/proyectos/',
   title: 'Proyectos · SOS Infante',
-  description: 'Adulto Protector, Shungo Corazón, Todo Posi y Embarazo infantil: cero tolerancia. Los cuatro programas activos de SOS Infante en 2026.',
+  description: `${proyectos.map((p) => p.nombre).join(', ')}. Los ${proyectos.length} programas activos de SOS Infante en 2026.`,
   jsonld: [crumbs([['Inicio', '/'], ['Proyectos', '/proyectos/']])],
-  hero: `<section class="hero hero-sm"><p class="eyebrow">Proyectos 2026</p><h1>Cuatro programas activos</h1><p class="lead">Prevención, atención directa, comunicación e incidencia. Cada proyecto declara su meta y su avance.</p></section>`,
+  hero: `<section class="hero hero-sm"><p class="eyebrow">Proyectos 2026</p><h1>${proyectos.length === 5 ? 'Cinco' : proyectos.length} programas activos</h1><p class="lead">Prevención, atención directa, comunicación e incidencia. Cada proyecto declara su meta y su avance.</p></section>`,
   body: `<section class="band"><div class="grid-2">
 ${proyectos.map((p) => `<article class="card"><p class="tag">${esc(p.tipo)}</p><h3><a href="/proyectos/${p.slug}/">${esc(p.nombre)}</a></h3><p class="claim">${esc(p.claim)}</p><p>${esc(p.resumen)}</p><ul class="mini-list">${p.metricas.map((m) => `<li>${esc(m)}</li>`).join('')}</ul></article>`).join('')}
 </div></section>${donaBlock}`

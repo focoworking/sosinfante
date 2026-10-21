@@ -255,11 +255,11 @@ const blog = [
     fecha: '2026-09-06',
     autor: 'Equipo SOS Infante',
     resumen:
-      'Volvemos con tres sedes, cuatro programas activos y un compromiso de transparencia: cada dólar donado se reporta por proyecto y por ciudad.',
+      'Volvemos con tres sedes, cinco programas activos y un compromiso de transparencia: cada dólar donado se reporta por proyecto y por ciudad.',
     cuerpo: [
       'SOS Infante reabre operaciones en 2026 con una estructura de tres sedes. Miami concentra alianzas y recaudación internacional, Quito mantiene la operación de programas y campañas, y Valera (estado Trujillo, Venezuela) abre como nueva base andina.',
       'La decisión responde a un dato duro: la violencia contra la niñez no se detiene en las fronteras, y las familias que atendemos se mueven entre Venezuela, Ecuador y Estados Unidos. Un programa que solo existe en una ciudad pierde a la familia en el camino.',
-      'En esta etapa priorizamos cuatro programas: Adulto Protector, Shungo Corazón, Todo Posi y Embarazo infantil: cero tolerancia. Cada uno publica su meta anual y su avance en la pagina de transparencia.'
+      'En esta etapa priorizamos cinco programas: Adulto Protector, Shungo Corazón, Todo Posi, Artis Terapia y Embarazo infantil: cero tolerancia. Cada uno publica su meta anual y su avance en la página de transparencia.'
     ]
   },
   {
