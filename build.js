@@ -2,7 +2,7 @@
 /* Generador estatico sin dependencias. `node build.js` -> ./site */
 const fs = require('fs');
 const path = require('path');
-const { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales, LEGAL_ACTUALIZADO, embudoVoluntariado, confianza, impacto, departamentos, gobernanza, acopio, lineasIngreso, catalogoImpacto, campanas } = require('./src/content.js');
+const { site, sedes, proyectos, cifras, formasDeApoyo, faqs, blog, identidad, voluntariado, tienda, legales, LEGAL_ACTUALIZADO, embudoVoluntariado, confianza, impacto, departamentos, gobernanza, acopio, lineasIngreso, catalogoImpacto, campanas } = require('./src/i18n/es.js');
 
 const OUT = path.join(__dirname, 'site');
 // Prefijo para publicar en subcarpeta (p. ej. GitHub Pages de proyecto):
