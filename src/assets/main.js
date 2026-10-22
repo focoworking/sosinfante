@@ -203,4 +203,33 @@
     var destino = destinoDe(elegido);
     if (destino && destino !== location.pathname) location.replace(destino);
   })();
+  /* ---------- 7. Botón de volver arriba ----------
+     Aparece cuando ya se bajó una pantalla y lleva al inicio con
+     desplazamiento suave, respetando quien pidió menos movimiento. */
+  (function () {
+    var boton = document.querySelector('.subir');
+    if (!boton) return;
+
+    var sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var pendiente = false;
+
+    var revisar = function () {
+      boton.classList.toggle('visible', window.scrollY > window.innerHeight * 0.6);
+      pendiente = false;
+    };
+
+    window.addEventListener('scroll', function () {
+      if (pendiente) return;
+      pendiente = true;
+      window.requestAnimationFrame(revisar);
+    }, { passive: true });
+    revisar();
+
+    boton.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: sinMovimiento ? 'auto' : 'smooth' });
+      // Devuelve el foco al principio para quien navega con teclado.
+      var primero = document.querySelector('.skip') || document.body;
+      if (primero.focus) primero.focus({ preventScroll: true });
+    });
+  })();
 })();

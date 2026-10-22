@@ -13,6 +13,7 @@ module.exports = {
     serVoluntario: 'Ser voluntario',
     donarEnEspecie: 'Donar en especie',
     escribenosWhatsapp: 'Escríbenos por WhatsApp',
+    subir: 'Volver arriba',
     nav: {
       fundacion: 'fundación',
       proyectos: 'proyectos',
@@ -94,6 +95,7 @@ module.exports = {
     serVoluntario: 'Volunteer',
     donarEnEspecie: 'Drop off goods',
     escribenosWhatsapp: 'Message us on WhatsApp',
+    subir: 'Back to top',
     nav: {
       fundacion: 'about',
       proyectos: 'programs',
@@ -175,6 +177,7 @@ module.exports = {
     serVoluntario: 'Ser voluntário',
     donarEnEspecie: 'Doar materiais',
     escribenosWhatsapp: 'Fale conosco no WhatsApp',
+    subir: 'Voltar ao topo',
     nav: {
       fundacion: 'instituto',
       proyectos: 'programas',

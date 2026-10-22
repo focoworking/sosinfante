@@ -348,13 +348,30 @@ strong{font-weight:700;color:var(--ink)}
 .legal a{color:var(--celeste-ink)}
 
 /* ---------- flotantes ---------- */
-.wa{
+/* Botón de volver arriba: aparece al desplazar y desaparece arriba del todo. */
+.subir{
   position:fixed;right:1rem;bottom:1rem;z-index:60;
-  width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;
-  display:grid;place-items:center;text-decoration:none;
-  box-shadow:0 6px 18px rgba(8,6,7,.22);
+  width:46px;height:46px;border-radius:50%;
+  border:1px solid rgba(8,6,7,.10);
+  background:rgba(255,255,255,.88);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  color:var(--negro);cursor:pointer;
+  display:grid;place-items:center;
+  box-shadow:0 8px 24px rgba(8,6,7,.12);
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .25s ease,transform .25s ease,visibility .25s,box-shadow .25s ease;
 }
-.wa:hover{background:#1DA851;color:#fff}
+.subir.visible{opacity:1;visibility:visible;transform:none}
+body.nav-abierto .subir{opacity:0;visibility:hidden;pointer-events:none}
+.subir:hover,.subir:focus-visible{
+  box-shadow:0 12px 30px rgba(8,6,7,.18);transform:translateY(-2px);
+  background:var(--celeste);color:var(--negro);
+}
+@media (max-width:720px){
+  .subir{width:42px;height:42px;right:.75rem;bottom:5.2rem}
+}
+@media (prefers-reduced-motion:reduce){.subir{transition:none}}
+@media print{.subir{display:none}}
 .sticky-cta{display:none}
 
 /* =========================================================
@@ -457,7 +474,7 @@ body.nav-abierto .site-head{
     transform:translateY(-8px);opacity:0;pointer-events:none;
     transition:opacity .26s ease, transform .26s ease, visibility .26s;
     visibility:hidden;overflow-y:auto;
-    padding:1.2rem var(--gutter) 2.5rem;
+    padding:1.8rem var(--gutter) 3.5rem;
   }
   .nav[data-open="true"]{
     opacity:1;transform:none;pointer-events:auto;visibility:visible;
@@ -475,9 +492,10 @@ body.nav-abierto .site-head{
   .nav[data-open="true"] li:nth-child(5){transition-delay:.20s}
   .nav[data-open="true"] li:nth-child(6){transition-delay:.24s}
   .nav[data-open="true"] li:nth-child(7){transition-delay:.28s}
+  .nav[data-open="true"] li:nth-child(8){transition-delay:.32s}
   .nav ul a{
-    font-size:clamp(1.35rem,6vw,2rem);font-weight:600;letter-spacing:-.025em;
-    padding:.72rem 0;
+    font-size:clamp(1.5rem,6.8vw,2.3rem);font-weight:600;letter-spacing:-.025em;
+    padding:1.05rem 0;
   }
   .nav ul a::after{display:none}
   body.nav-abierto{overflow:hidden}
@@ -619,6 +637,9 @@ body.nav-abierto .site-head{
   font-size:.8rem;font-weight:600;white-space:nowrap;line-height:1.1;
 }
 .lang-menu a:hover,.lang-menu a:focus-visible{background:var(--celeste-soft);color:var(--celeste-ink)}
+
+/* Con el menú móvil abierto el selector estorba: se aparta mientras dura. */
+body.nav-abierto .lang-float{opacity:0;visibility:hidden;pointer-events:none}
 
 /* sin JS la lista aparece al pasar el cursor, para que nunca quede inservible */
 .lang-float:hover .lang-menu,
