@@ -12,9 +12,7 @@ const site = {
     'O SOS Infante é uma organização sem fins lucrativos que previne e enfrenta a violência física, psicológica e sexual contra crianças e adolescentes. Mantém um centro de coleta no sul da Flórida e atende diretamente em Quito, no Equador, e em Valera, na Venezuela.',
   founded: '2018',
   email: 'accion@sosinfante.org',
-  telefono: '+1 305 988 1925',
-  whatsapp: '13059881925',
-  direccionUS: '3800 Inverrary Blvd, Fort Lauderdale, FL 33319, Estados Unidos',
+  direccionUS: 'Miami, FL, Estados Unidos',
   horario: 'De segunda a sexta, das 8h às 17h',
   color: '#1EB5C4',
   social: [
@@ -252,8 +250,8 @@ const voluntariado = {
 };
 
 const acopio = {
-  ciudad: 'Miami / Fort Lauderdale',
-  direccion: '3800 Inverrary Blvd, Fort Lauderdale, FL 33319',
+  ciudad: 'Miami, FL',
+  direccion: 'Miami, FL',
   horario: 'De segunda a sexta, das 8h às 17h',
   promesa:
     'O que entra pela nossa porta na Flórida termina nas mãos de uma família no Equador ou na Venezuela — ou vira o dinheiro que paga esse envio.',

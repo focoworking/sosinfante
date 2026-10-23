@@ -222,8 +222,6 @@ ${body}
       <h3>${T.pie.contacto}</h3>
       <ul>
         <li><a href="mailto:${C.site.email}">${C.site.email}</a></li>
-        <li><a href="tel:${C.site.telefono.replace(/[^+0-9]/g, '')}">${C.site.telefono}</a></li>
-        <li><a href="https://wa.me/${C.site.whatsapp}">WhatsApp</a></li>
         <li>${esc(C.site.direccionUS)}</li>
         ${C.site.social.map((u) => `<li><a rel="me noopener" href="${u}">${u.split('/')[2].replace('www.', '')}</a></li>`).join('')}
       </ul>
@@ -274,13 +272,10 @@ function generarIdioma(L) {
     logo: DOMINIO + '/assets/logo.svg',
     foundingDate: C.site.founded,
     email: C.site.email,
-    telephone: C.site.telefono,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '3800 Inverrary Blvd',
-      addressLocality: 'Fort Lauderdale',
+      addressLocality: 'Miami',
       addressRegion: 'FL',
-      postalCode: '33319',
       addressCountry: 'US'
     },
     description: C.site.description,
@@ -468,7 +463,7 @@ ${C.sedes.map((s) => `<article class="card"><p class="tag">${s.bandera} ${esc(s.
       body: `
 <section class="band answer"><h2>${esc(P.sedes.queHace(s.ciudad))}</h2><p class="answer-text">${esc(s.resumen)}</p></section>
 <section class="band"><h2>${esc(P.sedes.programasEn(s.ciudad))}</h2><div class="grid-2">${proys.map((p) => `<article class="card"><p class="tag">${esc(p.tipo)}</p><h3><a href="${R('proyecto', p.slug)}">${esc(p.nombre)}</a></h3><p>${esc(p.resumen)}</p></article>`).join('')}</div></section>
-<section class="band"><h2>${esc(P.sedes.contactoEn(s.ciudad))}</h2><p><a class="btn btn-primary" href="mailto:${s.contacto}">${s.contacto}</a> <a class="btn btn-ghost" href="https://wa.me/${C.site.whatsapp}">WhatsApp</a></p><p class="mini">${P.sedes.idiomas} ${esc(s.idioma)}.</p></section>
+<section class="band"><h2>${esc(P.sedes.contactoEn(s.ciudad))}</h2><p><a class="btn btn-primary" href="mailto:${s.contacto}">${s.contacto}</a></p><p class="mini">${P.sedes.idiomas} ${esc(s.idioma)}.</p></section>
 ${bloqueDonacion}`
     });
   });
@@ -480,7 +475,7 @@ ${bloqueDonacion}`
     description: P.acopio.description,
     jsonld: [
       migas([[T.inicio, R('home')], [P.acopio.h1, R('acopio')]]),
-      { '@context': 'https://schema.org', '@type': 'LocalBusiness', additionalType: 'https://schema.org/NGO', name: `${C.site.name} ${P.acopio.h1}`, url: DOMINIO + R('acopio'), parentOrganization: { '@id': DOMINIO + '/#organization' }, email: C.site.email, telephone: C.site.telefono, address: { '@type': 'PostalAddress', streetAddress: '3800 Inverrary Blvd', addressLocality: 'Fort Lauderdale', addressRegion: 'FL', postalCode: '33319', addressCountry: 'US' }, openingHours: 'Mo-Fr 08:00-17:00' }
+      { '@context': 'https://schema.org', '@type': 'LocalBusiness', additionalType: 'https://schema.org/NGO', name: `${C.site.name} ${P.acopio.h1}`, url: DOMINIO + R('acopio'), parentOrganization: { '@id': DOMINIO + '/#organization' }, email: C.site.email, address: { '@type': 'PostalAddress', addressLocality: 'Miami', addressRegion: 'FL', addressCountry: 'US' }, openingHours: 'Mo-Fr 08:00-17:00' }
     ],
     hero: `<section class="hero hero-big"><p class="eyebrow">${P.acopio.eyebrow}</p><h1>${esc(P.acopio.h1)}</h1><p class="lead">${esc(C.acopio.promesa)}</p><p class="cta-row"><a class="btn btn-primary btn-lg" href="#entregar">${P.acopio.comoEntregar}</a> <a class="btn btn-ghost btn-lg" href="${R('tienda')}#impacto">${P.home.catalogoCta}</a></p></section>`,
     body: `
@@ -494,7 +489,7 @@ ${bloqueDonacion}`
 <p class="mini">${esc(C.acopio.nota)}</p></section>
 <section class="band" id="entregar"><h2>${esc(P.acopio.comoEntregarTitulo)}</h2>
 <ul class="mini-list big">${P.acopio.entregas.map((e) => `<li><strong>${esc(e[0])}</strong> ${esc(e[1](C.acopio.direccion, C.acopio.horario))}</li>`).join('')}</ul>
-<p class="cta-row"><a class="btn btn-primary btn-lg" href="https://wa.me/${C.site.whatsapp}">${P.acopio.agendar}</a> <a class="btn btn-ghost btn-lg" href="${R('contacto')}#alianzas">${P.acopio.colecta}</a></p></section>
+<p class="cta-row"><a class="btn btn-primary btn-lg" href="${R('contacto')}">${P.acopio.agendar}</a> <a class="btn btn-ghost btn-lg" href="${R('contacto')}#alianzas">${P.acopio.colecta}</a></p></section>
 <section class="band answer"><h2>${P.acopio.trazabilidad}</h2><p class="answer-text">${esc(P.acopio.trazabilidadTexto)}</p></section>
 ${bloqueDonacion}${bloqueBoletin}`
   });
@@ -690,7 +685,7 @@ ${P.aliados.tarjetas.map((t) => `<article class="card"><p class="tag">${esc(t[0]
     hero: `<section class="hero hero-sm"><p class="eyebrow">${P.prensa.eyebrow}</p><h1>${esc(P.prensa.h1)}</h1><p class="lead">${esc(P.prensa.lead)}</p></section>`,
     body: `
 <section class="band answer"><h2>${P.prensa.descripcion}</h2><p class="answer-text">${esc(C.site.description)}</p>
-<p class="mini">${P.prensa.nombreLegal} ${esc(C.site.legalName)} · ${P.prensa.fundada} ${C.site.founded} · ${P.prensa.contactoPrensa} <a href="mailto:${C.site.email}">${C.site.email}</a> · ${C.site.telefono}</p></section>
+<p class="mini">${P.prensa.nombreLegal} ${esc(C.site.legalName)} · ${P.prensa.fundada} ${C.site.founded} · ${P.prensa.contactoPrensa} <a href="mailto:${C.site.email}">${C.site.email}</a></p></section>
 <section class="band"><h2>${P.prensa.cifrasTitulo}</h2><div class="grid-3">${C.cifras.map((c) => `<figure class="cifra"><strong>${esc(c.dato)}</strong><figcaption>${esc(c.texto)} <cite>${esc(c.fuente)}</cite></figcaption></figure>`).join('')}</div></section>
 <section class="band"><h2>${P.prensa.comoCubrir}</h2><ul class="mini-list big">${P.prensa.guia.map((g) => `<li>${esc(g)}</li>`).join('')}</ul></section>
 <section class="band"><h2>${P.prensa.recursos}</h2><ul class="mini-list big">
@@ -730,7 +725,6 @@ ${C.sedes.map((s) => `<article class="card"><p class="tag">${s.bandera} ${esc(s.
 </div></section>
 <section class="band"><h2>${P.contacto.datos}</h2><ul class="mini-list big">
 <li><strong>${P.contacto.correo}</strong> <a href="mailto:${C.site.email}">${C.site.email}</a></li>
-<li><strong>${P.contacto.telefono}</strong> <a href="tel:${C.site.telefono.replace(/[^+0-9]/g, '')}">${C.site.telefono}</a></li>
 <li><strong>${P.contacto.direccion}</strong> ${esc(C.site.direccionUS)}</li>
 <li><strong>${P.contacto.horario}</strong> ${esc(C.site.horario)}</li>
 </ul></section>

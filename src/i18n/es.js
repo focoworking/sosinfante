@@ -10,9 +10,7 @@ const site = {
     'SOS Infante es una organización sin fines de lucro que previene y atiende la violencia física, psicológica y sexual contra niñas, niños y adolescentes. Opera en Miami (EE.UU.), Quito (Ecuador) y Valera (Venezuela).',
   founded: '2018',
   email: 'accion@sosinfante.org',
-  telefono: '+1 305 988 1925',
-  whatsapp: '+13059881925',
-  direccionUS: '3800 Inverrary Blvd, Fort Lauderdale, FL 33319, Estados Unidos',
+  direccionUS: 'Miami, FL, Estados Unidos',
   horario: 'Lunes a viernes, 08h00 a 17h00',
   color: '#1EB5C4',
   locales: ['es', 'en'],
@@ -211,7 +209,7 @@ const faqs = [
   },
   {
     q: '¿Que hago si sospecho de un caso de violencia contra un niño o niña?',
-    a: 'Si hay riesgo inmediato, llama a emergencias: 911 en Estados Unidos, ECU 911 en Ecuador, 911 en Venezuela. Luego escribe a accion@sosinfante.org o al WhatsApp de la sede mas cercana: acompañamos la ruta de denuncia y damos contención psicológica inicial. Nunca confrontes sola o solo al agresor.'
+    a: 'Si hay riesgo inmediato, llama a emergencias: 911 en Estados Unidos, ECU 911 en Ecuador, 911 en Venezuela. Luego escribe a accion@sosinfante.org o al correo de la sede mas cercana: acompañamos la ruta de denuncia y damos contención psicológica inicial. Nunca confrontes sola o solo al agresor.'
   },
   {
     q: '¿Como puedo ser voluntario o voluntaria?',
@@ -486,8 +484,8 @@ const gobernanza = [
 
 /* ===== Centro de acopio Miami ===== */
 const acopio = {
-  ciudad: 'Miami / Fort Lauderdale',
-  direccion: '3800 Inverrary Blvd, Fort Lauderdale, FL 33319',
+  ciudad: 'Miami, FL',
+  direccion: 'Miami, FL',
   horario: 'Lunes a viernes, 08h00 a 17h00',
   promesa: 'Lo que entra en Miami termina en manos de una familia en Ecuador o Venezuela, o se convierte en el dinero que paga ese envio.',
   aceptamos: [

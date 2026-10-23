@@ -12,9 +12,7 @@ const site = {
     'SOS Infante is a nonprofit working to prevent and respond to physical, psychological and sexual violence against children. It runs a donation center in South Florida and delivers care on the ground in Quito, Ecuador and Valera, Venezuela.',
   founded: '2018',
   email: 'accion@sosinfante.org',
-  telefono: '+1 305 988 1925',
-  whatsapp: '13059881925',
-  direccionUS: '3800 Inverrary Blvd, Fort Lauderdale, FL 33319, United States',
+  direccionUS: 'Miami, FL, United States',
   horario: 'Monday to Friday, 8:00 am to 5:00 pm',
   color: '#1EB5C4',
   social: [
@@ -252,8 +250,8 @@ const voluntariado = {
 };
 
 const acopio = {
-  ciudad: 'Miami / Fort Lauderdale',
-  direccion: '3800 Inverrary Blvd, Fort Lauderdale, FL 33319',
+  ciudad: 'Miami, FL',
+  direccion: 'Miami, FL',
   horario: 'Monday to Friday, 8:00 am to 5:00 pm',
   promesa:
     'What comes through our door in Florida either ends up in a family’s hands in Ecuador or Venezuela, or becomes the money that pays for the shipment.',
@@ -369,7 +367,7 @@ const faqs = [
   },
   {
     q: 'How do I donate goods in South Florida?',
-    a: 'Drop them off at 3800 Inverrary Blvd, Fort Lauderdale, FL 33319, Monday to Friday between 8:00 am and 5:00 pm. For ten boxes or more we pick up anywhere in Broward and Miami-Dade — schedule it on WhatsApp. Companies and schools can request a labeled collection bin and a closing report.'
+    a: 'Write to us and we confirm the drop-off point in Miami, FL, open Monday to Friday between 8:00 am and 5:00 pm. For ten boxes or more we pick up anywhere in Broward and Miami-Dade — email us to schedule it. Companies and schools can request a labeled collection bin and a closing report.'
   },
   {
     q: 'What should I do if I suspect a child is being abused?',

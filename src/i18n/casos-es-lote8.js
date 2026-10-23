@@ -39,9 +39,9 @@ module.exports = [
     fecha: '2026-10-21',
     titulo: 'La caja que cruza',
     resumen:
-      'Entregas una bolsa de ropa infantil en Fort Lauderdale. Contamos la ruta completa hasta que llega a una familia, incluida la parte que se vende.',
+      'Entregas una bolsa de ropa infantil en Miami. Contamos la ruta completa hasta que llega a una familia, incluida la parte que se vende.',
     cuerpo: [
-      'El centro de acopio de SOS Infante está en 3800 Inverrary Blvd, Fort Lauderdale, y recibe de lunes a viernes de 08h00 a 17h00. Lo que entra ahí sigue una de dos rutas, y conviene explicar las dos sin adornos, porque la segunda es la que suele sorprender.',
+      'El centro de acopio de SOS Infante está en Miami, FL, y recibe de lunes a viernes de 08h00 a 17h00. Escríbenos y te confirmamos el punto exacto de entrega. Lo que entra ahí sigue una de dos rutas, y conviene explicar las dos sin adornos, porque la segunda es la que suele sorprender.',
       'La primera ruta es directa. Ropa y calzado infantil en buen estado, útiles escolares, juguetes completos, alimentos no perecibles sellados con al menos seis meses de vigencia, artículos de higiene y pañales sellados, equipamiento médico básico no invasivo en empaque original. Eso se clasifica, se arma en kits y se despacha a Quito y Valera, donde se entrega a través de unidades educativas y centros comunitarios aliados, no en reparto abierto: con destinatario identificado y registro de entrega.',
       'La segunda ruta es la que financia a la primera. Una parte del inventario donado se vende en Miami. No es un desvío del propósito: es lo que paga el flete internacional, la aduana y el almacenamiento, que son costos reales que ningún donante quiere financiar en abstracto y que sin embargo deciden si la caja llega o no. En nuestro modelo esa línea tiene cerca del 70 por ciento de margen, porque la mercadería no tuvo costo de compra.',
       'Hay cosas que no recibimos, y la lista también es información útil: medicamentos vencidos, abiertos o sin receta autorizada; ropa dañada, húmeda o manchada; muebles voluminosos y electrodomésticos grandes; vehículos. No es exceso de criterio. Un envío con material inservible paga el mismo flete que uno aprovechable y consume el mismo espacio, de modo que donar lo que no sirve tiene un costo que termina pagando otro niño.',

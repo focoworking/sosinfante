@@ -85,13 +85,13 @@ const es = {
   acopio: {
     title: 'Centro de acopio Miami · SOS Infante',
     description:
-      'Centro de acopio de SOS Infante en Miami / Fort Lauderdale: qué donamos, qué no recibimos, cómo se clasifica y cómo llega la ayuda a Ecuador y Venezuela con trazabilidad.',
+      'Centro de acopio de SOS Infante en Miami, FL: qué donamos, qué no recibimos, cómo se clasifica y cómo llega la ayuda a Ecuador y Venezuela con trazabilidad.',
     eyebrow: 'Miami 🇺🇸 → Ecuador 🇪🇨 · Venezuela 🇻🇪',
     h1: 'Centro de acopio',
     comoEntregar: 'Cómo entregar',
     queEs: '¿Qué es el centro de acopio de Miami?',
     queEsTexto:
-      'Es la bodega donde SOS Infante recibe donaciones en especie en Fort Lauderdale, las clasifica con voluntariado y las envía a las sedes de Quito y Valera. Lo que no se puede enviar se vende en la tienda solidaria y ese dinero paga el flete del resto.',
+      'Es la bodega donde SOS Infante recibe donaciones en especie en Miami, las clasifica con voluntariado y las envía a las sedes de Quito y Valera. Lo que no se puede enviar se vende en la tienda solidaria y ese dinero paga el flete del resto.',
     queRecibimos: 'Qué recibimos',
     siRecibimos: 'Sí recibimos',
     noRecibimos: 'No recibimos',
@@ -99,11 +99,11 @@ const es = {
     comoEntregarTitulo: 'Cómo entregar tu donación',
     entregas: [
       ['En persona:', (d, h) => `${d}. ${h}.`],
-      ['Recolección a domicilio:', () => 'desde 10 cajas en el condado de Broward y Miami-Dade, agendando por WhatsApp.'],
+      ['Recolección a domicilio:', () => 'desde 10 cajas en el condado de Broward y Miami-Dade, agendando por correo.'],
       ['Colecta de empresa o escuela:', () => 'entregamos contenedor rotulado, material de campaña y reporte final de lo recaudado.'],
       ['Envío desde otra ciudad:', () => 'escríbenos y coordinamos la guía.']
     ],
-    agendar: 'Agendar por WhatsApp',
+    agendar: 'Agendar una entrega',
     colecta: 'Colecta corporativa',
     trazabilidad: 'Trazabilidad',
     trazabilidadTexto:
@@ -150,7 +150,7 @@ const es = {
     form: {
       nombre: 'Nombre y apellido',
       correo: 'Correo',
-      telefono: 'Teléfono / WhatsApp',
+      telefono: 'Teléfono',
       donde: 'Dónde estás',
       otraCiudad: 'Otra ciudad (remoto)',
       areaPostula: 'Área a la que postulas',
@@ -273,7 +273,7 @@ const es = {
     porSede: 'Por sede',
     datos: 'Datos generales',
     correo: 'Correo:',
-    telefono: 'Teléfono / WhatsApp:',
+    telefono: 'Teléfono:',
     direccion: 'Dirección (EE.UU.):',
     horario: 'Horario:',
     alianzas: 'Alianzas, prensa y talleres',
@@ -432,13 +432,13 @@ const en = {
   acopio: {
     title: 'Miami donation center · SOS Infante',
     description:
-      'The SOS Infante donation center in Miami / Fort Lauderdale: what we take, what we cannot take, how goods are sorted, and how they reach Ecuador and Venezuela with full tracking.',
+      'The SOS Infante donation center in Miami, FL: what we take, what we cannot take, how goods are sorted, and how they reach Ecuador and Venezuela with full tracking.',
     eyebrow: 'Miami 🇺🇸 → Ecuador 🇪🇨 · Venezuela 🇻🇪',
     h1: 'Donation center',
     comoEntregar: 'How to drop off',
     queEs: 'What is the Miami donation center?',
     queEsTexto:
-      'It is the warehouse in Fort Lauderdale where SOS Infante receives donated goods, sorts them with volunteers and ships them to Quito and Valera. Whatever cannot be shipped is sold in the shop, and that money pays the freight for the rest.',
+      'It is the warehouse in Miami where SOS Infante receives donated goods, sorts them with volunteers and ships them to Quito and Valera. Whatever cannot be shipped is sold in the shop, and that money pays the freight for the rest.',
     queRecibimos: 'What we take',
     siRecibimos: 'Yes, please',
     noRecibimos: 'Please don’t',
@@ -446,11 +446,11 @@ const en = {
     comoEntregarTitulo: 'How to get your donation to us',
     entregas: [
       ['In person:', (d, h) => `${d}. ${h}.`],
-      ['Home pickup:', () => 'ten boxes or more, anywhere in Broward and Miami-Dade. Schedule on WhatsApp.'],
+      ['Home pickup:', () => 'ten boxes or more, anywhere in Broward and Miami-Dade. Schedule by email.'],
       ['Company or school drive:', () => 'we provide a labeled bin, campaign materials and a closing report.'],
       ['Shipping from another city:', () => 'write to us and we will arrange the label.']
     ],
-    agendar: 'Schedule on WhatsApp',
+    agendar: 'Schedule a drop-off',
     colecta: 'Corporate drive',
     trazabilidad: 'Tracking',
     trazabilidadTexto:
@@ -496,7 +496,7 @@ const en = {
     form: {
       nombre: 'Full name',
       correo: 'Email',
-      telefono: 'Phone / WhatsApp',
+      telefono: 'Phone',
       donde: 'Where you are',
       otraCiudad: 'Another city (remote)',
       areaPostula: 'Area you are applying for',
@@ -619,7 +619,7 @@ const en = {
     porSede: 'By city',
     datos: 'General details',
     correo: 'Email:',
-    telefono: 'Phone / WhatsApp:',
+    telefono: 'Phone:',
     direccion: 'Address (U.S.):',
     horario: 'Hours:',
     alianzas: 'Partnerships, press and workshops',
@@ -778,13 +778,13 @@ const pt = {
   acopio: {
     title: 'Centro de coleta em Miami · SOS Infante',
     description:
-      'Centro de coleta do SOS Infante em Miami / Fort Lauderdale: o que recebemos, o que não aceitamos, como é feita a triagem e como a ajuda chega ao Equador e à Venezuela com rastreio.',
+      'Centro de coleta do SOS Infante em Miami, FL: o que recebemos, o que não aceitamos, como é feita a triagem e como a ajuda chega ao Equador e à Venezuela com rastreio.',
     eyebrow: 'Miami 🇺🇸 → Equador 🇪🇨 · Venezuela 🇻🇪',
     h1: 'Centro de coleta',
     comoEntregar: 'Como entregar',
     queEs: 'O que é o centro de coleta de Miami?',
     queEsTexto:
-      'É o galpão em Fort Lauderdale onde o SOS Infante recebe doações, faz a triagem com voluntariado e envia tudo para Quito e Valera. O que não pode ser enviado é vendido na loja, e esse dinheiro paga o frete do restante.',
+      'É o galpão em Miami onde o SOS Infante recebe doações, faz a triagem com voluntariado e envia tudo para Quito e Valera. O que não pode ser enviado é vendido na loja, e esse dinheiro paga o frete do restante.',
     queRecibimos: 'O que recebemos',
     siRecibimos: 'Recebemos',
     noRecibimos: 'Não recebemos',
@@ -792,11 +792,11 @@ const pt = {
     comoEntregarTitulo: 'Como fazer sua doação chegar',
     entregas: [
       ['Presencialmente:', (d, h) => `${d}. ${h}.`],
-      ['Retirada em domicílio:', () => 'a partir de 10 caixas nos condados de Broward e Miami-Dade, agendando pelo WhatsApp.'],
+      ['Retirada em domicílio:', () => 'a partir de 10 caixas nos condados de Broward e Miami-Dade, agendando por e-mail.'],
       ['Coleta de empresa ou escola:', () => 'levamos a caixa coletora identificada, o material de campanha e o relatório final.'],
       ['Envio de outra cidade:', () => 'escreva para a gente e combinamos a etiqueta de envio.']
     ],
-    agendar: 'Agendar pelo WhatsApp',
+    agendar: 'Agendar uma entrega',
     colecta: 'Coleta corporativa',
     trazabilidad: 'Rastreio',
     trazabilidadTexto:
@@ -842,7 +842,7 @@ const pt = {
     form: {
       nombre: 'Nome completo',
       correo: 'E-mail',
-      telefono: 'Telefone / WhatsApp',
+      telefono: 'Telefone',
       donde: 'Onde você está',
       otraCiudad: 'Outra cidade (a distância)',
       areaPostula: 'Área pretendida',
@@ -965,7 +965,7 @@ const pt = {
     porSede: 'Por unidade',
     datos: 'Dados gerais',
     correo: 'E-mail:',
-    telefono: 'Telefone / WhatsApp:',
+    telefono: 'Telefone:',
     direccion: 'Endereço (EUA):',
     horario: 'Horário:',
     alianzas: 'Parcerias, imprensa e oficinas',
