@@ -19,5 +19,6 @@ const META = {
 
 const lote1 = require('./casos-en-lote1.js');
 const lote2 = require('./casos-en-lote2.js');
+const lote3 = require('./casos-en-lote3.js');
 
-module.exports = { META, casos: [].concat(lote1, lote2) };
+module.exports = { META, casos: [].concat(lote1, lote2, lote3) };
